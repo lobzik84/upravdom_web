@@ -1,0 +1,190 @@
+<div class="settings">
+    <div class="settings__header">Настройки</div>
+    <ul class="settings-list">
+        <li class="settings-item">
+            <span class='settings__name'>Температура</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_temperature">
+                <use xlink:href="sprite.svg#temperature"></use>
+              </svg>
+            </span>
+            <div class='settings-wrap'>
+                <div class='settings-options'>
+                    <span class="settings-options__name">Мин</span>
+                    <nobr>
+                        <span class="settings-options__switcher settings-options__switcher_minus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="sprite.svg#minus"></use>
+                            </svg>
+                        </span>
+                        <span class="settings-options__value">+12&deg</span>
+                        <span class="settings-options__switcher settings-options__switcher_plus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="sprite.svg#plus"></use>
+                            </svg>
+                        </span>
+                    </nobr>
+                </div>
+                <div class='settings-options'>
+                    <span class="settings-options__name">Макс</span>
+                    <nobr>
+                        <span class="settings-options__switcher settings-options__switcher_minus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="sprite.svg#minus"></use>
+                            </svg>
+                        </span>
+                        <span class="settings-options__value">+14&deg</span>
+                        <span class="settings-options__switcher settings-options__switcher_plus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="sprite.svg#plus"></use>
+                            </svg>
+                        </span>
+                    </nobr>
+                </div>
+            </div>
+        </li>
+        <li class="settings-item">
+            <span class='settings__name'>Электроэнергия</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_flash">
+                <use xlink:href="sprite.svg#flash"></use>
+              </svg>
+            </span>
+            <div class='settings-wrap'>
+                <div class='settings-options'>
+                    <span class="settings-options__name">Мин</span>
+                    <nobr>
+                        <span class="settings-options__switcher settings-options__switcher_minus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="sprite.svg#minus"></use>
+                            </svg>
+                        </span>
+                        <span class="settings-options__value">210В</span>
+                        <span class="settings-options__switcher settings-options__switcher_plus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="sprite.svg#plus"></use>
+                            </svg>
+                        </span>
+                    </nobr>
+                </div>
+                <div class='settings-options'>
+                    <span class="settings-options__name">Макс</span>
+                    <nobr>
+                        <span class="settings-options__switcher settings-options__switcher_minus">
+                            <svg class="settings-options__svg">
+                              <use xlink:href="sprite.svg#minus"></use>
+                            </svg>
+                        </span>
+                        <span class="settings-options__value">240В</span>
+                        <span class="settings-options__switcher settings-options__switcher_plus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="sprite.svg#plus"></use>
+                            </svg>
+                        </span>
+                    </nobr>
+                </div>
+            </div>
+        </li>
+        <li class="settings-item">
+            <span class='settings__name'>Звуковые уведомления</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_sound_notifications">
+                <use xlink:href="sprite.svg#sound_notifications"></use>
+              </svg>
+            </span>
+            <div class='settings-wrap'>
+                <input type="checkbox" id="sound" class="settings__checkbox">
+                <label for="sound" class="settings__label settings__label_sound"></label>
+            </div>
+        </li>
+        <li class="settings-item">
+            <span class='settings__name'>Включать лампу 1</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_lamp">
+                <use xlink:href="sprite.svg#control-lamp-on"></use>
+              </svg>
+            </span>
+            <div class='settings-wrap'>
+                <div class='settings-block'>
+                    <span class='settings__description'>При срабатывании датчика движения и низкого освещения</span>
+                    <input type="checkbox" id="lamp" class="settings__checkbox">
+                    <label for="lamp" class="settings__label"></label>
+                </div>
+                <div class='settings-block settings-block_bottom'>
+                    <span class='settings__description'>В темное время суток</span>
+                    <input type="checkbox" id="lamp1" checked='checked' class="settings__checkbox">
+                    <label for="lamp1" class="settings__label"></label>
+                </div>
+            </div>
+        </li>
+        <li class="settings-item">
+            <span class='settings__name'>Включать лампу 2</span>
+            <span class="settings__icon">
+                <svg class="settings__svg settings__svg_lamp">
+                  <use xlink:href="sprite.svg#control-lamp-on"></use>
+                </svg>
+            </span>
+            <div class='settings-wrap'>
+                <div class='settings-block'>
+                    <span class='settings__description'>При срабатывании датчика движения и низкого освещения</span>
+                    <input type="checkbox" id="lamp2" class="settings__checkbox">
+                    <label for="lamp2" class="settings__label"></label>
+                </div>
+                <div class='settings-block settings-block_bottom'>
+                    <span class='settings__description'>В темное время суток</span>
+                    <input type="checkbox" id="lamp2_1" checked='checked' class="settings__checkbox">
+                    <label for="lamp2_1" class="settings__label"></label>
+                </div>
+            </div>
+        </li>
+        <li class="settings-item">
+            <span class='settings__name'>Отправлять статистику на электронную почту</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_statistics_by_email">
+                <use xlink:href="sprite.svg#statistics_by_email"></use>
+              </svg>
+            </span>
+            <div class='settings-wrap'>
+                <input type="checkbox" id="email" class="settings__checkbox">
+                <label for="email" class="settings__label settings__label_email"></label>
+            </div>
+        </li>
+        <li class="settings-item">
+            <span class='settings__name settings__name_profile'>Настройки профиля</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_profile">
+                <use xlink:href="sprite.svg#profile"></use>
+              </svg>
+            </span>
+            <div class='settings-wrap'>
+                <svg class="settings__input-icon settings__input-icon_mail">
+                  <use xlink:href="sprite.svg#form-mail"></use>
+                </svg>
+                <input type="text" class="settings__input" placeholder="Электронная почта">
+                <svg class="settings__input-icon settings__input-icon_phone">
+                  <use xlink:href="sprite.svg#form-phone"></use>
+                </svg>
+                <input type="text" class="settings__input" placeholder="Телефон">
+                <svg class="settings__input-icon settings__input-icon_base">
+                  <use xlink:href="sprite.svg#form-base"></use>
+                </svg>
+                <input type="text" class="settings__input" placeholder="Название локации">
+                <span class='settings__save settings__save_profile settings__save_success'>Сохранено</span>
+            </div>
+        </li>
+        <li class="settings-item">
+            <span class='settings__name settings__name_password'>Изменить пароль</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_password">
+                <use xlink:href="sprite.svg#change_password"></use>
+              </svg>
+            </span>
+            <div class='settings-wrap'>
+                <input type="password" class="settings__input settings__input_password" placeholder="Текущий пароль">
+                <input type="password" class="settings__input settings__input_password" placeholder="Новый пароль">
+                <input type="password" class="settings__input settings__input_password" placeholder="Повторите новый пароль">
+                <span class='settings__save'>Сохранить</span>
+            </div>
+        </li>
+    </ul>
+</div>

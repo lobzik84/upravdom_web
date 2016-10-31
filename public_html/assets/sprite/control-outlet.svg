@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>иконка</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="control-outlet" fill="#FFFFFF">
+            <path d="M39.66,0.008 L30.707,8.891 L25.601,3.785 L22.383,7.003 L24.062,8.682 L12.59,20.153 C9.876,22.867 9.876,27.302 12.59,30.016 L16.717,34.143 L0,50.791 L3.217,54.008 L19.865,37.29 L23.992,41.418 C26.706,44.132 31.141,44.132 33.855,41.418 L45.326,29.946 L47.005,31.625 L50.223,28.407 L45.116,23.301 L54,14.347 L50.852,11.2 L41.898,20.083 L33.925,12.109 L42.808,3.156 L39.66,0.008 L39.66,0.008 Z M27.209,11.83 L42.178,26.799 L30.707,38.27 C29.839,39.137 28.007,39.137 27.139,38.27 L15.738,26.868 C14.871,26 14.871,24.168 15.738,23.301 L27.209,11.83 L27.209,11.83 Z" id="иконка"></path>
+        </g>
+    </g>
+</svg>

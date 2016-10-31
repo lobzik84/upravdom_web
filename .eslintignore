@@ -1,0 +1,5 @@
+public_html/crypto/
+gulpfile.js
+node_modules/
+public_html/dist/js/
+public_html/assets/js/vendors/

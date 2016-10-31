@@ -1,0 +1,126 @@
+@import "font.less";
+@import "const.less";
+
+.history {
+  font-family: @roboto-regular;
+  margin-top: 35px;
+
+  &-header {
+    text-align: center;
+    line-height: 33px;
+    height: 33px;
+    position: relative;
+
+    @media @smartphones {
+      text-align: left;
+      background-color: #444;
+      padding: 14px;
+    }
+
+    &__text {
+      font-size: 23px;
+      margin-top: 5px;
+    }
+  }
+
+  &-mode {
+    display: block;
+    font-size: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: right;
+
+    @media @smartphones {
+      display: none;
+    }
+
+    &__item {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 14px;
+      text-align: center;
+      line-height: 33px;
+      height: 33px;
+      width: 105px;
+      background-color: @white;
+      cursor: pointer;
+      opacity: .9;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &_changed {
+        color: @white;
+        background-color: #33a644;
+      }
+    }
+  }
+
+  &-list {
+    margin-top: 15px;
+    margin-bottom: -3px;
+
+    @media @smartphones {
+      margin-top: 0;
+    }
+  }
+
+  &-item {
+    font-size: 14px;
+    background-color: @white;
+    position: relative;
+    margin-bottom: 3px;
+    padding: 13px 60px;
+
+    @media @smartphones {
+      font-size: 16px;
+      background-color: #333;
+    }
+  }
+
+  &__data {
+    display: inline-block;
+    vertical-align: top;
+    color: #a9a9a9;
+    text-align: right;
+    width: 115px;
+    margin-right: 20px;
+
+    @media @smartphones {
+      display: block;
+      text-align: left;
+      width: auto;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__icon {
+    text-align: center;
+    line-height: 49px;
+    width: 40px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    &_critical {
+      background-color: @red;
+    }
+
+    &_warning {
+      background-color: #ff9801;
+    }
+
+    &_actions {
+      background-color: #607d8b;
+    }
+  }
+
+  &__svg {
+    height: 19px;
+    width: 19px;
+    fill: @white;
+  }
+}

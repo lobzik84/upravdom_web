@@ -1,0 +1,41 @@
+<header class='main-header'>
+    <div class='wrapper'>
+        <h1 class='main-header__title'>Управдом</h1>
+        {% include 'dashboard.html'%}
+    </div>
+</header>
+
+<main class='main-block'>
+    <div class='wrapper'>
+        {% include 'panel.html'%}
+    </div>
+
+    <div class='wrapper'>
+        {% include 'visual.html'%}
+    </div>
+
+    <div class='wrapper'>
+        {% include 'history.html' %}
+    </div>
+
+    <div class='wrapper'>
+        {% include 'control.html' %}
+    </div>
+
+
+    <div class="wrapper">
+        {% include 'settings.html' %}
+    </div>
+</main>
+
+
+<footer class="footer">
+    <div class="wrapper">
+        <div class="footer__company">ООО «ИТЦ МОЛНЕТ»</div>
+        <div class="footer-support">
+            <a class="footer-support__link" href="#">
+              Техническая поддержка
+          </a>
+        </div>
+    </div>
+</footer>

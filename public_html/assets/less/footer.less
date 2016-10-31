@@ -1,0 +1,31 @@
+@import "font.less";
+@import "const.less";
+
+.footer {
+  color: @white;
+  font-size: 14px;
+  font-family: @roboto-regular;
+  line-height: 90px;
+  height: 90px;
+  width: 100%;
+  background-color: #333;
+
+  &__company {
+    float: left;
+  }
+
+  &-support {
+    float: right;
+
+    &__link {
+      color: @white;
+      text-decoration: none;
+      border-bottom: 1px solid #5c5c5c;
+
+      &:hover {
+        transition-duration: .3s;
+        border-bottom: 1px solid @white;
+      }
+    }
+  }
+}

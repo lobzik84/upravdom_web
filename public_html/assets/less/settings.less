@@ -1,0 +1,330 @@
+@import "font.less";
+@import "const.less";
+
+.settings {
+  font-family: @roboto-regular;
+  margin-top: 35px;
+
+  &-list {
+    margin-top: 20px;
+    margin-bottom: -3px;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: @white;
+    position: relative;
+    margin-bottom: 3px;
+    padding: 20px 18px 20px 60px;
+
+    @media @smartphones {
+      display: block;
+      background-color: #444;
+      padding-left: 80px;
+    }
+  }
+
+  &-options {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 60px;
+
+    @media @smartphones {
+      display: block;
+      text-align: right;
+      margin: 15px 0;
+    }
+
+    &:last-child {
+      @media @smartphones {
+        margin-bottom: 0;
+      }
+    }
+
+    &__name {
+      display: inline-block;
+      vertical-align: top;
+      color: #9e9e9e;
+      font-size: 14px;
+      margin-top: 7px;
+      margin-right: 30px;
+
+      @media @smartphones {
+        font-size: 16px;
+        float: left;
+      }
+    }
+
+    &__value {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 32px;
+      text-align: center;
+      width: 100px;
+    }
+
+    &__switcher {
+      display: inline-block;
+      vertical-align: top;
+      color: @white;
+      font-size: 0;
+      background-color: #607d8b;
+      padding: 8px;
+      border-radius: 100%;
+      cursor: pointer;
+
+      &_minus,
+      &_plus {
+        svg {
+          height: 15px;
+          width: 15px;
+          fill: @white;
+        }
+      }
+    }
+
+    &__value {
+      color: @black;
+
+      @media @smartphones {
+        color: #fafafa;
+      }
+    }
+  }
+
+  &-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media @smartphones {
+      display: block;
+      position: relative;
+    }
+
+    &_bottom {
+      margin-top: 5px;
+    }
+  }
+
+  &__header {
+    font-size: 23px;
+    text-align: center;
+
+    @media @smartphones {
+      color: #9d9d9d;
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+
+    &_profile,
+    &_password {
+      @media @smartphones {
+        margin-bottom: 12px;
+      }
+    }
+
+    @media @smartphones {
+      display: block;
+      max-width: 225px;
+    }
+  }
+
+  &__checkbox {
+    display: none;
+
+    &:checked + .settings__label {
+      background-color: @green;
+
+      &:before {
+        content: ' ';
+      }
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    background-color: @title;
+    position: relative;
+    margin-left: 40px;
+    border-radius: 100%;
+
+    &.settings__label_sound,
+    &.settings__label_email {
+      @media @smartphones {
+        right: 19px;
+      }
+    }
+
+    @media @smartphones {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -15px;
+      margin-left: 0;
+    }
+
+    &:before {
+      display: block;
+      height: 10px;
+      width: 10px;
+      background-color: @white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -5px;
+      margin-left: -5px;
+      border-radius: 100%;
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    align-self: center;
+
+    @media @smartphones {
+      display: block;
+      color: #8f8f8f;
+      font-size: 16px;
+      margin-right: 50px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+
+  &__input {
+    display: block;
+    color: @block;
+    font-size: 14px;
+    font-family: @roboto-regular;
+    width: 395px;
+    margin-bottom: 7px;
+    padding: 12px 14px 12px 50px;
+    border: 1px solid #e9ebee;
+
+    @media @smartphones {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &_password {
+      width: 431px;
+      padding-left: 14px;
+
+      @media @smartphones {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      margin-top: 10px;
+      margin-left: 18px;
+      fill: @title;
+
+      &_mail {
+        height: 24px;
+        width: 17px;
+      }
+
+      &_base {
+        height: 24px;
+        width: 17px;
+      }
+
+      &_phone {
+        height: 24px;
+        width: 17px;
+      }
+    }
+  }
+
+  &__save {
+    display: block;
+    color: @white;
+    font-size: 14px;
+    text-align: center;
+    width: 432px;
+    background-color: @green;
+    padding: 20px 15px;
+    cursor: pointer;
+
+    @media @smartphones {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &_success {
+      background-color: @iconsBlue;
+    }
+  }
+
+  &__icon {
+    text-align: right;
+    width: 40px;
+    position: absolute;
+    top: 17px;
+    left: 5px;
+
+    @media @smartphones {
+      left: 13px;
+    }
+  }
+
+  &__svg {
+    height: 26px;
+    width: 26px;
+    fill: @iconsBlue;
+
+    @media @smartphones {
+      height: 30px;
+      width: 30px;
+    }
+
+    &_temperature {
+      fill: #4daf50;
+
+      @media @smartphones {
+        height: 34px;
+        width: 21px;
+      }
+    }
+
+    &_flash {
+      fill: @iconsYellow;
+
+      @media @smartphones {
+        height: 34px;
+        width: 19px;
+      }
+    }
+
+    &_sound_notifications {
+      fill: #01a9f4;
+    }
+
+    &_lamp {
+      fill: @iconsYellow;
+    }
+
+    &_statistics_by_email {
+      fill: #8bc34a;
+    }
+
+    &_profile {
+      fill: #0fc0d6;
+    }
+
+    &_password {
+      fill: #e92663;
+    }
+  }
+}

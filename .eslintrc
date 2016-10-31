@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb",
+  "globals": {
+      "$": true,
+      "SRP": true,
+      "cryptoHelpers": true,
+      "scrypt_module_factory": true,
+      "localStorage": true,
+      "updateData": true,
+      "KeyFile": true,
+      "console": true,
+      "var": true
+  }
+}

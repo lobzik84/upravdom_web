@@ -1,0 +1,41 @@
+@import "font.less";
+@import "const.less";
+
+.login {
+  max-width: 1280px;
+  margin: 0 auto;
+
+  &__input {
+    display: block;
+    font-size: 30px;
+    font-family: @roboto-medium;
+    text-align: center;
+    height: 50px;
+    width: 90%;
+    background-color: @white;
+    margin: 15px auto;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+
+  &__save {
+    display: block;
+    color: @white;
+    font-size: 36px;
+    font-family: @roboto-medium;
+    text-align: center;
+    line-height: 74px;
+    height: 74px;
+    width: 90%;
+    background-color: @block;
+    margin: 30px auto 0;
+    border: 1px solid @block;
+    cursor: pointer;
+    transition-duration: .1s;
+
+    &:active {
+      background-color: @green;
+      border: 1px solid @green;
+    }
+  }
+}
