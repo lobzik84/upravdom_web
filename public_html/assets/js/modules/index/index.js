@@ -6,6 +6,6 @@ class Index {
   }
 }
 /* eslint-disable no-new */
-new Index();
+new Index(true);
 
 export default Index;

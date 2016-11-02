@@ -1,10 +1,12 @@
 <ul class="panel">
-    <li class="panel-item panel-item_alarm">
+    <li class="panel-item">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_temperature">
               <use xlink:href="sprite.svg#temperature"></use>
             </svg>
-            <span class="panel__text">+18&deg;</span>
+            <div class="panel__text">
+              <span id="status__value--temp">18</span>&deg;
+            </div>
         </div>
     </li>
     <li class="panel-item">
@@ -12,7 +14,9 @@
             <svg class="panel__svg panel__svg_watermeter">
             <use xlink:href="sprite.svg#watermeter"></use>
           </svg>
-            <span class="panel__text">37%</span>
+            <div class="panel__text">
+              <span id="status__value--wet">37</span>%
+            </div>
         </div>
     </li>
     <li class="panel-item">
@@ -20,7 +24,9 @@
             <svg class="panel__svg panel__svg_flash">
               <use xlink:href="sprite.svg#flash"></use>
             </svg>
-            <span class="panel__text">220,5В</span>
+            <div class="panel__text">
+              <span id='status__value--VAC_SENSOR'>220,5</span>В
+            </div>
         </div>
     </li>
     <li class="panel-item">
@@ -68,7 +74,10 @@
             <svg class="panel__svg panel__svg_sun">
               <use xlink:href="sprite.svg#sun"></use>
             </svg>
-            <span class="panel__text">+18&deg;</span>
+            <div class="panel__text">
+              <span id='status__value--OUTSIDE_TEMP'>18</span>
+              &deg;
+            </div>
         </div>
     </li>
 </ul>

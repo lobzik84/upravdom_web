@@ -8,6 +8,11 @@ class Main {
 
     updateCapture();
     loadSettings();
+
+    $template.find('#update_capture').on('click', ()  => {
+      updateCapture();
+    });
+
     $('body').empty().append($template);
   }
 }

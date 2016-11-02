@@ -19,8 +19,13 @@ function updateData() {
     }
     setTimeout(updateData, settings.data_update_interval);
     decryptData(kf, data);
-    new Main();
+
+    if (settings.first_loaded) {
+      new Main();
+      settings.first_loaded = false;
+    }
   };
+
   var fail = function () {
     console.error("network error");
     setTimeout(updateData, settings.data_update_interval);

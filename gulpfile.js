@@ -30,7 +30,6 @@ var paths = {
         'public_html/assets/js/crypto/keyfile/*.js',
         'node_modules/jquery/dist/jquery.min.js',
         'public_html/assets/js/vendors/inputmask.js',
-        'public_html/assets/js/vendors/swipe.js',
         'public_html/assets/js/bundle.js'
     ]
 };

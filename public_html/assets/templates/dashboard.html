@@ -4,8 +4,8 @@
         <span class="dashboard-location__time"> 10:00</span>
     </div>
     <ul class="dashboard-mode">
-        <li class="dashboard-mode__item dashboard-mode__item_changed">Хозяин дома</li>
-        <li class="dashboard-mode__item">Охрана</li>
+        <li id="mode__master" class="dashboard-mode__item dashboard-mode__item_changed">Хозяин дома</li>
+        <li id="mode__security" class="dashboard-mode__item">Охрана</li>
     </ul>
     <div class="dashboard-info">
         <svg class="dashboard-info__icon">
@@ -28,7 +28,8 @@
             <svg class="dashboard-battery__icon">
               <use xlink:href="sprite.svg#battery"></use>
             </svg>
-            <span class="dashboard-battery__count">100%</span>
+            <span class="dashboard-battery__count">
+              <span id="status__battery--percent">100</span>%</span>
         </div>
     </div>
 </div>
