@@ -2,11 +2,18 @@
 @import "const.less";
 
 .panel {
+  display: flex;
   font-size: 0;
   text-align: center;
   margin-top: 3px;
   margin-right: -6px;
   margin-left: -3px;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media @smartphones {
+    display: block;
+  }
 
   &-item {
     display: inline-block;
@@ -20,7 +27,13 @@
     border-radius: 3px;
     cursor: pointer;
 
+    &:after {
+      content: ' ';
+      display: block;
+    }
+
     @media @smartphones {
+      width: 31%;
       background-color: transparent;
     }
     // .panel-item_alarm - класс для экстренных сообщений

@@ -8,7 +8,6 @@ class Login {
     this.$phone = $template.find('#login_phone');
     this.$password = $template.find('#srp__password');
     this.$button = $template.find('#login_srp');
-    console.log($template);
     $('body').append($template);
 
     this.masked();

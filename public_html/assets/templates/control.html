@@ -3,7 +3,7 @@
         Управление
     </div>
     <ul class="control-list">
-        <li class="control-item control-item_on control-item_lamp">
+        <li id='LAMP_1-status' class="control-item {%if LAMP_1.last_value  == 'true' %} control-item_on {% else %} control-item_off {% endif%} control-item_lamp">
             <span class="control__icon">
               <svg class='control__svg control__svg_on'>
                 <use xlink:href="sprite.svg#control-lamp-on"></use>
@@ -13,18 +13,18 @@
               </svg>
             </span>
             <span class="control__name">Лампа 1</span>
-            <span class="control__description">Включена</span>
+            <span class="control__description">{%if LAMP_1.last_value  == 'true' %} Включена {% else %} Выключена {% endif%}</span>
         </li>
-        <li class="control-item control-item_on control-item_outlet">
+        <li id='SOCKET-status' class="control-item {%if SOCKET.last_value  == 'true' %} control-item_on {% else %} control-item_off {% endif%} control-item_outlet">
             <span class="control__icon">
                 <svg class='control__svg'>
                     <use xlink:href="sprite.svg#control-outlet"></use>
                 </svg>
               </span>
             <span class="control__name">Розетка</span>
-            <span class="control__description">Включена</span>
+            <span class="control__description">{%if SOCKET.last_value  == 'true' %} Включена {% else %} Выключена {% endif%}</span>
         </li>
-        <li class="control-item control-item_off control-item_lamp">
+        <li id='LAMP_2-status' class="control-item {%if LAMP_2.last_value  == 'true' %} control-item_on {% else %} control-item_off {% endif%} control-item_lamp">
             <span class="control__icon">
                 <svg class='control__svg control__svg_on'>
                   <use xlink:href="sprite.svg#control-lamp-on"></use>
@@ -34,7 +34,7 @@
                 </svg>
             </span>
             <span class="control__name">Лампа 2</span>
-            <span class="control__description">Выключена</span>
+            <span class="control__description">{%if LAMP_2.last_value  == 'true' %} Включена {% else %} Выключена {% endif%}</span>
         </li>
     </ul>
 </div>

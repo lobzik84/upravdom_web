@@ -5,7 +5,7 @@
               <use xlink:href="sprite.svg#temperature"></use>
             </svg>
             <div class="panel__text">
-              <span id="status__value--temp">18</span>&deg;
+              <span id="status__value--INTERNAL_TEMP">{{ INTERNAL_TEMP.last_value }}</span>&deg;
             </div>
         </div>
     </li>
@@ -15,7 +15,7 @@
             <use xlink:href="sprite.svg#watermeter"></use>
           </svg>
             <div class="panel__text">
-              <span id="status__value--wet">37</span>%
+              <span id="status__value--INTERNAL_HUMIDITY">{{ INTERNAL_HUMIDITY.last_value }}</span>%
             </div>
         </div>
     </li>
@@ -25,16 +25,15 @@
               <use xlink:href="sprite.svg#flash"></use>
             </svg>
             <div class="panel__text">
-              <span id='status__value--VAC_SENSOR'>220,5</span>В
+              <span id='status__value--VAC_SENSOR'>{{ VAC_SENSOR.last_value }}</span>В
             </div>
         </div>
     </li>
-    <li class="panel-item">
+    <li class="panel-item {%if VAC_SENSOR.last_value %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_fire">
               <use xlink:href="sprite.svg#fire"></use>
             </svg>
-            <span class="panel__text"></span>
         </div>
     </li>
     <li class="panel-item">
@@ -42,7 +41,6 @@
             <svg class="panel__svg panel__svg_crane">
               <use xlink:href="sprite.svg#crane"></use>
             </svg>
-            <span class="panel__text"></span>
         </div>
     </li>
     <li class="panel-item">
@@ -50,7 +48,6 @@
             <svg class="panel__svg panel__svg_door">
               <use xlink:href="sprite.svg#door"></use>
             </svg>
-            <span class="panel__text"></span>
         </div>
     </li>
     <li class="panel-item">
@@ -58,7 +55,6 @@
             <svg class="panel__svg panel__svg_peoples">
               <use xlink:href="sprite.svg#peoples"></use>
             </svg>
-            <span class="panel__text"></span>
         </div>
     </li>
     <li class="panel-item">
@@ -66,7 +62,6 @@
             <svg class="panel__svg panel__svg_ear">
               <use xlink:href="sprite.svg#ear"></use>
             </svg>
-            <span class="panel__text"></span>
         </div>
     </li>
     <li class="panel-item">
@@ -75,8 +70,7 @@
               <use xlink:href="sprite.svg#sun"></use>
             </svg>
             <div class="panel__text">
-              <span id='status__value--OUTSIDE_TEMP'>18</span>
-              &deg;
+              <span id='status__value--OUTSIDE_TEMP'>{{ OUTSIDE_TEMP.last_value }}</span>&deg;
             </div>
         </div>
     </li>
