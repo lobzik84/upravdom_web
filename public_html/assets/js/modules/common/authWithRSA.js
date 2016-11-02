@@ -1,7 +1,7 @@
 import postData from './postData';
 import updateData from './updateData';
 import settings from './settings';
-
+import Login from '../auth/login';
 
 function authWithRSA(kf, data) {
     var challenge = data["challenge"];
@@ -25,12 +25,12 @@ function authWithRSA(kf, data) {
             updateData();
         } else {
             console.error("Error while RSA auth: " + data["message"] + ". Falling back to SRP.");
-            $('.login').show();
+             new Login();
         }
     }
     var fail = function () {
         console.error("Error while RSA auth. Falling back to SRP.");
-        $('.login').show();
+         new Login();
     }
     postData(obj, success, fail);
 }
