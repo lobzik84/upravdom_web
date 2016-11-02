@@ -5,7 +5,7 @@
     "author": "lobzik",
     "url": "molnet.ru",
     "scripts": {
-        "develop": "rm -rf public_html/dist && rm -rf node_modules && npm i && gulp build && c",
+        "develop": "rm -rf public_html/dist && rm -rf node_modules && npm i && gulp build && gulp",
         "production": ""
     },
     "devDependencies": {
