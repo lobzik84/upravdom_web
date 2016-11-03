@@ -10,7 +10,7 @@ npm run development
 npm run production
 ```
 
-запуск browserySync
+запуск с browserySync
 ```javascript
 gulp
 ```
