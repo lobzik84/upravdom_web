@@ -26,16 +26,16 @@ function updatePage(data) {
             $elementKey.text(lastValue);
           } else if (json[key]['par_type'] === 'BOOLEAN') {
             if (lastValue.toString().toLowerCase() === 'true') {
-              $elementKey.addClass('panel-item_alarm');
+              $elementKey.closest('panel-item').addClass('panel-item_alarm');
             } else {
-              $elementKey.removeClass('panel-item_alarm');
+              $elementKey.closest('panel-item').removeClass('panel-item_alarm');
             }
           }
           if (json[key]['state'] === 'Alert') {
             if (DEBUG) {
               console.log(`Alert param ${key}`);
             }
-            $elementKey.addClass('panel-item_alarm');
+            $elementKey.closest('panel-item').addClass('panel-item_alarm');
           }
         }
         if (key === 'SOCKET' || key === 'LAMP_1' || key === 'LAMP_2') {

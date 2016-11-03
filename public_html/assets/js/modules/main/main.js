@@ -3,10 +3,15 @@ import debounce from 'debounce';
 import updateCapture from '../common/updateCapture';
 import loadSettings from '../common/loadSettings';
 import sendCommand from '../common/sendCommand';
+import historySPEC from '../history/historySPEC';
+
 
 class Main {
   constructor(data) {
-    this.$template = $(nunjucks.render('main.html', JSON.parse(data)));
+    const json = JSON.parse(data);
+    json.history = historySPEC.history;
+    console.log('allData', json);
+    this.$template = $(nunjucks.render('main.html', json));
 
     updateCapture();
     loadSettings();
