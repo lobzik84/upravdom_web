@@ -1,6 +1,16 @@
 # upravdom_web
 
-сборка фронта
+сборка development фронта
 ```javascript
-npm run develop
+npm run development
+```
+
+сборка production фронта
+```javascript
+npm run production
+```
+
+запуск browserySync
+```javascript
+gulp
 ```
