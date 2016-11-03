@@ -13,13 +13,13 @@ function decryptCapture(kf, data) {
           if (extIndex < 0)
               continue;
 
-          if (settings.print_debug_to_console) {
+          if (DEBUG) {
             console.log("decrypting capture " + camNameStr);
           }
           camNameStr = camNameStr.substring(0, extIndex);
           var cam = data[camKey];
           var res = rsa.decrypt(cam["key_cipher"]);
-          if (settings.print_debug_to_console)
+          if (DEBUG)
               console.log("symmetric key is " + res);
           var key = cryptoHelpers.toNumbers(res); //creating key
           var cipher = cam["img_cipher"];
@@ -31,7 +31,7 @@ function decryptCapture(kf, data) {
           var imgElementId = "video_cam_" + camNameStr;
           var imgElement = document.getElementById(imgElementId);
           if (imgElement !== "undefined") {
-              if (settings.print_debug_to_console) {
+              if (DEBUG) {
                 console.log("Updating element " + imgElementId + " size: " + bytes.length + " date: " + imgDate);
               }
               imgElement.src = "data:image/jpeg;base64," + btoa(String.fromCharCode.apply(null, bytes));
@@ -39,7 +39,7 @@ function decryptCapture(kf, data) {
               $("#video--date").html(captureDate.getDay() + "." + captureDate.getMonth() + "." + captureDate.getFullYear() + ",");
 
               $("#video--time").html(captureDate.getHours() + ":" + captureDate.getMinutes());
-              if (settings.print_debug_to_console)
+              if (DEBUG)
                   console.log(camNameStr + " updated, time=" + (Date.now() - begin) + " ms");
           }
 

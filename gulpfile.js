@@ -3,17 +3,19 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 
 const concat = require('gulp-concat');
-const uglify = require('gulp-uglifyjs');
+const uglifyjs = require('gulp-uglifyjs');
 const streamify = require('gulp-streamify');
-
-const less = require('gulp-less');
-const cssmin = require('gulp-cssmin');
 
 const browserify = require('browserify');
 const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 const	rename = require('gulp-rename');
 const glob = require('glob');
+
+const htmlmin = require('gulp-htmlmin');
+
+const less = require('gulp-less');
+const cssmin = require('gulp-cssmin');
 
 const svgstore = require('gulp-svgstore');
 const svgmin = require('gulp-svgmin');
@@ -58,28 +60,46 @@ gulp.task('dev', [
   'scripts'
 ]);
 
+gulp.task('production', [
+	'copy-html',
+	'copy-images',
+  'copy-fonts',
+  'svgstore',
+	'styles',
+  'build',
+  'scripts-prod'
+]);
+
 
 gulp.task('build', function() {
   glob('public_html/assets/js/modules/**/*.js', function(err, files) {
     return browserify(files)
-      .transform("babelify", {presets: ["es2015"]})
+      .transform('babelify', {presets: ['es2015']})
       .bundle()
       .pipe(source('bundle.js'))
-      .pipe(streamify(uglify()))
+      .pipe(streamify(uglifyjs()))
       .pipe(gulp.dest('public_html/assets/js/'))
   });
 });
 
 gulp.task('scripts', function() {
+  const options = {
+      compress: {
+          global_defs: {
+              DEBUG: true
+          }
+      }
+  };
   gulp.src(paths.scripts)
     .pipe(concat('x.min.js'))
-    .pipe(uglify())
+    .pipe(uglifyjs(options))
     .pipe(gulp.dest('public_html/dist/js'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('copy-html', function() {
 	gulp.src(['public_html/assets/index.html','public_html/assets/templates/*'])
+    .pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(gulp.dest('public_html/dist'))
     .pipe(browserSync.stream());
 });
@@ -125,4 +145,22 @@ gulp.task('svgstore', function () {
       }))
       .pipe(svgstore())
       .pipe(gulp.dest('public_html/dist'));
+});
+
+
+
+gulp.task('scripts-prod', function() {
+  const options = {
+      compress: {
+          dead_code: true,
+          properties: true,
+          global_defs: {
+              DEBUG: false
+          }
+      }
+  };
+  gulp.src(paths.scripts)
+    .pipe(concat('x.min.js'))
+    .pipe(uglifyjs(options))
+    .pipe(gulp.dest('public_html/dist/js'));
 });

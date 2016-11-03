@@ -15,7 +15,7 @@ function updateCapture() {
   const success = (data) => {
     if (data.result === 'success') {
       localStorage.session_key = data.session_key;
-      if (settings.print_debug_to_console) {
+      if (DEBUG) {
         console.log('successfully loaded capture, decrypting');
       }
       decryptCapture(kf, data);

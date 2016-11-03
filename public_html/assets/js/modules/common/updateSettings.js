@@ -1,32 +1,28 @@
 import settings from './settings';
 
 function updateSettings(data) {
+  try {
+    const json = data;
 
-    try {
-
-        var json = data;
-        for (var key in json) {
-            try {
-                if (settings.print_debug_to_console) {
-                    console.log("loading settings " + key);
-                }
-                var val = json[key];
-                var elementKey = "#settings__value--" + key;
-                if ($(elementKey) != "undefined") {
-
-                    $(elementKey).html(val);
-
-                }
-            } catch (ee) {
-                console.error(ee);
-            }
-
+    for (const key in json) {
+      try {
+        if (DEBUG) {
+          console.log(`loading settings ${key}`);
         }
-
-        console.log("settings loaded");
-    } catch (e) {
-        console.error(e);
+        const val = json[key];
+        const $elementKey = $(`#settings__value--${key}`);
+        if ($elementKey) {
+          $elementKey.html(val);
+        }
+      } catch (ee) {
+        console.error(ee);
+      }
     }
+
+    console.log('settings loaded');
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 export default updateSettings;

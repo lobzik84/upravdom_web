@@ -5,7 +5,7 @@ import Login from '../auth/login';
 
 function authWithRSA(kf, data) {
     var challenge = data["challenge"];
-    if (settings.print_debug_to_console)
+    if (DEBUG)
         console.log("Authenticating with RSA, challenge=" + challenge);
     var rsa = new RSAKey();
     rsa.setPrivate(kf.getMyPublicKey(), settings.global_rsa_e, kf.getMyPrivateKey());
@@ -19,7 +19,7 @@ function authWithRSA(kf, data) {
     }
     var success = function (data) {
         if (data["result"] === "success") {
-            if (settings.print_debug_to_console) {
+            if (DEBUG) {
                 console.log("successfully authenticated with RSA");
             }
             updateData();

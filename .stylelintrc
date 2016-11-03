@@ -1,84 +1,84 @@
 {
-  "extends": "stylelint-config-standard",
-  "rules": {
-    "selector-pseudo-element-colon-notation": "single",
-    "declaration-block-properties-order": [
-      "content",
-      "display",
-      "vertical-align",
+  'extends': 'stylelint-config-standard',
+  'rules': {
+    'selector-pseudo-element-colon-notation': 'single',
+    'declaration-block-properties-order': [
+      'content',
+      'display',
+      'vertical-align',
     {
-      "properties": [
-        "color",
-        "font-size",
-        "font-weight",
-        "font-family",
-        "text-indent",
-        "text-align"
+      'properties': [
+        'color',
+        'font-size',
+        'font-weight',
+        'font-family',
+        'text-indent',
+        'text-align'
       ]
     },
     {
-      "properties": [
-        "line-height",
-        "height",
-        "min-height",
-        "width",
-        "min-width"
+      'properties': [
+        'line-height',
+        'height',
+        'min-height',
+        'width',
+        'min-width'
       ]
     },
     {
-      "properties": [
-        "background",
-        "background-image",
-        "background-size",
-        "background-position",
-        "background-repeat",
-        "background-color"
+      'properties': [
+        'background',
+        'background-image',
+        'background-size',
+        'background-position',
+        'background-repeat',
+        'background-color'
       ]
     },
     {
-      "properties": [
-        "position",
-        "top",
-        "right",
-        "bottom",
-        "left"
+      'properties': [
+        'position',
+        'top',
+        'right',
+        'bottom',
+        'left'
       ]
     },
     {
-      "properties": [
-        "margin",
-        "margin-top",
-        "margin-right",
-        "margin-bottom",
-        "margin-left"
+      'properties': [
+        'margin',
+        'margin-top',
+        'margin-right',
+        'margin-bottom',
+        'margin-left'
       ]
     },
     {
-      "properties": [
-        "padding",
-        "padding-top",
-        "padding-right",
-        "padding-bottom",
-        "padding-left"
+      'properties': [
+        'padding',
+        'padding-top',
+        'padding-right',
+        'padding-bottom',
+        'padding-left'
       ]
     },
     {
-      "properties": [
-        "border",
-        "border-top",
-        "border-right",
-        "border-bottom",
-        "border-left"
+      'properties': [
+        'border',
+        'border-top',
+        'border-right',
+        'border-bottom',
+        'border-left'
       ]
     },
     {
-      "properties": [
-        "float",
-        "clear",
+      'properties': [
+        'float',
+        'clear',
       ]
     },
-    "cursor"
+    'cursor'
   ],
-    "number-leading-zero":"never"
+    'number-leading-zero':'never'
   }
 }

@@ -5,7 +5,6 @@ import sendCommand from '../common/sendCommand';
 
 class Main {
   constructor(data) {
-    console.log('data', JSON.parse(data));
     this.$template = $(nunjucks.render('main.html', JSON.parse(data)));
 
     updateCapture();

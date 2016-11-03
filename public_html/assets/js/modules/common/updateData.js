@@ -16,7 +16,7 @@ function updateData() {
   };
 
   const success = (data) => {
-    if (settings.print_debug_to_console) {
+    if (DEBUG) {
       console.log('successfully loaded data, decrypting');
     }
     setTimeout(updateData, settings.data_update_interval);

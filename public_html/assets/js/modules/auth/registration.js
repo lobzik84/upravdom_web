@@ -25,11 +25,11 @@ class Registration {
   static registered() {
     var rsa = new RSAKey();
 
-    if (settings.print_debug_to_console) {
+    if (DEBUG) {
       console.log("generating RSA...");
     }
     rsa.generate(1024, settings.global_rsa_e); //1024 bits, public exponent = 10001
-    if (settings.print_debug_to_console)
+    if (DEBUG)
       console.log("RSA generated, generating salt");
     var srp = new SRP();
     var login = $("#phone").val();
@@ -39,7 +39,7 @@ class Registration {
     var salt = srp.generateSalt();
     var verifier = srp.getVerifier();
     var publicKey = rsa.n.toString(16);
-    if (settings.print_debug_to_console)
+    if (DEBUG)
       console.log("Generated s=" + salt + ", v=" + verifier + ", public key=" + publicKey + " for login " + login + ", password " + srp.p);
 
     var regObj = {
@@ -58,7 +58,7 @@ class Registration {
         kf.initKeyFile(data["new_user_id"], data["box_id"], rsa.d.toString(16), rsa.n.toString(16), pbkdf);
         kf.addBoxKey(data["box_id"], data["box_public_key"]);
         localStorage["session_key"] = data["session_key"];
-        if (settings.print_debug_to_console) {
+        if (DEBUG) {
           console.log("created keyfile: \n" + kf.getKeyFileAsStirng());
         }
         kf.uploadKeyFile(settings.global_serverJSONUrl, function () {

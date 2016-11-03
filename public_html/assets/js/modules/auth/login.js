@@ -25,7 +25,7 @@ class Login {
   }
 
   authorization() {
-    if (settings.print_debug_to_console) {
+    if (DEBUG) {
       console.log("logging in with SRP, handshaking");
     }
     var srp = new SRP();
@@ -46,7 +46,7 @@ class Login {
         ls["boxId"] = srp.boxId;
 
         kf.downloadKeyFile(settings.global_serverJSONUrl, pbkdf, () => {
-          if (settings.print_debug_to_console) {
+          if (DEBUG) {
             console.log("sucessfully logged in with SRP, keyfile downloaded");
           }
           updateData();

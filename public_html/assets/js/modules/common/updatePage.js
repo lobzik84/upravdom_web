@@ -2,7 +2,7 @@ import settings from './settings';
 
 function updatePage(data) {
   try {
-    if (settings.print_debug_to_console) {
+    if (DEBUG) {
       console.log('updating page');
     }
 
@@ -49,7 +49,7 @@ function updatePage(data) {
       }
     }
 
-    if (settings.print_debug_to_console) {
+    if (DEBUG) {
       console.log('page updated');
     }
   } catch (errors) {

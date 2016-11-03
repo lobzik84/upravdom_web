@@ -20,21 +20,21 @@ function postData(obj, successF, failF) {
           successF(data);
         }
       } else if (data["result"] === "do_register") {
-        if (settings.print_debug_to_console) {
+        if (DEBUG) {
           console.log("registration needed");
         }
         new Registration();
       } else if (data["result"] === "do_login") {
         var kf = new KeyFile();
         localStorage["session_key"] = data["session_key"];
-        if (settings.print_debug_to_console)
+        if (DEBUG)
           console.log("login requested");
         if (typeof kf.getMyPrivateKey() !== "undefined" && kf.getMyPrivateKey().length === 256) {
-          if (settings.print_debug_to_console)
+          if (DEBUG)
             console.log("trying to login with RSA");
           authWithRSA(kf, data);
         } else {
-          if (settings.print_debug_to_console)
+          if (DEBUG)
             console.log("no private key, SRP auth forced");
           new Login();
         }
