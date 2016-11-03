@@ -31,7 +31,9 @@ function updateData() {
   };
 
   const fail = () => {
-    console.error('network error');
+    if (DEBUG) {
+      console.error('network error');
+    }
     setTimeout(updateData, settings.data_update_interval);
   };
   postData(authSettings, success, fail);

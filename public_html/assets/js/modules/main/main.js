@@ -1,4 +1,5 @@
 import nunjucks from 'nunjucks';
+import debounce from 'debounce';
 import updateCapture from '../common/updateCapture';
 import loadSettings from '../common/loadSettings';
 import sendCommand from '../common/sendCommand';
@@ -32,12 +33,17 @@ class Main {
     this.$template.find('#LAMP_2-status').on('click', (event) => {
       Main.controlElements('LAMP_2', event.currentTarget);
     });
+
     this.$template.find('.settings-options__switcher_plus').on('click', (event) => {
       Main.switchMinMax(event.currentTarget, '+');
-    });
+    }).on('click', debounce(() => {
+      Main.sendSettings();
+    }, 300));
     this.$template.find('.settings-options__switcher_minus').on('click', (event) => {
       Main.switchMinMax(event.currentTarget, '-');
-    });
+    }).on('click', debounce(() => {
+      Main.sendSettings();
+    }, 300));
   }
 
   static changeMode(currentTarget) {
@@ -77,7 +83,28 @@ class Main {
     } else if (sign === '-') {
       value -= count;
     }
+
     $valueBlock.text(value);
+    if (DEBUG) {
+      console.log('Saving settings');
+    }
+  }
+
+  static sendSettings() {
+    const settingElementIdPrefix = 'settings__value--';
+    const settings = {};
+    const $settings = $(`[id^="${settingElementIdPrefix}"]`);
+
+    $settings.each((index, setting) => {
+      const settingName = setting.id.replace(settingElementIdPrefix, '');
+
+      settings[settingName] = setting.innerHTML;
+      if (DEBUG) {
+        console.log(`${settingName} - ${setting.innerHTML}`);
+      }
+    });
+
+    sendCommand('save_settings', { settings }, null);
   }
 }
 

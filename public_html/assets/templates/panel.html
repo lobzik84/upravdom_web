@@ -1,5 +1,5 @@
 <ul class="panel">
-    <li class="panel-item">
+    <li title='Температура в помещении' class="panel-item {%if INTERNAL_TEMP.state == 'Alert' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_temperature">
               <use xlink:href="sprite.svg#temperature"></use>
@@ -9,7 +9,7 @@
             </div>
         </div>
     </li>
-    <li class="panel-item">
+    <li title='Влажность воздуха' class="panel-item {%if INTERNAL_HUMIDITY.state == 'Alert' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_watermeter">
             <use xlink:href="sprite.svg#watermeter"></use>
@@ -19,7 +19,7 @@
             </div>
         </div>
     </li>
-    <li class="panel-item">
+    <li title='Напряжение в сети' class="panel-item {%if VAC_SENSOR.state == 'Alert' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_flash">
               <use xlink:href="sprite.svg#flash"></use>
@@ -29,42 +29,42 @@
             </div>
         </div>
     </li>
-    <li class="panel-item {%if VAC_SENSOR.last_value %} panel-item_alarm {% endif %}">
+    <li title='Датчик задымления' class="panel-item {%if GAS_SENSOR.last_value == 'true' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_fire">
               <use xlink:href="sprite.svg#fire"></use>
             </svg>
         </div>
     </li>
-    <li class="panel-item">
+    <li title='Продукты затопления' class="panel-item {%if WET.last_value == 'true' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_crane">
               <use xlink:href="sprite.svg#crane"></use>
             </svg>
         </div>
     </li>
-    <li class="panel-item">
+    <li title='Датчик открытия двери' class="panel-item {%if DOOR.last_value == 'true' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_door">
               <use xlink:href="sprite.svg#door"></use>
             </svg>
         </div>
     </li>
-    <li class="panel-item">
+    <li title='Датчик движения' class="panel-item {%if PIR_SENSOR.last_value == 'true' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_peoples">
               <use xlink:href="sprite.svg#peoples"></use>
             </svg>
         </div>
     </li>
-    <li class="panel-item">
+    <li title='Датчик шума' class="panel-item {%if MIC_NOISE.last_value == 'true' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_ear">
               <use xlink:href="sprite.svg#ear"></use>
             </svg>
         </div>
     </li>
-    <li class="panel-item">
+    <li title='Температура на улице' class="panel-item">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_sun">
               <use xlink:href="sprite.svg#sun"></use>

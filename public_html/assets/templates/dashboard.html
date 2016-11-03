@@ -1,11 +1,11 @@
 <div class='dashboard'>
     <div class="dashboard-location">
-        <span class="dashboard-location__place">Дача</span>,
+        <span id='settings__value--BoxName' class="dashboard-location__place">{{ BoxName }}</span>,
         <span class="dashboard-location__time"> 10:00</span>
     </div>
     <ul class="dashboard-mode">
-        <li id="mode__master" class="dashboard-mode__item">Хозяин дома</li>
-        <li id="mode__security" class="dashboard-mode__item">Охрана</li>
+        <li id="mode__master" class="dashboard-mode__item {% if mode == 'IDLE' %} dashboard-mode__item_changed {% endif %}">Хозяин дома</li>
+        <li id="mode__security" class="dashboard-mode__item {% if mode == 'ARMED' %} dashboard-mode__item_changed {% endif %}">Охрана</li>
     </ul>
     <div class="dashboard-info">
         <svg class="dashboard-info__icon">
@@ -29,7 +29,8 @@
               <use xlink:href="sprite.svg#battery"></use>
             </svg>
             <span class="dashboard-battery__count">
-              <span id="status__battery--percent">100</span>%</span>
+              <b id="status__value--BATT_CHARGE">{{ BATT_CHARGE.last_value }}</b>%
+            </span>
         </div>
     </div>
 </div>

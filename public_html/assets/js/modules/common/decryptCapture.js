@@ -36,9 +36,9 @@ function decryptCapture(kf, data) {
               }
               imgElement.src = "data:image/jpeg;base64," + btoa(String.fromCharCode.apply(null, bytes));
               var captureDate = new Date(imgDate);
-              $("#video--date").html(captureDate.getDay() + "." + captureDate.getMonth() + "." + captureDate.getFullYear() + ",");
+              $(".visual__date").html(captureDate.getDay() + "." + captureDate.getMonth() + "." + captureDate.getFullYear() + ",");
 
-              $("#video--time").html(captureDate.getHours() + ":" + captureDate.getMinutes());
+              $(".visual__time").html(captureDate.getHours() + ":" + captureDate.getMinutes());
               if (DEBUG)
                   console.log(camNameStr + " updated, time=" + (Date.now() - begin) + " ms");
           }

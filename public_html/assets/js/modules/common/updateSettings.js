@@ -1,5 +1,3 @@
-import settings from './settings';
-
 function updateSettings(data) {
   try {
     const json = data;

@@ -26,32 +26,33 @@ class Login {
 
   authorization() {
     if (DEBUG) {
-      console.log("logging in with SRP, handshaking");
+      console.log('logging in with SRP, handshaking');
     }
-    var srp = new SRP();
-    var login = this.$phone.val();
-    var password = this.$password.val();
+    const srp = new SRP();
+    const login = this.$phone.val();
+    const password = this.$password.val();
+
     srp.I = login;
     srp.p = password;
-    srp.forward_url = "#";
+    srp.forward_url = '#';
     srp.url = settings.global_serverJSONUrl;
-    srp.success = function () {
-        var scrypt = scrypt_module_factory();
-        var scryptBytes = scrypt.crypto_scrypt(scrypt.encode_utf8(login + ":" + password), scrypt.encode_utf8(""), 16384, 8, 1, 32);
-        var pbkdf = cryptoHelpers.ua2hex(scryptBytes);
-        var ls = localStorage;
-        var kf = new KeyFile();
+    srp.success = () => {
+      const scrypt = scrypt_module_factory();
+      const scryptBytes = scrypt.crypto_scrypt(scrypt.encode_utf8(`${login}:${password}`), scrypt.encode_utf8(''), 16384, 8, 1, 32);
+      const pbkdf = cryptoHelpers.ua2hex(scryptBytes);
+      const ls = localStorage;
+      const kf = new KeyFile();
 
-        ls["userId"] = srp.userId;
-        ls["boxId"] = srp.boxId;
+      ls.userId = srp.userId;
+      ls.boxId = srp.boxId;
 
-        kf.downloadKeyFile(settings.global_serverJSONUrl, pbkdf, () => {
-          if (DEBUG) {
-            console.log("sucessfully logged in with SRP, keyfile downloaded");
-          }
-          updateData();
-        });
-    }
+      kf.downloadKeyFile(settings.global_serverJSONUrl, pbkdf, () => {
+        if (DEBUG) {
+          console.log('sucessfully logged in with SRP, keyfile downloaded');
+        }
+        updateData();
+      });
+    };
     srp.identify();
   }
 }

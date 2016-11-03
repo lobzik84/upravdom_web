@@ -11,11 +11,9 @@ function updatePage(data) {
     if (json.mode === 'ARMED') {
       $('#mode__security').addClass('dashboard-mode__item_changed');
       $('#mode__master').removeClass('dashboard-mode__item_changed');
-      $('#mode__current').text('Охрана');
     } else if (json.mode === 'IDLE') {
       $('#mode__master').addClass('dashboard-mode__item_changed');
       $('#mode__security').removeClass('dashboard-mode__item_changed');
-      $('#mode__current').text('Хозяин Дома');
     }
 
     for (const key in json) {
@@ -34,7 +32,10 @@ function updatePage(data) {
             }
           }
           if (json[key]['state'] === 'Alert') {
-            console.log(`Alert param ${key}`);
+            if (DEBUG) {
+              console.log(`Alert param ${key}`);
+            }
+            $elementKey.addClass('panel-item_alarm');
           }
         }
         if (key === 'SOCKET' || key === 'LAMP_1' || key === 'LAMP_2') {

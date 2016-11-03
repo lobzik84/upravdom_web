@@ -11,7 +11,8 @@
       'RSAKey': true,
       'slowAES': true,
       'console': true,
-      'var': true,
+      'SecureRandom': true,
+      'BigInteger': true,
       'DEBUG': true
   }
 }

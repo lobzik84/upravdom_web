@@ -1,6 +1,5 @@
 import postData from './postData';
 import decryptCapture from './decryptCapture';
-import settings from './settings';
 
 function updateCapture() {
   const kf = new KeyFile();
