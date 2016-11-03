@@ -1,5 +1,6 @@
 import nunjucks from 'nunjucks';
 import debounce from 'debounce';
+import Iscroll from 'iscroll';
 import updateCapture from '../common/updateCapture';
 import loadSettings from '../common/loadSettings';
 import sendCommand from '../common/sendCommand';
@@ -10,25 +11,33 @@ class Main {
   constructor(data) {
     const json = JSON.parse(data);
     json.history = historySPEC.history;
-    console.log('allData', json);
     this.$template = $(nunjucks.render('main.html', json));
 
     updateCapture();
     loadSettings();
 
     this.events();
+
     $('body').empty().append(this.$template);
+    Main.historyScrolling();
   }
 
   events() {
-    this.$template.find('#update_capture').on('click', () => {
-      updateCapture();
-    });
-
     this.$template.find('.dashboard-mode__item').on('click', (event) => {
       Main.changeMode(event.currentTarget);
     });
 
+    this.$template.find('.panel-item').on('click', (event) => {
+      Main.showTitle(event.currentTarget);
+    }).on('touchend mouseleave', (event) => {
+      Main.hideTitle(event.currentTarget);
+    });
+
+    this.$template.find('#update_capture').on('click', () => {
+      updateCapture();
+    });
+
+    //  действия по кнопкам управления
     this.$template.find('#LAMP_1-status').on('click', (event) => {
       Main.controlElements('LAMP_1', event.currentTarget);
     });
@@ -39,6 +48,7 @@ class Main {
       Main.controlElements('LAMP_2', event.currentTarget);
     });
 
+    //  действия по кнопкам настроек
     this.$template.find('.settings-options__switcher_plus').on('click', (event) => {
       Main.switchMinMax(event.currentTarget, '+');
     }).on('click', debounce(() => {
@@ -49,6 +59,17 @@ class Main {
     }).on('click', debounce(() => {
       Main.sendSettings();
     }, 300));
+  }
+
+  static showTitle(currentTarget) {
+    const $target = $(currentTarget);
+    $target.prepend(`<div class='panel-show'><span class='panel__description'>${currentTarget.title}</span></div>`);
+  }
+
+  static hideTitle(currentTarget) {
+    setTimeout(() => {
+      $(currentTarget).find('.panel-show').remove();
+    }, 1000);
   }
 
   static changeMode(currentTarget) {
@@ -75,6 +96,15 @@ class Main {
         $target.addClass('control-item_on').removeClass('control-item_off');
       });
     }
+  }
+
+  static historyScrolling() {
+    new Iscroll('#history-scroll', {
+      mouseWheel: true,
+      scrollbars: 'custom',
+      interactiveScrollbars: true,
+      shrinkScrollbars: 'scale',
+    });
   }
 
   static switchMinMax(currentTarget, sign) {

@@ -10,6 +10,7 @@
     line-height: 33px;
     height: 33px;
     position: relative;
+    margin-bottom: 15px;
 
     @media @smartphones {
       text-align: left;
@@ -58,10 +59,34 @@
     }
   }
 
-  &-list {
-    margin-top: 15px;
+  &-scroll {
+    max-height: 300px;
+    overflow: hidden;
+    position: relative;
+    margin-right: -15px;
     margin-bottom: -3px;
+    padding-right: 15px;
 
+    .iScrollVerticalScrollbar {
+      width: 7px;
+      position: absolute;
+      top: 0;
+      right: 1px;
+      bottom: 0;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .iScrollIndicator {
+      display: block;
+      width: 100%;
+      background-color: #607d8b;
+      box-sizing: border-box;
+      position: absolute;
+    }
+  }
+
+  &-list {
     @media @smartphones {
       margin-top: 0;
     }
