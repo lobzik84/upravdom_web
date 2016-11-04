@@ -5,9 +5,11 @@ import settings from '../common/settings';
 class Login {
   constructor() {
     const $template = $(nunjucks.render('login.html'));
+
     this.$phone = $template.find('#login_phone');
     this.$password = $template.find('#srp__password');
-    this.$button = $template.find('#login_srp');
+    this.form = '#login_form';
+
     $('body').append($template);
 
     this.masked();
@@ -15,7 +17,8 @@ class Login {
   }
 
   authorizationEvent() {
-    this.$button.on('click', () => {
+    $('body').on('submit', this.form, (event) => {
+      event.preventDefault();
       this.authorization();
     });
   }

@@ -4,7 +4,7 @@ import Iscroll from 'iscroll';
 import updateCapture from '../common/updateCapture';
 import loadSettings from '../common/loadSettings';
 import sendCommand from '../common/sendCommand';
-import historySPEC from '../history/historySPEC';
+import historySPEC from '../history/historySPEC'; //  временный статичный json для истории
 
 
 class Main {
@@ -62,8 +62,9 @@ class Main {
   }
 
   static showTitle(currentTarget) {
-    const $target = $(currentTarget);
-    $target.prepend(`<div class='panel-show'><span class='panel__description'>${currentTarget.title}</span></div>`);
+    if ($(currentTarget).find('.panel-show').length === 0) {
+      $(currentTarget).prepend(`<div class='panel-show'><span class='panel__description'>${currentTarget.title}</span></div>`);
+    }
   }
 
   static hideTitle(currentTarget) {
@@ -75,10 +76,11 @@ class Main {
   static changeMode(currentTarget) {
     const $target = $(currentTarget);
     const commandData = currentTarget.id === 'mode__master' ? { mode: 'IDLE' } : { mode: 'ARMED' };
+    const changeClass = 'dashboard-mode__item_changed';
 
     sendCommand('switch_mode', commandData, () => {
-      $target.addClass('dashboard-mode__item_changed')
-      .siblings('.dashboard-mode__item_changed').removeClass('dashboard-mode__item_changed');
+      $target.addClass(changeClass)
+      .siblings(`.${changeClass}`).removeClass(changeClass);
     });
   }
 
