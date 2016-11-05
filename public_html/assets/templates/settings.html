@@ -156,7 +156,7 @@
                 <use xlink:href="sprite.svg#profile"></use>
               </svg>
             </span>
-            <div class='settings-wrap'>
+            <form class='settings-wrap settings-form'>
                 <svg class="settings__input-icon settings__input-icon_mail">
                   <use xlink:href="sprite.svg#form-mail"></use>
                 </svg>
@@ -164,13 +164,13 @@
                 <svg class="settings__input-icon settings__input-icon_phone">
                   <use xlink:href="sprite.svg#form-phone"></use>
                 </svg>
-                <input type="text" class="settings__input" placeholder="Телефон">
+                <input type="text" class="settings__input settings__input_phone" placeholder="Телефон">
                 <svg class="settings__input-icon settings__input-icon_base">
                   <use xlink:href="sprite.svg#form-base"></use>
                 </svg>
                 <input id='settings__value--BoxName' type="text" class="settings__input" placeholder="Название локации">
-                <span class='settings__save settings__save_profile settings__save_success'>Сохранено</span>
-            </div>
+                <input type='submit' value='Сохранить' class='settings__save settings__save_profile'>
+            </form>
         </li>
         <li class="settings-item">
             <span class='settings__name settings__name_password'>Изменить пароль</span>
@@ -179,12 +179,12 @@
                 <use xlink:href="sprite.svg#change_password"></use>
               </svg>
             </span>
-            <div class='settings-wrap'>
+            <form id='changePassword' class='settings-wrap settings-form'>
                 <input type="password" class="settings__input settings__input_password" placeholder="Текущий пароль">
                 <input type="password" class="settings__input settings__input_password" placeholder="Новый пароль">
                 <input type="password" class="settings__input settings__input_password" placeholder="Повторите новый пароль">
-                <span class='settings__save'>Сохранить</span>
-            </div>
+                <input type='submit' value='Сохранить' class='settings__save'>
+            </form>
         </li>
     </ul>
 </div>

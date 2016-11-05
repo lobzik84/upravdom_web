@@ -13,6 +13,7 @@
       'console': true,
       'SecureRandom': true,
       'BigInteger': true,
-      'DEBUG': true
+      'DEBUG': true,
+      'document': true,
   }
 }

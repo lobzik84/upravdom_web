@@ -2,21 +2,31 @@ import sendCommand from '../common/sendCommand';
 
 
 class Mode {
-  constructor($target) {
-    $target.on('click', (event) => {
-      Mode.changeMode(event.currentTarget);
+  constructor($target, changeClass, isSending) {
+    this.changeClass = changeClass;
+    this.$target = $target;
+    this.isSending = isSending !== false;
+
+    this.$target.on('click', (event) => {
+      this.changeMode(event.currentTarget);
     });
   }
 
-  static changeMode(currentTarget) {
-    const $target = $(currentTarget);
-    const commandData = currentTarget.id === 'mode__master' ? { mode: 'IDLE' } : { mode: 'ARMED' };
-    const changeClass = 'dashboard-mode__item_changed';
+  toggleClass(currentTarget) {
+    $(currentTarget).addClass(this.changeClass)
+    .siblings(`.${this.changeClass}`).removeClass(this.changeClass);
+  }
 
-    sendCommand('switch_mode', commandData, () => {
-      $target.addClass(changeClass)
-      .siblings(`.${changeClass}`).removeClass(changeClass);
-    });
+  changeMode(currentTarget) {
+    const commandData = currentTarget.id === 'mode__master' ? { mode: 'IDLE' } : { mode: 'ARMED' };
+
+    if (this.isSending) {
+      sendCommand('switch_mode', commandData, () => {
+        this.toggleClass(currentTarget);
+      });
+    } else {
+      this.toggleClass(currentTarget);
+    }
   }
 }
 

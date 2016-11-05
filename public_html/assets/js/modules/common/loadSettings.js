@@ -1,6 +1,5 @@
 import postData from './postData';
 import updateSettings from './updateSettings';
-import settings from './settings';
 
 function loadSettings() {
   const kf = new KeyFile();

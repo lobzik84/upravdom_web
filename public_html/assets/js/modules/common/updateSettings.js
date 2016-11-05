@@ -1,3 +1,6 @@
+import updateNameSettings from './updateNameSettings';
+
+
 function updateSettings(data) {
   try {
     const json = data;
@@ -9,17 +12,18 @@ function updateSettings(data) {
         }
 
         const val = json[key];
-        const $elementKey = $(`#settings__value--${key}`);
+        const $settingsElement = $(`#settings__value--${key}`);
 
-        if ($elementKey.length) {
-          if ($elementKey[0].type === 'checkbox') {
-            $elementKey.attr('checked', val === 'true' ? 'checked' : false);
-          } else if ($elementKey[0].type === 'text') {
-            $elementKey.val(val);
+        if ($settingsElement.length) {
+          if ($settingsElement[0].type === 'checkbox') {
+            $settingsElement.attr('checked', val === 'true' ? 'checked' : false);
+          } else if ($settingsElement[0].type === 'text') {
+            $settingsElement.val(val);
           } else {
-            $elementKey.html(val);
+            $settingsElement.html(val);
           }
         }
+        updateNameSettings(key, val);
       } catch (ee) {
         console.error(ee);
       }
