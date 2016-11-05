@@ -8,7 +8,7 @@ class SettingEvents {
       const sign = element === 'plus' ? '+' : '-';
       SettingEvents.switchMinMax(event.currentTarget, sign);
     }).on('click', debounce(() => {
-      SettingEvents.sendSettings();
+      SettingEvents.send();
     }, 300));
   }
 
@@ -30,7 +30,7 @@ class SettingEvents {
     }
   }
 
-  static sendSettings() {
+  static send() {
     const settingElementIdPrefix = 'settings__value--';
     const settings = {};
     const $settings = $(`[id^="${settingElementIdPrefix}"]`);

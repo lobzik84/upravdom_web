@@ -1,10 +1,11 @@
 import nunjucks from 'nunjucks';
-import Iscroll from 'iscroll';
 
 import Mode from './mode';
 import ToggleTitle from './toggleTitle';
 import Control from './control';
 import SettingEvents from './settingEvents';
+import HistoryEvents from './historyEvents';
+
 
 import updateCapture from '../common/updateCapture';
 import loadSettings from '../common/loadSettings';
@@ -14,6 +15,8 @@ import historySPEC from '../history/historySPEC'; //  временный ста�
 class Main {
   constructor(data) {
     const json = JSON.parse(data);
+
+    console.log(json);
     json.history = historySPEC.history;
     this.$template = $(nunjucks.render('main.html', json));
     this.$dashboardMode = this.$template.find('.dashboard-mode__item');
@@ -27,7 +30,8 @@ class Main {
     $('body').empty().append(this.$template);
 
     this.events();
-    Main.historyScrolling();
+
+    new HistoryEvents();
   }
 
   events() {
@@ -46,15 +50,6 @@ class Main {
 
     this.$template.find('#update_capture').on('click', () => {
       updateCapture();
-    });
-  }
-
-  static historyScrolling() {
-    new Iscroll('#history-scroll', {
-      mouseWheel: true,
-      scrollbars: 'custom',
-      interactiveScrollbars: true,
-      shrinkScrollbars: 'scale',
     });
   }
 }

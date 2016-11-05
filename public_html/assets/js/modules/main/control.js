@@ -2,14 +2,12 @@ import sendCommand from '../common/sendCommand';
 
 class Control {
   constructor($target, element) {
-    console.log($target);
-
     $target.on('click', (event) => {
-      Control.controlElements(element, event.currentTarget);
+      Control.slider(element, event.currentTarget);
     });
   }
 
-  static controlElements(name, currentTarget) {
+  static slider(name, currentTarget) {
     const $target = $(currentTarget);
 
     if ($target.hasClass('control-item_on')) {
