@@ -13,7 +13,7 @@ class SettingsEvents {
       $target.on('submit', (event) => {
         event.preventDefault();
 
-        SettingsEvents.submitForm();
+        SettingsEvents.submitForm(event.currentTarget);
       });
     } else {
       $target.on('click', (event) => {
@@ -42,15 +42,17 @@ class SettingsEvents {
   }
 
   static confirmPassword(currentTarget) {
+    const $this = $(currentTarget);
+    const newPassword = $this.find('.settings__input_new').val();
+    const confirmPassword = $this.find('.settings__input_confirm').val();
+
     if (currentTarget.id !== 'changePassword') {
       return true;
-    } else {
-      const $this = $(currentTarget);
-      if ($this.find('.settings__input_new').val() === $this.find('.settings__input_confirm').val()) {
-        return true;
-      }
-      return false;
+    } else if (newPassword.length > 0 && confirmPassword.length > 0
+      && newPassword === confirmPassword) {
+      return true;
     }
+    return false;
   }
 
   static switchMinMax(currentTarget, sign) {

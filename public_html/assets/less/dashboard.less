@@ -41,7 +41,8 @@
     margin: -4px 26px 0;
 
     @media @smartphones {
-      display: none;
+      display: block;
+      margin: 20px 0;
     }
 
     &__item {
@@ -63,6 +64,29 @@
       &_changed {
         color: @white;
         background-color: #33a644;
+
+        @media @smartphones {
+          background-color: #33a644 !important;
+        }
+      }
+
+      @media @smartphones {
+        font-size: 23px;
+        line-height: 70px;
+        height: 70px;
+        width: 50%;
+        background-color: #444;
+      }
+    }
+
+    &-mobile {
+      font-family: @roboto-regular;
+      margin-top: 35px;
+
+      &__header {
+        color: #9d9d9d;
+        font-size: 23px;
+        text-align: center;
       }
     }
   }
@@ -73,8 +97,9 @@
     position: relative;
 
     @media @smartphones {
-      margin-right: 17px;
-      float: right;
+      position: absolute;
+      top: 22px;
+      right: 32px;
     }
 
     &__icon {

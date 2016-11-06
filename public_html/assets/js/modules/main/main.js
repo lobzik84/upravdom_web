@@ -10,6 +10,7 @@ import HistoryEvents from './historyEvents';
 import updateCapture from '../common/updateCapture';
 import loadSettings from '../common/loadSettings';
 import settings from '../common/settings';
+import checkDevice from '../common/checkDevice';
 
 
 import historySPEC from '../history/historySPEC'; //  временный статичный json для истории
@@ -20,13 +21,17 @@ class Main {
     const json = JSON.parse(data);
 
     json.history = historySPEC.history;
+
     this.$template = $(nunjucks.render('main.html', json));
     this.$dashboardMode = this.$template.find('.dashboard-mode__item');
+    this.$dashboardModeMobile = $('<div class="dashboard-mode-mobile"><div class="dashboard-mode-mobile__header">Режим работы</div></div>');
     this.$historyMode = this.$template.find('.history-mode__item');
     this.$panelItem = this.$template.find('.panel-item');
     this.$phone = this.$template.find('.settings__input_phone');
     this.elementsControl = ['LAMP_1', 'SOCKET', 'LAMP_2'];
     this.settingsSwitcher = ['plus', 'minus'];
+
+    this.device = {};
 
     updateCapture();
     loadSettings();
@@ -34,8 +39,37 @@ class Main {
     $('body').empty().append(this.$template);
 
     this.events();
+    this.checkDevice();
 
     new HistoryEvents();
+  }
+
+  checkDevice() {
+    this.device = {
+      name: checkDevice(),
+    };
+    this.movingMode(true);
+
+    $(window).on('resize', () => {
+      this.device = {
+        changes: this.device.name !== checkDevice(),
+        name: checkDevice(),
+      };
+      this.movingMode(this.device.changes);
+    });
+  }
+
+  movingMode(changes) {
+    if (changes) {
+      if (this.device.name === 'desktop') {
+        this.$dashboardMode.closest('.dashboard-mode').insertBefore('.dashboard-info');
+        this.$dashboardModeMobile.remove();
+        console.log(this.$dashboardModeMobile);
+      } else {
+        this.$dashboardMode.closest('.dashboard-mode').appendTo(this.$dashboardModeMobile);
+        this.$dashboardModeMobile.insertBefore('.settings');
+      }
+    }
   }
 
   events() {

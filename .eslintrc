@@ -15,5 +15,6 @@
       'BigInteger': true,
       'DEBUG': true,
       'document': true,
+      'window': true,
   }
 }
