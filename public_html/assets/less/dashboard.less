@@ -98,8 +98,8 @@
 
     @media @smartphones {
       position: absolute;
-      top: 22px;
-      right: 32px;
+      top: 16px;
+      right: 42px;
     }
 
     &__icon {
@@ -108,12 +108,13 @@
       fill: @iconsBlue;
 
       @media @smartphones {
+        height: 35px;
+        width: 35px;
         fill: @white;
       }
     }
 
     &__count {
-      color: #000;
       color: @black;
       font-size: 11px;
       background-color: #ffc107;
@@ -122,6 +123,12 @@
       right: -18px;
       padding: 6px;
       border-radius: 100%;
+
+      @media @smartphones {
+        font-size: 14px;
+        right: -28px;
+        padding: 10px;
+      }
     }
   }
 
@@ -138,6 +145,9 @@
       margin-top: 4px;
 
       @media @smartphones {
+        height: 16px;
+        width: 34px;
+        margin-top: 6px;
         fill: @white;
       }
     }
@@ -151,6 +161,11 @@
     &__svg {
       height: 19px;
       width: 134px;
+
+      @media @smartphones {
+        height: 23px;
+        width: 165px;
+      }
     }
   }
 
@@ -168,6 +183,12 @@
       width: 14px;
       fill: #8bc34a;
       margin-top: 3px;
+
+      @media @smartphones {
+        height: 26px;
+        width: 22px;
+        margin-top: -1px;
+      }
     }
 
     &__count {

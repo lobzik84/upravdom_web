@@ -12,15 +12,9 @@ import loadSettings from '../common/loadSettings';
 import settings from '../common/settings';
 import checkDevice from '../common/checkDevice';
 
-
-import historySPEC from '../history/historySPEC'; //  временный статичный json для истории
-
-
 class Main {
   constructor(data) {
     const json = JSON.parse(data);
-
-    json.history = historySPEC.history;
 
     this.$template = $(nunjucks.render('main.html', json));
     this.$dashboardMode = this.$template.find('.dashboard-mode__item');
@@ -40,8 +34,6 @@ class Main {
 
     this.events();
     this.checkDevice();
-
-    new HistoryEvents();
   }
 
   checkDevice() {
@@ -64,7 +56,6 @@ class Main {
       if (this.device.name === 'desktop') {
         this.$dashboardMode.closest('.dashboard-mode').insertBefore('.dashboard-info');
         this.$dashboardModeMobile.remove();
-        console.log(this.$dashboardModeMobile);
       } else {
         this.$dashboardMode.closest('.dashboard-mode').appendTo(this.$dashboardModeMobile);
         this.$dashboardModeMobile.insertBefore('.settings');
@@ -74,8 +65,8 @@ class Main {
 
   events() {
     new Mode(this.$dashboardMode, 'dashboard-mode__item_changed', true);
-    new Mode(this.$historyMode, 'history-mode__item_changed', false);
     new ToggleTitle(this.$panelItem);
+    new HistoryEvents(this.$historyMode, 'history-mode__item_changed');
 
     this.$phone.mask(settings.mask);
 

@@ -16,5 +16,6 @@
       'DEBUG': true,
       'document': true,
       'window': true,
+      'Chartist': true,
   }
 }

@@ -1,0 +1,21 @@
+<div id='history-scroll' class='history-scroll'>
+  <ul class="history-list">
+    {% for item in history %}
+      <li class="history-item">
+          <span class="history__icon history__icon_{{ item.importance }}">
+              <svg class="history__svg history__svg_{{ item.type }}">
+                <use xlink:href="sprite.svg#{{ item.type }}"></use>
+              </svg>
+          </span>
+          {% if item.startdate == item.enddate %}
+            {% set date = item.starttime + '-' + item.endtime %}
+          {% else %}
+            {% set date = item.startdate + ',' + item.starttime + '-' + item.enddate + ',' + item.endtime %}
+          {% endif %}
+
+          <span class="history__data"> {{ date }}</span>
+          <span class="history__text">{{ item.message }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

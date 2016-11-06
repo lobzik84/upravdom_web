@@ -8,7 +8,7 @@ class Mode {
     this.isSending = isSending !== false;
 
     this.$target.on('click', (event) => {
-      this.changeMode(event.currentTarget);
+      this.change(event.currentTarget);
     });
   }
 
@@ -17,7 +17,7 @@ class Mode {
     .siblings(`.${this.changeClass}`).removeClass(this.changeClass);
   }
 
-  changeMode(currentTarget) {
+  change(currentTarget) {
     const commandData = currentTarget.id === 'mode__master' ? { mode: 'IDLE' } : { mode: 'ARMED' };
 
     if (this.isSending) {

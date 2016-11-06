@@ -1,30 +1,12 @@
 <div class="history">
     <div class="history-header">
         <span class="history-header__text">История</span>
+        <svg class='history-header__svg'>
+          <use xlink:href="sprite.svg#arrow"></use>
+        </svg>
         <ul class="history-mode">
-            <li class="history-mode__item history-mode__item_changed">Список</li>
-            <li class="history-mode__item">График</li>
+            <li id='history-list' class="history-mode__item history-mode__item_changed">Список</li>
+            <li id='history-chart' class="history-mode__item">График</li>
         </ul>
-    </div>
-    <div id='history-scroll' class='history-scroll'>
-      <ul class="history-list">
-        {% for item in history %}
-          <li class="history-item">
-              <span class="history__icon history__icon_{{ item.importance }}">
-                  <svg class="history__svg history__svg_{{ item.type }}">
-                    <use xlink:href="sprite.svg#{{ item.type }}"></use>
-                  </svg>
-              </span>
-              {% if item.startdate == item.enddate %}
-                {% set date = item.starttime + '-' + item.endtime %}
-              {% else %}
-                {% set date = item.startdate + ',' + item.starttime + '-' + item.enddate + ',' + item.endtime %}
-              {% endif %}
-
-              <span class="history__data"> {{ date }}</span>
-              <span class="history__text">{{ item.message }}</span>
-          </li>
-        {% endfor %}
-      </ul>
     </div>
 </div>

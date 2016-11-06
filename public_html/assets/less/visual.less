@@ -33,6 +33,11 @@
     &_last {
       .visual-date {
         right: 10px;
+
+        @media @smartphones {
+          right: auto;
+          left: 10px;
+        }
       }
 
       .visual-block {
@@ -46,8 +51,6 @@
   }
 
   &-block {
-    line-height: 422px;
-    height: 422px;
     background-color: #dfdfdf;
     position: relative;
 
