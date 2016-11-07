@@ -37,7 +37,7 @@ class Chart {
         labelInterpolationFnc: (value) => {
           console.log(value);
           return moment(value).format('h:mm:ss');
-        }
+        },
       },
       axisY: {
         onlyInteger: true,
