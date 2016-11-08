@@ -7,51 +7,56 @@ class Chart {
 
   static draw(name) {
     const chart = new Chartist.Line(name, {
-      series: [{
+      series: [
+        {
+          name: 'label',
+          className: 'history-chart__line_label',
+          data: [
+            { x: new Date('2016-11-08T00:00:00+03:00'), y: 0 },
+            { x: new Date('2016-11-09T00:00:00+03:00'), y: 0 },
+          ],
+        },{
         name: 'remaining',
+        className: 'history-chart__line_remaining',
         data: [
-          { x: new Date(143134652600), y: 53 },
-          { x: new Date(143334652600), y: 40 },
-          { x: new Date(143354652600), y: 45 },
-          { x: new Date(143356652600), y: 41 },
-          { x: new Date(143366652600), y: 40 },
-          { x: new Date(143368652600), y: 38 },
-          { x: new Date(143378652600), y: 34 },
-          { x: new Date(143568652600), y: 32 },
-          { x: new Date(143569652600), y: 18 },
-          { x: new Date(143579652600), y: 11 },
+          { x: new Date('2016-11-08T00:00:00+03:00'), y: 53, meta: 'other description', },
+          { x: new Date('2016-11-08T00:07:00+03:00'), y: 53, meta: 'other description' },
+          { x: new Date('2016-11-08T01:23:00+03:00'), y: 40, meta: 'other description' },
+          { x: new Date('2016-11-08T02:12:00+03:00'), y: 45, meta: 'other description' },
+          { x: new Date('2016-11-08T04:44:00+03:00'), y: 41, meta: 'other description' },
+          { x: new Date('2016-11-08T05:33:00+03:00'), y: 40, meta: 'other description' },
+          { x: new Date('2016-11-08T07:45:00+03:00'), y: 38, meta: 'other description' },
+          { x: new Date('2016-11-08T08:23:00+03:00'), y: 34, meta: 'other description' },
+          { x: new Date('2016-11-08T09:45:00+03:00'), y: 32, meta: 'other description' },
+          { x: new Date('2016-11-08T10:35:00+03:00'), y: 18, meta: 'other description' },
+          { x: new Date('2016-11-08T10:55:00+03:00'), y: 11, meta: 'other description' },
+          { x: new Date('2016-11-09T00:00:00+03:00'), y: 53, meta: 'other description' },
         ],
       }, {
         name: 'stories',
+        className: 'history-chart__line_stories',
         data: [
-          { x: new Date(143134652600), y: 53 },
-          { x: new Date(143334652600), y: 30 },
-          { x: new Date(143384652600), y: 30 },
-          { x: new Date(143568652600), y: 10 },
+          { x: new Date('2016-11-08T00:00:00+03:00'), y: 53, meta: 'other description' },
+          { x: new Date('2016-11-08T00:32:00+03:00'), y: 30, meta: 'other description' },
+          { x: new Date('2016-11-08T00:41:05+03:00'), y: 30, meta: 'other description' },
+          { x: new Date('2016-11-08T00:55:00+03:00'), y: 10, meta: 'other description' },
         ],
       }],
     }, {
+      plugins: [
+        Chartist.plugins.tooltip()
+      ],
       axisX: {
         type: Chartist.FixedScaleAxis,
-        divisor: 12,
+        divisor: 24,
         labelInterpolationFnc: (value) => {
-          console.log(value);
-          return moment(value).format('h:mm:ss');
+          return moment(value).format('HH:mm');
         },
       },
       axisY: {
         onlyInteger: true,
         low: 0,
-      },
-      series: {
-        remaining: {
-          lineSmooth: Chartist.Interpolation.step(),
-          showPoint: false,
-        },
-        stories: {
-          lineSmooth: false,
-        },
-      },
+      }
     });
   }
 }

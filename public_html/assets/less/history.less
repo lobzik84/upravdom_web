@@ -87,6 +87,22 @@
   &-chart {
     background-color: @white;
     position: relative;
+
+    .chartist-tooltip-value {
+      display: none;
+    }
+
+    &__line {
+      stroke-width: 2px;
+
+      &_stories {
+        stroke: green;
+      }
+
+      &_remaining {
+        stroke: red;
+      }
+    }
   }
 
   &-scroll {

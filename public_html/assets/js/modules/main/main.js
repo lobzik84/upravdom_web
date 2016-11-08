@@ -1,4 +1,5 @@
 import nunjucks from 'nunjucks';
+import moment from 'moment';
 
 import Mode from './mode';
 import ToggleTitle from './toggleTitle';
@@ -29,6 +30,10 @@ class Main {
 
     updateCapture();
     loadSettings();
+
+    setInterval(()=> {
+      this.$template.find('#time').text(moment().format('HH:mm:ss'))
+    }, 1000);
 
     $('body').empty().append(this.$template);
 
