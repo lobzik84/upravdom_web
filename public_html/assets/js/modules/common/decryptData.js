@@ -48,7 +48,10 @@ function decryptData(kf, data) {
   } else if (DEBUG) {
     console.log('Digest not valid!');
   }
-  return plain;
+  return {
+    plain,
+    notificationsPlain,
+  };
 }
 
 export default decryptData;

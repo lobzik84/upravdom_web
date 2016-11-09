@@ -1,7 +1,7 @@
 <div class='dashboard'>
     <div class="dashboard-location">
         <span id='name--BoxName' class="dashboard-location__place">{{ BoxName }}</span>,
-        <span id='time' class="dashboard-location__time"></span>
+        <span id='status__value--box_time' class="dashboard-location__time">{{ box_time }}</span>
     </div>
     <ul class="dashboard-mode">
         <li id="mode__master" class="dashboard-mode__item {% if mode == 'IDLE' %} dashboard-mode__item_changed {% endif %}">Хозяин дома</li>
@@ -11,7 +11,7 @@
         <svg class="dashboard-info__icon">
           <use xlink:href="sprite.svg#round_and_i"></use>
         </svg>
-        <span class="dashboard-info__count">36</span>
+        <span class="dashboard-info__count"></span>
     </div>
     <div class='dashboard-mobile-panel'>
         <span class='dashboard-gsm'>

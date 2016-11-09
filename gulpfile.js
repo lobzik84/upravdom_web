@@ -33,8 +33,7 @@ var paths = {
         'node_modules/jquery/dist/jquery.min.js',
         'public_html/assets/js/vendors/chartist.min.js',
         'public_html/assets/js/vendors/chartist-plugin-tooltip.js',
-        'public_html/assets/js/vendors/inputmask.js',
-        'public_html/assets/js/bundle.js'
+        'public_html/assets/js/vendors/inputmask.js'
     ]
 };
 // 'public_html/assets/js/src/*.js' - там лежат рудименты
@@ -75,12 +74,20 @@ gulp.task('production', [
 
 gulp.task('build', function() {
   glob('public_html/assets/js/modules/**/*.js', function(err, files) {
+    const options = {
+        compress: {
+            global_defs: {
+                DEBUG: true
+            }
+        }
+    };
     return browserify(files)
       .transform('babelify', {presets: ['es2015']})
       .bundle()
-      .pipe(source('bundle.js'))
-      .pipe(streamify(uglifyjs()))
-      .pipe(gulp.dest('public_html/assets/js/'))
+      .pipe(source('x.min.js'))
+      .pipe(streamify(uglifyjs(options)))
+      .pipe(gulp.dest('public_html/dist/js/'))
+      .pipe(browserSync.stream());
   });
 });
 
@@ -93,7 +100,7 @@ gulp.task('scripts', function() {
       }
   };
   gulp.src(paths.scripts)
-    .pipe(concat('x.min.js'))
+    .pipe(concat('c.min.js'))
     .pipe(uglifyjs(options))
     .pipe(gulp.dest('public_html/dist/js'))
     .pipe(browserSync.stream());

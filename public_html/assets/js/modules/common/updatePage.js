@@ -1,4 +1,6 @@
+import moment from 'moment';
 import settings from './settings';
+import updateNotifications from '../main/updateNotifications';
 
 function updatePage(data) {
   try {
@@ -6,32 +8,44 @@ function updatePage(data) {
       console.log('updating page');
     }
 
-    const json = JSON.parse(data);
+    const dataPlain = JSON.parse(data.plain);
+    const notificationsPlain = JSON.parse(data.notificationsPlain);
 
-    if (json.mode === 'ARMED') {
+    if (notificationsPlain.length) {
+      $('.dashboard-info__count').text(notificationsPlain.length);
+      updateNotifications(notificationsPlain);
+    }
+
+    if (DEBUG) {
+      console.log('notificationsPlain', notificationsPlain);
+    }
+
+    if (dataPlain.mode === 'ARMED') {
       $('#mode__security').addClass('dashboard-mode__item_changed');
       $('#mode__master').removeClass('dashboard-mode__item_changed');
-    } else if (json.mode === 'IDLE') {
+    } else if (dataPlain.mode === 'IDLE') {
       $('#mode__master').addClass('dashboard-mode__item_changed');
       $('#mode__security').removeClass('dashboard-mode__item_changed');
     }
 
-    for (const key in json) {
+    $('#status__value--box_time').text(moment(+dataPlain.box_time).format(settings.format));
+
+    for (const key in dataPlain) {
       try {
-        const lastValue = json[key]['last_value'];
+        const lastValue = dataPlain[key]['last_value'];
         const $elementKey = $(`#status__value--${key}`);
 
         if ($elementKey) {
-          if (json[key]['par_type'] === 'DOUBLE' || json[key]['par_type'] === 'INTEGER') {
+          if (dataPlain[key]['par_type'] === 'DOUBLE' || dataPlain[key]['par_type'] === 'INTEGER') {
             $elementKey.text(lastValue);
-          } else if (json[key]['par_type'] === 'BOOLEAN') {
+          } else if (dataPlain[key]['par_type'] === 'BOOLEAN') {
             if (lastValue.toString().toLowerCase() === 'true') {
               $elementKey.closest('panel-item').addClass('panel-item_alarm');
             } else {
               $elementKey.closest('panel-item').removeClass('panel-item_alarm');
             }
           }
-          if (json[key]['state'] === 'Alert') {
+          if (dataPlain[key]['state'] === 'Alert') {
             if (DEBUG) {
               console.log(`Alert param ${key}`);
             }

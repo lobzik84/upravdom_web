@@ -15,8 +15,9 @@ import checkDevice from '../common/checkDevice';
 
 class Main {
   constructor(data) {
-    const json = JSON.parse(data);
+    const json = JSON.parse(data.plain);
 
+    json.box_time = moment(+json.box_time).format(settings.format);
     this.$template = $(nunjucks.render('main.html', json));
     this.$dashboardMode = this.$template.find('.dashboard-mode__item');
     this.$dashboardModeMobile = $('<div class="dashboard-mode-mobile"><div class="dashboard-mode-mobile__header">Режим работы</div></div>');
@@ -30,10 +31,6 @@ class Main {
 
     updateCapture();
     loadSettings();
-
-    setInterval(()=> {
-      this.$template.find('#time').text(moment().format('HH:mm:ss'))
-    }, 1000);
 
     $('body').empty().append(this.$template);
 
