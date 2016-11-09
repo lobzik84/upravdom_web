@@ -1,5 +1,5 @@
 var settings = {
-  global_serverJSONUrl: 'http://dev.molnet.ru/hs/json',
+  global_serverJSONUrl: 'http://192.168.11.22:8080/hs/json',
   global_rsa_e: '10001',
   mask: '+7(999)999-99-99',
   global_aes_mode: slowAES.modeOfOperation.CFB,

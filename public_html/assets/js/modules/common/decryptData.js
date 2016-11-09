@@ -21,7 +21,18 @@ function decryptData(kf, data) {
   //  decoding utf-8
 
   if (DEBUG) {
-    console.log(`Data decrypted: ${plain}`);
+    console.log(`Parameters decrypted: ${plain}`);
+  }
+
+  const notificationCipher = data.notifications;
+  const nbytesToDecrypt = cryptoHelpers.toNumbers(notificationCipher); //  decoding cipher
+  const nbytes = slowAES.decrypt(nbytesToDecrypt, settings.global_aes_mode, key, key);
+  // decrypting message
+  const notificationsPlain = cryptoHelpers.decode_utf8(cryptoHelpers.convertByteArrayToString(nbytes));
+  //  decoding utf-8
+
+  if (DEBUG) {
+    console.log(`notifications decrypted: ${notificationsPlain}`);
   }
 
   const pk = kf.getBoxKey(kf.boxId);

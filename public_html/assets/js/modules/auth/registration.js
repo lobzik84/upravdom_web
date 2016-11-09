@@ -41,10 +41,10 @@ class Registration {
 
     const salt = srp.generateSalt();
     const verifier = srp.getVerifier();
-    const publicKey = rsa.n.toString(16);
+    const public_key = rsa.n.toString(16);
 
     if (DEBUG) {
-      console.log(`Generated s=${salt}, v=${verifier}, public key=${publicKey} for login ${login}, password ${srp.p}`);
+      console.log(`Generated s=${salt}, v=${verifier}, public key=${public_key} for login ${login}, password ${srp.p}`);
     }
 
     const registrationSettings = {
@@ -52,7 +52,7 @@ class Registration {
       login,
       salt,
       verifier,
-      publicKey,
+      public_key,
     };
 
     const success = (data) => {
