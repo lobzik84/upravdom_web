@@ -1,8 +1,7 @@
 function KeyFile() {
-  var ls = localStorage;
 
-  this.userId = ls["userId"];
-  this.boxId = ls["boxId"];
+  this.userId = localStorage["userId"];
+  this.boxId = localStorage["boxId"];
   //localStorage["userId"] + "." + localStorage["boxId"] = this.userId + "." + this.boxId;
   //if (localStorage["userId"] + "." + localStorage["boxId"] !)
   this.xhr = null;
@@ -11,19 +10,22 @@ function KeyFile() {
     this.userId = newUserId.toString();
     this.boxId = newBoxId.toString();
     //localStorage["userId"] + "." + localStorage["boxId"] = this.userId + "." + this.boxId;
-    ls["userId"] = newUserId;
-    ls["boxId"] = newBoxId;
-    ls[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.my.private"] = privateKey;
-    ls[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.my.public"] = publicKey;
-    ls[localStorage["userId"] + "." + localStorage["boxId"] + ".pbkdf"] = pbkdf;
+    localStorage["userId"] = newUserId;
+    localStorage["boxId"] = newBoxId;
+    localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.my.private"] = privateKey;
+    localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.my.public"] = publicKey;
+    localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".pbkdf"] = pbkdf;
   }
 
   this.getKeyFileAsStirng = function () {
     var kf = "";
-    for (i = 0; i < ls.length; i++) {
-      var key = ls.key(i);
-      if (key != null && key.toString().substring(0, localStorage["userId"] + "." + localStorage["boxId"].length + 6) == localStorage["userId"] + "." + localStorage["boxId"] + ".keys.")
-        kf += key + ":" + ls[key] + "\n";
+    var userId = localStorage["userId"];
+    var boxId = localStorage["boxId"];
+    var id = userId + "." + boxId;
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key !== null && key.toString().substring(0, id.length + 6)   === (id + ".keys."))
+        kf += key + ":" + localStorage[key] + "\n";
 
     }
     return kf;
@@ -31,14 +33,14 @@ function KeyFile() {
 
   this.uploadKeyFile = function (url, uploadDone) {
 
-    var pbkdf = ls[localStorage["userId"] + "." + localStorage["boxId"] + ".pbkdf"];
+    var pbkdf = localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".pbkdf"];
     var mode = slowAES.modeOfOperation.CFB;
 
     if (localStorage["userId"] + "." + localStorage["boxId"] == null || pbkdf == null)
       alert("ID or PBKDF not set!");
     else {
       var kf = this.getKeyFileAsStirng();
-
+console.log("String kf=" + kf);
       var bytesToEncrypt = cryptoHelpers.convertStringToByteArray(kf);
       var key = cryptoHelpers.toNumbers(pbkdf);
       console.log("Encrypting keyfile, pbkdf=" + pbkdf)
@@ -61,10 +63,10 @@ function KeyFile() {
   }
 
   this.downloadKeyFile = function (url, pbkdf, downloadDone) {
-    ls[localStorage["userId"] + "." + localStorage["boxId"] + ".pbkdf"] = pbkdf;
+    localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".pbkdf"] = pbkdf;
     var mode = slowAES.modeOfOperation.CFB;
     var callback = downloadDone;
-    if (localStorage["userId"] + "." + localStorage["boxId"] == null || pbkdf == null)
+    if (localStorage["userId"] + "." + localStorage["boxId"] === null || pbkdf === null)
       alert("ID or PBKDF not set!");
 
     var obj = {
@@ -95,7 +97,7 @@ function KeyFile() {
             for (i = 0; i < arr.length; i++) {
               var kv = arr[i].split(":");
               if (kv.length === 2 && kv[0].indexOf(keyId + ".keys") === 0)
-                ls[kv[0]] = kv[1];
+                localStorage[kv[0]] = kv[1];
             }
             callback();
           } else {
@@ -113,35 +115,35 @@ function KeyFile() {
   }
 
   this.getMyPublicKey = function () {
-    return ls[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.my.public"]
+    return localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.my.public"]
   }
 
   this.getMyPrivateKey = function () {
-    return ls[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.my.private"]
+    return localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.my.private"]
   }
 
   this.addBoxKey = function (boxId, key) {
-    ls[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.box." + boxId] = key;
+    localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.box." + boxId] = key;
     return;
   }
 
   this.getBoxKey = function (boxId) {
-    return ls[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.box." + boxId];
+    return localStorage[localStorage["userId"] + "." + localStorage["boxId"] + ".keys.box." + boxId];
   }
 
   this.clearKeyFile = function () {
-    for (i = 0; i < ls.length; i++) {
-      var key = ls.key(i);
+    for (i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
       if (key != null && key.toString().substring(0, localStorage["userId"] + "." + localStorage["boxId"].length + 6) == localStorage["userId"] + "." + localStorage["boxId"] + ".keys.")
-        ls.removeItem(key);
+        localStorage.removeItem(key);
 
     }
   }
 
   this.clearLocal = function () {
-    for (i = 0; i < ls.length; i++) {
-      var key = ls.key(i);
-      ls.removeItem(key);
+    for (i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      localStorage.removeItem(key);
     }
   }
 }
