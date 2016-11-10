@@ -33,7 +33,7 @@ class Main {
 
     updateCapture();
     loadSettings();
-    loadHistory(+moment() - 86400, +moment()); // грузим историю за сутки
+    loadHistory(+moment() - 24 * 60 * 60 * 1000, +moment(), 30 * 60 * 1000); // грузим историю за сутки с квантом 30 минут
     
     $('body').empty().append(this.$template);
 
