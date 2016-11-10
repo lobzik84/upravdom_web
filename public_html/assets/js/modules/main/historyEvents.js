@@ -1,8 +1,8 @@
 import Iscroll from 'iscroll';
 import nunjucks from 'nunjucks';
+import moment from 'moment';
 
-import Chart from '../history/chart';
-
+import loadHistory from '../common/loadHistory';
 import historySPEC from '../history/historySPEC'; //  временный статичный json для истории
 
 
@@ -52,7 +52,7 @@ class HistoryEvents {
     this.$list.remove();
     $('.history').append(this.$chart);
 
-    new Chart('.history-chart');
+    loadHistory(+moment() - 24 * 60 * 60 * 1000, +moment(), 30 * 60 * 1000);
   }
 }
 

@@ -7,17 +7,19 @@ import Control from './control';
 import SettingsEvents from './settingsEvents';
 import HistoryEvents from './historyEvents';
 
- 
+
 import updateCapture from '../common/updateCapture';
 import loadSettings from '../common/loadSettings';
 import settings from '../common/settings';
 import checkDevice from '../common/checkDevice';
-import loadHistory from '../common/loadHistory';
+import updateBattery from '../common/updateBattery';
 
+import updateNotifications from './updateNotifications';
 
 class Main {
   constructor(data) {
     const json = JSON.parse(data.plain);
+    const notifications = JSON.parse(data.notificationsPlain);
 
     json.box_time = moment(+json.box_time).format(settings.format);
     this.$template = $(nunjucks.render('main.html', json));
@@ -33,12 +35,15 @@ class Main {
 
     updateCapture();
     loadSettings();
-    loadHistory(+moment() - 24 * 60 * 60 * 1000, +moment(), 30 * 60 * 1000); // грузим историю за сутки с квантом 30 минут
-    
+    // грузим историю за сутки с квантом 30 минут
+
+    updateNotifications(notifications);
+
     $('body').empty().append(this.$template);
 
     this.events();
     this.checkDevice();
+    updateBattery(json);
   }
 
   checkDevice() {
@@ -74,7 +79,6 @@ class Main {
     new HistoryEvents(this.$historyMode, 'history-mode__item_changed');
 
     this.$phone.mask(settings.mask);
-
     //  действия по кнопкам управления
     this.elementsControl.forEach((element) => {
       new Control(this.$template.find(`#${element}-status`), element);

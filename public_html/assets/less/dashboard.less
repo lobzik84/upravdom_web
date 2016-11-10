@@ -8,6 +8,7 @@
 
   @media @smartphones {
     text-align: left;
+    position: relative;
     float: none;
   }
 
@@ -98,8 +99,8 @@
 
     @media @smartphones {
       position: absolute;
-      top: 16px;
-      right: 42px;
+      top: 0;
+      right: 28px;
     }
 
     &__icon {
@@ -174,11 +175,40 @@
     vertical-align: top;
     margin-left: 25px;
 
+    &_charge {
+      .dashboard-battery__icon_charge {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+
+    &_low {
+      .dashboard-battery__icon_low {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+
+    &_medium {
+      .dashboard-battery__icon_medium {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+
+    &_full {
+      .dashboard-battery__icon_full {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+
     @media @smartphones {
       float: right;
     }
 
     &__icon {
+      display: none;
       height: 19px;
       width: 14px;
       fill: #8bc34a;

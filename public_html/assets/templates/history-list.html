@@ -7,12 +7,6 @@
                 <use xlink:href="sprite.svg#{{ item.type }}"></use>
               </svg>
           </span>
-          {% if item.startdate == item.enddate %}
-            {% set date = item.starttime + '-' + item.endtime %}
-          {% else %}
-            {% set date = item.startdate + ',' + item.starttime + '-' + item.enddate + ',' + item.endtime %}
-          {% endif %}
-
           <span class="history__data"> {{ date }}</span>
           <span class="history__text">{{ item.message }}</span>
       </li>

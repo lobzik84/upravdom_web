@@ -4,6 +4,16 @@
 .notifications {
   font-family: @roboto-regular;
 
+  @media @smartphones {
+    background-color: @black;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
   &-item {
     font-size: 14px;
     background-color: @red;
@@ -11,8 +21,27 @@
     padding: 13px 60px;
 
     @media @smartphones {
+      padding: 13px;
+    }
+
+    &_ALARM {
+      background-color: @red;
+    }
+
+    &_ALERT {
+      background-color: #ff9801;
+    }
+
+    &_INFO {
+      background-color: #607d8b;
+    }
+
+    &_OK {
+      background-color: @green;
+    }
+
+    @media @smartphones {
       font-size: 16px;
-      background-color: #333;
     }
 
     .wrapper {
@@ -25,36 +54,40 @@
     vertical-align: top;
     color: @white;
     text-align: right;
-    width: 115px;
+    width: 170px;
     margin-right: 20px;
+    margin-left: 35px;
 
     @media @smartphones {
       display: block;
+      font-size: 13px;
       text-align: left;
       width: auto;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
   }
 
   &__icon {
-    text-align: center;
-    line-height: 49px;
     width: 40px;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+    top: -3px;
 
-    &_critical {
-      background-color: @red;
+    &_temperature {
+      left: 75px;
+
+      @media @smartphones {
+        left: 0;
+      }
     }
 
-    &_warning {
-      background-color: #ff9801;
-    }
+    &_close {
+      text-align: right;
+      right: 75px;
+      cursor: pointer;
 
-    &_actions {
-      background-color: #607d8b;
+      @media @smartphones {
+        right: 0;
+      }
     }
   }
 
@@ -62,9 +95,28 @@
     height: 19px;
     width: 19px;
     fill: @white;
+
+    &_close {
+      @media @smartphones {
+        height: 40px;
+        width: 40px;
+      }
+    }
+
+    &_temperature {
+      @media @smartphones {
+        height: 40px;
+        width: 40px;
+      }
+    }
   }
 
   &__text {
     color: @white;
+
+    @media @smartphones {
+      display: block;
+      margin-left: 35px;
+    }
   }
 }

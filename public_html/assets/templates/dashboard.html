@@ -24,9 +24,18 @@
               <use xlink:href="sprite.svg#vse-ok-ustroystvo"></use>
             </svg>
         </div>
-        <div class="dashboard-battery">
-            <svg class="dashboard-battery__icon">
-              <use xlink:href="sprite.svg#battery-full"></use>
+        <div class="dashboard-battery dashboard-battery_charge">
+            <svg class="dashboard-battery__icon dashboard-battery__icon_charge">
+              <use id='BATT_CHARGE-icon' xlink:href="sprite.svg#battery-charge"></use>
+            </svg>
+            <svg class="dashboard-battery__icon dashboard-battery__icon_low">
+              <use id='BATT_CHARGE-icon' xlink:href="sprite.svg#battery-low"></use>
+            </svg>
+            <svg class="dashboard-battery__icon dashboard-battery__icon_medium">
+              <use id='BATT_CHARGE-icon' xlink:href="sprite.svg#battery-medium"></use>
+            </svg>
+            <svg class="dashboard-battery__icon dashboard-battery__icon_full">
+              <use id='BATT_CHARGE-icon' xlink:href="sprite.svg#battery-full"></use>
             </svg>
             <span class="dashboard-battery__count">
               <b id="status__value--BATT_CHARGE">{{ BATT_CHARGE.last_value }}</b>%

@@ -1,15 +1,20 @@
 <div id='notifications' class='notifications'>
   <ul class='notifications-list'>
     {% for item in list %}
-      <li class='notifications-item'>
+      <li class='notifications-item notifications-item_{{ item.severity }}'>
         <div class='wrapper'>
           <span class="notifications__icon notifications__icon_temperature">
               <svg class="notifications__svg notifications__svg_temperature">
-                <use xlink:href="sprite.svg#temperature"></use>
+                <use xlink:href="sprite.svg#{{ item.parameterAlias }}"></use>
               </svg>
           </span>
-          <span class="notifications__data">{{ item.startDate }}</span>
+          <span class="notifications__data">{{ item.startDate }} - {{ item.endDate }}</span>
           <span class="notifications__text">{{ item.text }}</span>
+          <span class="notifications__icon notifications__icon_close">
+              <svg class="notifications__svg notifications__svg_close">
+                <use xlink:href="sprite.svg#close"></use>
+              </svg>
+          </span>
         </div>
       </li>
     {% endfor %}
