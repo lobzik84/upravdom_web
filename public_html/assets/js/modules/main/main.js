@@ -7,11 +7,13 @@ import Control from './control';
 import SettingsEvents from './settingsEvents';
 import HistoryEvents from './historyEvents';
 
-
+ 
 import updateCapture from '../common/updateCapture';
 import loadSettings from '../common/loadSettings';
 import settings from '../common/settings';
 import checkDevice from '../common/checkDevice';
+import loadHistory from '../common/loadHistory';
+
 
 class Main {
   constructor(data) {
@@ -31,7 +33,8 @@ class Main {
 
     updateCapture();
     loadSettings();
-
+    loadHistory(+moment() - 86400, +moment()); // грузим историю за сутки
+    
     $('body').empty().append(this.$template);
 
     this.events();
