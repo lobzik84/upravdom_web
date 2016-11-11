@@ -17,13 +17,14 @@ const updateNotifications = (oldList) => {
 
   const $template = $(nunjucks.render('notifications.html', notifications));
 
-  $template.find('.notifications-item').on('click', (e)=> {
-    const $target = $(e.currentTarget);
+  $template.find('.notifications__icon_close').on('click', (e)=> {
+    const $closest = $(e.currentTarget).closest('.notifications-item')
     const commandData = {
-      notifications_id: $target.data('id'),
+      notification_id: $closest.data('id'),
     }
     sendCommand('delete_web_notification', commandData, null);
-    $target.remove();
+    console.log(commandData);
+    $closest.remove();
   })
 
   if ($('#notifications').length) {
