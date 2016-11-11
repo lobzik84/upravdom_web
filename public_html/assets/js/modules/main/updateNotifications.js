@@ -1,6 +1,7 @@
 import nunjucks from 'nunjucks';
 import moment from 'moment';
 
+import sendCommand from '../common/sendCommand';
 
 const updateNotifications = (oldList) => {
   const list = oldList.map((item) => {
@@ -15,6 +16,15 @@ const updateNotifications = (oldList) => {
   };
 
   const $template = $(nunjucks.render('notifications.html', notifications));
+
+  $template.find('.notifications-item').on('click', (e)=> {
+    const $target = $(e.currentTarget);
+    const commandData = {
+      notifications_id: $target.data('id'),
+    }
+    sendCommand('delete_web_notification', commandData, null);
+    $target.remove();
+  })
 
   if ($('#notifications').length) {
     return;

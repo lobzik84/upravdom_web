@@ -1,7 +1,7 @@
 <div id='notifications' class='notifications'>
   <ul class='notifications-list'>
     {% for item in list %}
-      <li class='notifications-item notifications-item_{{ item.severity }}'>
+      <li data-id='{{ item.id }}' class='notifications-item notifications-item_{{ item.severity }}'>
         <div class='wrapper'>
           <span class="notifications__icon notifications__icon_temperature">
               <svg class="notifications__svg notifications__svg_temperature">

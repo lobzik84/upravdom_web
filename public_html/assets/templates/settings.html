@@ -9,7 +9,7 @@
             <span class='settings__name'>Температура</span>
             <span class="settings__icon">
               <svg class="settings__svg settings__svg_temperature">
-                <use xlink:href="sprite.svg#temperature"></use>
+                <use xlink:href="sprite.svg#INTERNAL_TEMP"></use>
               </svg>
             </span>
             <div class='settings-wrap'>
@@ -51,7 +51,7 @@
             <span class='settings__name'>Электроэнергия</span>
             <span class="settings__icon">
               <svg class="settings__svg settings__svg_flash">
-                <use xlink:href="sprite.svg#flash"></use>
+                <use xlink:href="sprite.svg#VAC_SENSOR"></use>
               </svg>
             </span>
             <div class='settings-wrap'>
@@ -174,16 +174,16 @@
         </li>
         <li class="settings-item">
             <span class='settings__name settings__name_password'>Изменить пароль</span>
-            <svg class="settings__input-icon settings__input-icon_phone">
-              <use xlink:href="sprite.svg#form-phone"></use>
-            </svg>
-            <input type="text" class="settings__input settings__input_phone" placeholder="Телефон">
             <span class="settings__icon">
               <svg class="settings__svg settings__svg_password">
                 <use xlink:href="sprite.svg#change_password"></use>
               </svg>
             </span>
             <form id='changePassword' class='settings-wrap settings-form'>
+                <svg class="settings__input-icon settings__input-icon_phone">
+                  <use xlink:href="sprite.svg#form-phone"></use>
+                </svg>
+                <input type="text" class="settings__input settings__input_phone" placeholder="Телефон">
                 <input type="password" class="settings__input settings__input_password settings__input_current" placeholder="Текущий пароль">
                 <input type="password" class="settings__input settings__input_password settings__input_new" placeholder="Новый пароль">
                 <input type="password" class="settings__input settings__input_password settings__input_confirm" placeholder="Повторите новый пароль">
