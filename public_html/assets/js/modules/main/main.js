@@ -14,14 +14,11 @@ import settings from '../common/settings';
 import checkDevice from '../common/checkDevice';
 import updateBattery from '../common/updateBattery';
 
-import updateNotifications from './updateNotifications';
-
 class Main {
   constructor(data) {
     const json = JSON.parse(data.plain);
-    const notifications = JSON.parse(data.notificationsPlain);
 
-    json.box_time = moment(+json.box_time).format(settings.format);
+    json.time = moment(+json.box_time).format(settings.format);
     this.$template = $(nunjucks.render('main.html', json));
     this.$dashboardMode = this.$template.find('.dashboard-mode__item');
     this.$dashboardModeMobile = $('<div class="dashboard-mode-mobile"><div class="dashboard-mode-mobile__header">Режим работы</div></div>');
@@ -36,8 +33,6 @@ class Main {
     updateCapture();
     loadSettings();
     // грузим историю за сутки с квантом 30 минут
-
-    updateNotifications(notifications);
 
     $('body').empty().append(this.$template);
 

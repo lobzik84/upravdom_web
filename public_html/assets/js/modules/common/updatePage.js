@@ -32,7 +32,7 @@ function updatePage(data) {
       $('#mode__security').removeClass('dashboard-mode__item_changed');
     }
 
-    $('#status__value--box_time').text(moment(+dataJSON.box_time).format(settings.format));
+    $('#status__value--box_time').attr('data-time', dataJSON.box_time).text(moment(+dataJSON.box_time).format(settings.format));
 
     for (const key in dataJSON) {
       try {

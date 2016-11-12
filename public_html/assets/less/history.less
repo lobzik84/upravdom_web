@@ -85,8 +85,18 @@
   }
 
   &-chart {
+    height: 300px;
     background-color: @white;
     position: relative;
+
+    .ct-line {
+      stroke-width: 2px !important;
+    }
+
+    .ct-point {
+      stroke-width: 5px !important;
+      stroke-linecap: round;
+    }
 
     // .chartist-tooltip-value {
     //   display: none;
@@ -95,11 +105,47 @@
     &__line {
       stroke-width: 2px;
 
-      &_stories {
+      &_INTERNAL_TEMP {
         stroke: green;
       }
 
-      &_remaining {
+      &_INTERNAL_HUMIDITY {
+        stroke: red;
+      }
+
+      &_LUMIOSITY {
+        stroke: green;
+      }
+
+      &_VBAT_SENSOR {
+        stroke: red;
+      }
+
+      &_VAC_SENSOR {
+        stroke: green;
+      }
+
+      &_GAS_SENSOR_ANALOG {
+        stroke: red;
+      }
+
+      &_BATT_TEMP {
+        stroke: green;
+      }
+
+      &_MODEM_RSSI {
+        stroke: red;
+      }
+
+      &_OUTSIDE_TEMP {
+        stroke: green;
+      }
+
+      &_RAIN {
+        stroke: red;
+      }
+
+      &_CLOUDS {
         stroke: red;
       }
     }

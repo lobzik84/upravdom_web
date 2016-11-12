@@ -1,8 +1,9 @@
 import postData from './postData';
 import decryptLog from './decryptLog';
+import updateLog from './updateLog';
 
 
-function loadLog(from, to, module_name, severity ) {
+function loadLog(from, to, module_name, severity) {
   const kf = new KeyFile();
 
   const request = {
@@ -24,7 +25,7 @@ function loadLog(from, to, module_name, severity ) {
         console.log(data);
       }
       const decrypt = decryptLog(kf, data);
-
+      updateLog(decrypt);
     }
   };
 

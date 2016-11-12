@@ -6,10 +6,10 @@ const updateHistory = (data) => {
   const history = [
     {
       name: 'label',
-      className: 'history-chart__line_label',
+      className: 'history-chart__line history-chart__line_label',
       data: [
-        { x: new Date(dataJSON.from), у: 0 },
-        { x: new Date(dataJSON.to), у: 0 },
+        { x: dataJSON.from, y: 0 },
+        { x: dataJSON.to, y: 0 },
       ],
     },
   ];
@@ -17,11 +17,12 @@ const updateHistory = (data) => {
   dataJSON.list.forEach((item) => {
     const newItem = {
       name: item.alias,
+      className: `history-chart__line history-chart__line_${item.alias}`,
     };
     newItem.data = [];
     item.data.forEach((itemData) => {
       const newData = {
-        x: new Date(itemData.x), у: itemData.y, meta: item.description,
+        x: itemData.x, y: itemData.y, meta: item.description,
       };
       newItem.data.push(newData);
     });
@@ -33,7 +34,7 @@ const updateHistory = (data) => {
     console.log('updateHistory', dataJSON);
   }
 
-  const chart = new Chartist.Line('.history-chart', {
+  new Chartist.Line('.history-chart', {
     series: history,
   }, {
     plugins: [
@@ -42,15 +43,19 @@ const updateHistory = (data) => {
     axisX: {
       type: Chartist.FixedScaleAxis,
       divisor: 24,
-      labelInterpolationFnc: (value) => {
+      labelInterpolationFnc(value) {
         return moment(value).format('HH:mm');
       },
     },
     axisY: {
-      onlyInteger: true,
-      low: 0,
+      offset: 80,
+      labelInterpolationFnc() {
+        return '';
+      },
+      scaleMinSpace: 15,
     },
-  });
+  },
+);
 };
 
 export default updateHistory;

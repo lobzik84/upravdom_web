@@ -88,3 +88,25 @@ const history = [
 }
 
 export default Chart;
+
+
+//
+// [
+//   {
+//     name: 'label',
+//     className: 'history-chart__line_label',
+//     data: [
+//       { x: dataJSON.from, y: 0 },
+//       { x: dataJSON.to, y: 0 },
+//     ],
+//   },
+//   {
+//     name: 'stories',
+//     className: 'history-chart__line_stories',
+//     data: [
+//     { x: 1478873320000, y: 25.633977011494256, meta: 'Температура в помещении' },
+//     { x: 1478874820000, y: 25.08049808429119, meta: 'Температура в помещении' },
+//     { x: 1478876620000, y: 24.81464367816092, meta: 'Температура в помещении' },
+//     { x: 1478878431000, y: 25.276475095785443, meta: 'Температура в помещении' },
+//     ],
+//   }]
