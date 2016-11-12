@@ -16,7 +16,7 @@ const postData = (obj, successF, failF, errorF) => {
                 if (data.session_key !== null && typeof data.session_key !== 'undefined' && data.session_key.length > 5) {
                     localStorage.session_key = data.session_key;
                 }
-                if (data.connection_type !== settings.connection_type) {
+                if (typeof data.connection_type !== 'undefined' && data.connection_type !== settings.connection_type) {
                     settings.connection_type = data.connection_type;
                 }
                 if (successF !== null && typeof successF === 'function') {
