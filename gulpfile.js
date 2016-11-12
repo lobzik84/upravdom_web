@@ -36,12 +36,11 @@ var paths = {
         'public_html/assets/js/vendors/inputmask.js'
     ]
 };
-// 'public_html/assets/js/src/*.js' - там лежат рудименты
 
 gulp.task('default', ['dev'], function() {
   gulp.watch('public_html/assets/sprite/*.svg', ['svgstore']);
   gulp.watch('public_html/assets/less/**/*.less', ['styles']);
-  gulp.watch('public_html/assets/js/modules/**/*.js', ['build']);
+  gulp.watch('public_html/assets/js/components/**/*.js', ['build']);
 	gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(['public_html/assets/index.html','public_html/assets/templates/*'], ['copy-html']);
 	gulp.watch('public_html/assets/dist/index.html').on('change', browserSync.reload);
@@ -73,7 +72,7 @@ gulp.task('production', [
 
 
 gulp.task('build', function() {
-  glob('public_html/assets/js/modules/**/*.js', function(err, files) {
+  glob('public_html/assets/js/components/**/*.js', function(err, files) {
     const options = {
         compress: {
             global_defs: {
@@ -169,7 +168,7 @@ gulp.task('scripts-prod', function() {
       }
   };
   gulp.src(paths.scripts)
-    .pipe(concat('x.min.js'))
+    .pipe(concat('c.min.js'))
     .pipe(uglifyjs(options))
     .pipe(gulp.dest('public_html/dist/js'));
 });

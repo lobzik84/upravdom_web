@@ -1,14 +1,14 @@
 <div id='history-scroll' class='history-scroll'>
   <ul class="history-list">
-    {% for item in history %}
-      <li class="history-item">
-          <span class="history__icon history__icon_{{ item.importance }}">
-              <svg class="history__svg history__svg_{{ item.type }}">
-                <use xlink:href="sprite.svg#{{ item.type }}"></use>
+    {% for item in recs %}
+      <li data-id='{{ item.id }}' class="history-item">
+          <span class="history__icon history__icon_{{ item.severity }}">
+              <svg class="history__svg history__svg_{{ item.icon }}">
+                <use xlink:href="sprite.svg#{{ item.icon }}"></use>
               </svg>
           </span>
-          <span class="history__data"> {{ date }}</span>
-          <span class="history__text">{{ item.message }}</span>
+          <span class="history__data"> {{ item.date }}</span>
+          <span class="history__text">{{ item.text }}</span>
       </li>
     {% endfor %}
   </ul>

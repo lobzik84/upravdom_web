@@ -26,9 +26,9 @@
 
     @media @smartphones {
       text-align: left;
-      background-color: #444;
+      background-color: #333;
       margin-bottom: 0;
-      padding: 14px;
+      padding: 25px 20px;
     }
 
     &__text {
@@ -98,19 +98,13 @@
       stroke-linecap: round;
     }
 
-    // .chartist-tooltip-value {
-    //   display: none;
-    // }
-
     &__line {
-      stroke-width: 2px;
-
       &_INTERNAL_TEMP {
-        stroke: green;
+        stroke: #56b459;
       }
 
       &_INTERNAL_HUMIDITY {
-        stroke: red;
+        stroke: #2bb4f4;
       }
 
       &_LUMIOSITY {
@@ -122,7 +116,7 @@
       }
 
       &_VAC_SENSOR {
-        stroke: green;
+        stroke: #ffc416;
       }
 
       &_GAS_SENSOR_ANALOG {
@@ -198,7 +192,7 @@
 
     @media @smartphones {
       font-size: 16px;
-      background-color: #333;
+      background-color: #444;
     }
   }
 
@@ -227,16 +221,20 @@
     bottom: 0;
     left: 0;
 
-    &_critical {
+    &_ALARM {
       background-color: @red;
     }
 
-    &_warning {
+    &_ALERT {
       background-color: #ff9801;
     }
 
-    &_actions {
+    &_INFO {
       background-color: #607d8b;
+    }
+
+    &_OK {
+      background-color: @green;
     }
   }
 

@@ -5,12 +5,9 @@
   font-family: @roboto-regular;
 
   @media @smartphones {
-    background-color: @black;
-    z-index: 10000;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    .wrapper {
+      padding: 0;
+    }
   }
 
   &-item {
@@ -63,6 +60,7 @@
       text-align: left;
       width: auto;
       margin-bottom: 8px;
+      margin-left: 45px;
     }
   }
 
@@ -95,10 +93,18 @@
     width: 19px;
     fill: @white;
 
+    @media @smartphones {
+      height: 30px;
+      width: 30px;
+      margin-top: 7px;
+    }
+
     &_close {
       @media @smartphones {
         height: 40px;
         width: 40px;
+        fill: #000;
+        margin-top: 2px;
       }
     }
 
@@ -115,7 +121,7 @@
 
     @media @smartphones {
       display: block;
-      margin-left: 35px;
+      margin-left: 45px;
     }
   }
 }

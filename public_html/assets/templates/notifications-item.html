@@ -1,0 +1,16 @@
+<li data-id='{{ item.id }}' class='notifications-item notifications-item_{{ item.severity }}'>
+  <div class='wrapper'>
+    <span class="notifications__icon notifications__icon_{{ item.parameterAlias }}">
+        <svg class="notifications__svg notifications__svg_{{ item.parameterAlias }}">
+          <use xlink:href="sprite.svg#{{ item.parameterAlias }}"></use>
+        </svg>
+    </span>
+    <span class="notifications__data">{{ item.startDate }} - {{ item.endDate }}</span>
+    <span class="notifications__text">{{ item.text }}</span>
+    <span class="notifications__icon notifications__icon_close">
+        <svg class="notifications__svg notifications__svg_close">
+          <use xlink:href="sprite.svg#close"></use>
+        </svg>
+    </span>
+  </div>
+</li>

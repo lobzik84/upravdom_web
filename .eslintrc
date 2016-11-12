@@ -17,5 +17,6 @@
       'document': true,
       'window': true,
       'Chartist': true,
+      'btoa', true,
   }
 }

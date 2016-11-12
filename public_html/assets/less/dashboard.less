@@ -20,6 +20,21 @@
     @media @smartphones {
       font-size: 26px;
       margin-top: 3px;
+
+      &__place {
+        display: none;
+      }
+
+      &__separate {
+        display: none;
+      }
+
+      &__time {
+        font-size: 25px;
+        position: absolute;
+        top: -3px;
+        right: 0;
+      }
     }
   }
 
@@ -30,7 +45,7 @@
     @media @smartphones {
       display: block;
       background-color: #333;
-      margin: 23px -15px 0;
+      margin: -32px -15px 0;
       padding: 15px;
     }
   }
@@ -98,9 +113,10 @@
     position: relative;
 
     @media @smartphones {
-      position: absolute;
-      top: 0;
-      right: 28px;
+      display: none;
+      // position: absolute;
+      // top: 0;
+      // right: 28px;
     }
 
     &__icon {
@@ -175,6 +191,10 @@
     vertical-align: top;
     margin-left: 25px;
 
+    @media @smartphones {
+      margin-right: 105px;
+    }
+
     &_charge {
       .dashboard-battery__icon_charge {
         display: inline-block;
@@ -224,7 +244,8 @@
     &__count {
       display: inline-block;
       vertical-align: top;
-      margin-top: 6px;
+      font-size: 18px;
+      margin-top: 3px;
     }
   }
 }
