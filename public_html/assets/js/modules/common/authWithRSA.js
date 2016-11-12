@@ -18,21 +18,23 @@ function authWithRSA(kf, data) {
         "session_key": localStorage["session_key"]
     }
     var success = function (data) {
-        if (data["result"] === "success") {
-            if (DEBUG) {
-                console.log("successfully authenticated with RSA");
-            }
-            updateData();
-        } else {
-            console.error("Error while RSA auth: " + data["message"] + ". Falling back to SRP.");
-             new Login();
+
+        if (DEBUG) {
+            console.log("successfully authenticated with RSA");
         }
+        updateData();
+
     }
+    var error = function (data) {
+        console.error("Error while RSA auth: " + data["message"] + ". Falling back to SRP.");
+        new Login();
+    }
+
     var fail = function () {
         console.error("Error while RSA auth. Falling back to SRP.");
-         new Login();
+        new Login();
     }
-    postData(obj, success, fail);
+    postData(obj, success, fail, error);
 }
 
 export default authWithRSA;
