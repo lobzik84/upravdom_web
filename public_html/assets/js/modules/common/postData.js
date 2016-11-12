@@ -16,7 +16,10 @@ const postData = (obj, successF, failF, errorF) => {
                 if (data.session_key !== null && typeof data.session_key !== 'undefined' && data.session_key.length > 5) {
                     localStorage.session_key = data.session_key;
                 }
-                if (successF !== null) {
+                if (data.connection_type !== settings.connection_type) {
+                    settings.connection_type = data.connection_type;
+                }
+                if (successF !== null && typeof successF === 'function') {
                     successF(data);
                 }
             } else if (data.result === 'do_register') {
@@ -42,6 +45,9 @@ const postData = (obj, successF, failF, errorF) => {
                     new Login();
                 }
             } else if (data.result === 'error') {
+                if (DEBUG) {
+                        console.error('got error from box: ' + data.message);
+                    }
                 if (errorF !== null && typeof errorF === 'function') {
                     errorF(data);
                 }

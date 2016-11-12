@@ -1819,6 +1819,79 @@ function SRP() {
             }
         })
     };
+    
+    this.updatePassword = function (newLogin, newSalt, newVerifier) {
+        this.tries++;
+        if (DEBUG) console.log(" SRP Handshaking..." + that.I + ":" + that.p  + " to " + newLogin);
+
+        var obj = {
+            "action": "handshake_srp",
+            "login": that.I,
+            "srp_A": Astr
+        }
+        $.ajax({
+            type: "POST",
+            url: that.url,
+            dataType: 'json',
+            crossDomain: true,
+            async: true,
+            data: JSON.stringify(obj),
+            success: function (data) {
+                if (data["result"] === "success") {
+                    localStorage["session_key"] = data["session_key"];
+                    console.log(" SRP Authenticating...");
+                    calculations(data["salt"], data["srp_B"], that.p);
+                    var obj = {
+                        "action": "update_srp",
+                        "session_key": localStorage["session_key"],
+                        "srp_login": that.I,
+                        "new_login": newLogin,
+                        "new_salt": newSalt,
+                        "new_verifier": newVerifier,
+                        "srp_M": M
+                    }
+                    $.ajax({
+                        type: "POST",
+                        url: that.url,
+                        dataType: 'json',
+                        crossDomain: true,
+                        async: true,
+                        data: JSON.stringify(obj),
+                        success: function (data) {
+                            if (data["result"] === "success") {
+                                if (data["srp_M"] === M2) {
+                                    authenticated = true;
+                                    that.tries = 0;
+                                    that.userId = data["user_id"];
+                                    that.boxId = data["box_id"];
+                                    console.log(" Updated successfully!");
+                                    success();
+                                } else {
+                                    console.log("SRP failed, next try...");
+                                    if (that.tries < 3)
+                                        that.identify();
+                                    else
+                                        that.error_message("Server key does not match");
+
+                                }
+                            } else {
+                                alert("Error while SRP login: " + data["message"]);
+                            }
+                        },
+                        fail: function () {
+                            alert("Network error while SRP login");
+                        }
+                    })
+                } else {
+                    alert("Error while SRP handshake: " + data["message"]);
+                }
+            },
+            fail: function () {
+                alert("Network error while SRP handshake");
+            }
+        })
+    };
+    
 
     function calculations(s, ephemeral, pass) {
         var B = new BigInteger(ephemeral, 16);
