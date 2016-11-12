@@ -42,14 +42,14 @@ const postData = (obj, successF, failF, errorF) => {
                     new Login();
                 }
             } else if (data.result === 'error') {
-                if (errorF !== null) {
+                if (errorF !== null && typeof errorF === 'function') {
                     errorF(data);
                 }
             }
         },
         fail() {
             console.error('network error');
-            if (failF !== null) {
+            if (failF !== null && typeof failF === 'function') {
                 failF();
             }
         },
