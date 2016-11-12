@@ -24,7 +24,7 @@ const postData = (obj, successF, failF, errorF) => {
         };
         updateConnection(connect);
 
-        if (data.connection_type !== settings.connection_type) {
+        if (typeof data.connection_type !== 'undefined' && data.connection_type !== settings.connection_type) {
           settings.connection_type = data.connection_type;
         }
         if (successF !== null && typeof successF === 'function') {
