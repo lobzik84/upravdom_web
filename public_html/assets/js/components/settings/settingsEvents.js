@@ -34,6 +34,13 @@ class SettingsEvents {
     const $this = $(currentTarget);
     const $submitButton = $this.find('input.settings__save');
 
+    const $email = $this.find('.settings__input_email');
+
+    if ($email.val().length > 0 && !commonData.email.test($email.val())) {
+      alert('Введите электронную почту');
+      return false;
+    }
+
     if (DEBUG) {
       console.log('replace submitForm');
     }
@@ -61,7 +68,7 @@ class SettingsEvents {
         const newLogin = $this.find('.settings__input_phone').val();
         const oldPass = $this.find('.settings__input_current').val();
         const confirmPassword = $this.find('.settings__input_confirm').val();
-        if (confirmPassword === newPassword) {
+        if (confirmPassword === newPassword && newPassword.length > 0) {
           const success = () => {
             if (DEBUG) {
               console.log('successfully updated password');

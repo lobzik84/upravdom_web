@@ -17,13 +17,13 @@
                     <span class="settings-options__name">Мин</span>
                     <nobr>
                         <span class="settings-options__switcher settings-options__switcher_minus">
-                            <svg class="settings-options__svg ">
+                            <svg class="settings-options__svg">
                               <use xlink:href="sprite.svg#minus"></use>
                             </svg>
                         </span>
                         <span class="settings-options__value"><b id='settings__value--InTempAlertMin'>{{ 20 }}</b>&deg</span>
                         <span class="settings-options__switcher settings-options__switcher_plus">
-                            <svg class="settings-options__svg ">
+                            <svg class="settings-options__svg">
                               <use xlink:href="sprite.svg#plus"></use>
                             </svg>
                         </span>
@@ -164,7 +164,7 @@
                 <svg class="settings__input-icon settings__input-icon_mail">
                   <use xlink:href="sprite.svg#form-mail"></use>
                 </svg>
-                <input id='settings__value--NotificationsEmail' type="text" class="settings__input" placeholder="Электронная почта">
+                <input id='settings__value--NotificationsEmail' type="email" class="settings__input settings__input_email" placeholder="Электронная почта">
                 <svg class="settings__input-icon settings__input-icon_base">
                   <use xlink:href="sprite.svg#form-base"></use>
                 </svg>
@@ -172,7 +172,7 @@
                 <input type='submit' value='Сохранить' class='settings__save settings__save_profile'>
             </form>
         </li>
-        <li id='settings-item-change-password' class="settings-item">
+        <li id='settings-item-change-password' class="settings-item settings-item_change-password">
             <span class='settings__name settings__name_password'>Изменить пароль</span>
             <span class="settings__icon">
               <svg class="settings__svg settings__svg_password">
