@@ -37,21 +37,20 @@ const updateNotifications = (oldList) => {
       return false;
     });
 
-    updater.forEach((item) => {
-      if (item) {
-        const $count = $('body').find('.dashboard-info__count');
-        const $element = $(nunjucks.render('notifications-item.html', { item }));
-
-        $count.text(parseInt($count.text(), 10) + 1);
-        $('.notifications-list').append($element);
-        removeEvent($element);
-      }
-    });
+    if (updater.length) {
+      updater.forEach((item) => {
+        if (item) {
+          $(nunjucks.render('notifications-item.html', { item }, (err, res) => {
+            const $element = $(res);
+            removeEvent($element.find('.notifications__icon_close'));
+            $('.notifications-list').append($element);
+          }));
+        }
+      });
+    }
   } else {
     const $template = $(nunjucks.render('notifications.html', notifications));
-
     removeEvent($template.find('.notifications__icon_close'));
-
     $('body').prepend($template);
   }
 };
