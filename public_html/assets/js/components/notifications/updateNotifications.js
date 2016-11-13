@@ -49,10 +49,16 @@ const updateNotifications = (oldList) => {
       });
     }
   } else {
-    const $template = $(nunjucks.render('notifications.html', notifications));
-    removeEvent($template.find('.notifications__icon_close'));
-    $('body').prepend($template);
+    $(nunjucks.render('notifications.html', notifications, (err, res) => {
+      const $template = $(res);
+
+      removeEvent($template.find('.notifications__icon_close'));
+      $('body').prepend($template);
+    }));
   }
+  setTimeout(() => {
+    $('.dashboard-info__count').text($('#notifications').find('.notifications-item').length);
+  }, 1000);
 };
 
 export default updateNotifications;

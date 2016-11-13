@@ -16,7 +16,6 @@ function updatePage(data) {
     updateBattery(dataJSON);
 
     if (notificationsJSON.length) {
-      $('.dashboard-info__count').text(notificationsJSON.length);
       updateNotifications(notificationsJSON);
     }
 
