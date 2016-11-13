@@ -183,6 +183,36 @@
       margin-top: 1px;
     }
 
+    &_remote-up {
+      .dashboard-keys__svg_remote-up {
+        display: block;
+      }
+    }
+
+    &_remote-down {
+      .dashboard-keys__svg_remote-down {
+        display: block;
+      }
+    }
+
+    &_local-up {
+      .dashboard-keys__svg_local-up {
+        display: block;
+      }
+    }
+
+    &_local-down {
+      .dashboard-keys__svg_local-down {
+        display: block;
+      }
+    }
+
+    &_fail {
+      .dashboard-keys__svg_fail {
+        display: block;
+      }
+    }
+
     &__svg {
       height: 19px;
       width: 134px;
@@ -190,6 +220,14 @@
       @media @smartphones {
         height: 23px;
         width: 165px;
+      }
+
+      &_remote-up,
+      &_remote-down,
+      &_local-up,
+      &_local-down,
+      &_fail {
+        display: none;
       }
     }
   }
