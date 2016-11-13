@@ -231,6 +231,10 @@
     bottom: 0;
     left: 0;
 
+    @media @smartphones {
+      width: 50px;
+    }
+
     &_ALARM {
       background-color: @red;
     }
@@ -252,5 +256,11 @@
     height: 19px;
     width: 19px;
     fill: @white;
+
+    @media @smartphones {
+      height: 36px;
+      width: 36px;
+      margin-top: 12px;
+    }
   }
 }

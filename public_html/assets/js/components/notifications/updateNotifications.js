@@ -15,7 +15,7 @@ const updateNotifications = (oldList) => {
   const notifications = {
     list,
   };
-  const remove = ($item) => {
+  const removeEvent = ($item) => {
     $item.on('click', (e) => {
       const $closest = $(e.currentTarget).closest('.notifications-item');
       const $count = $('body').find('.dashboard-info__count');
@@ -44,13 +44,13 @@ const updateNotifications = (oldList) => {
 
         $count.text(parseInt($count.text(), 10) + 1);
         $('.notifications-list').append($element);
-        remove($element);
+        removeEvent($element);
       }
     });
   } else {
     const $template = $(nunjucks.render('notifications.html', notifications));
 
-    remove($template.find('.notifications__icon_close'));
+    removeEvent($template.find('.notifications__icon_close'));
 
     $('body').prepend($template);
   }
