@@ -40,7 +40,9 @@ class HistoryEvents {
   scrolling() {
     this.$chart.remove();
     $('.history').append(this.$list);
-    loadLog(this.timeInterval, +this.time, 'ModemModule', 'INFO');
+    setTimeout(() => {
+      loadLog(this.timeInterval, +this.time, 'ModemModule', 'INFO');
+    }, 1500);
   }
 
   chart() {

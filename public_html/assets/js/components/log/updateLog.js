@@ -25,16 +25,17 @@ const updateLog = (data) => {
     logJSON.recs.push(rec);
   });
 
-  $('.history-log').empty().append(nunjucks.render('history-list.html', logJSON));
-
-  if ($('#history-scroll').length) {
-    new Iscroll('#history-scroll', {
-      mouseWheel: true,
-      scrollbars: 'custom',
-      interactiveScrollbars: true,
-      shrinkScrollbars: 'scale',
-    });
-  }
+  nunjucks.render('history-list.html', logJSON, (err, res) => {
+    $('.history-log').empty().append(res);
+    if ($('#history-scroll').length) {
+      new Iscroll('#history-scroll', {
+        mouseWheel: true,
+        scrollbars: 'custom',
+        interactiveScrollbars: true,
+        shrinkScrollbars: 'scale',
+      });
+    }
+  });
 };
 
 export default updateLog;

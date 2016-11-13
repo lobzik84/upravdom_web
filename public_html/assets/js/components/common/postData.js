@@ -61,7 +61,7 @@ const postData = (obj, successF, failF, errorF) => {
         }
       }
     },
-    fail() {
+    error() {
       if (DEBUG) {
         console.error('network error');
       }

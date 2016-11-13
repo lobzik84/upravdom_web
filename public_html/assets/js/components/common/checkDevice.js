@@ -1,5 +1,5 @@
 const checkDevice = () => {
-  if ($(window).width() > 1009) {
+  if ($(window).width() > 1024) {
     return 'desktop';
   }
   return 'mobile';

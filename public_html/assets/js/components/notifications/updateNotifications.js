@@ -16,7 +16,7 @@ const updateNotifications = (oldList) => {
     list,
   };
   const remove = ($item) => {
-    $item.on('touchend click', (e) => {
+    $item.on('click', (e) => {
       const $closest = $(e.currentTarget).closest('.notifications-item');
       const $count = $('body').find('.dashboard-info__count');
       const commandData = {

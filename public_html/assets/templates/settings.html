@@ -1,4 +1,4 @@
-<div class="settings settings_hide">
+<div class="settings">
     <div class="settings__header">Настройки
     <svg class='settings__header-svg'>
       <use xlink:href="sprite.svg#arrow"></use>
@@ -21,7 +21,7 @@
                               <use xlink:href="sprite.svg#minus"></use>
                             </svg>
                         </span>
-                        <span class="settings-options__value"><b id='settings__value--InTempAlertMin'>{{ InTempAlertMin }}</b>&deg</span>
+                        <span class="settings-options__value"><b id='settings__value--InTempAlertMin'>{{ 20 }}</b>&deg</span>
                         <span class="settings-options__switcher settings-options__switcher_plus">
                             <svg class="settings-options__svg ">
                               <use xlink:href="sprite.svg#plus"></use>
@@ -37,7 +37,7 @@
                               <use xlink:href="sprite.svg#minus"></use>
                             </svg>
                         </span>
-                        <span class="settings-options__value"><b id='settings__value--InTempAlertMax'>{{ InTempAlertMax }}</b>&deg</span>
+                        <span class="settings-options__value"><b id='settings__value--InTempAlertMax'>{{ 25 }}</b>&deg</span>
                         <span class="settings-options__switcher settings-options__switcher_plus">
                             <svg class="settings-options__svg ">
                               <use xlink:href="sprite.svg#plus"></use>
@@ -63,7 +63,7 @@
                               <use xlink:href="sprite.svg#minus"></use>
                             </svg>
                         </span>
-                        <span class="settings-options__value"><b id='settings__value--VACAlertMin'>{{ VACAlertMin }}</b>В</span>
+                        <span class="settings-options__value"><b id='settings__value--VACAlertMin'>{{ 50 }}</b>В</span>
                         <span class="settings-options__switcher settings-options__switcher_plus">
                             <svg class="settings-options__svg ">
                               <use xlink:href="sprite.svg#plus"></use>
@@ -79,7 +79,7 @@
                               <use xlink:href="sprite.svg#minus"></use>
                             </svg>
                         </span>
-                        <span class="settings-options__value"><b id='settings__value--VACAlertMax'>{{ VACAlertMax }}</b>В</span>
+                        <span class="settings-options__value"><b id='settings__value--VACAlertMax'>{{ 250 }}</b>В</span>
                         <span class="settings-options__switcher settings-options__switcher_plus">
                             <svg class="settings-options__svg ">
                               <use xlink:href="sprite.svg#plus"></use>
@@ -170,6 +170,24 @@
                 </svg>
                 <input id='settings__value--BoxName' type="text" class="settings__input" placeholder="Название локации">
                 <input type='submit' value='Сохранить' class='settings__save settings__save_profile'>
+            </form>
+        </li>
+        <li id='settings-item-change-password' class="settings-item">
+            <span class='settings__name settings__name_password'>Изменить пароль</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_password">
+                <use xlink:href="sprite.svg#change_password"></use>
+              </svg>
+            </span>
+            <form id='changePassword' class='settings-wrap settings-form'>
+                <svg class="settings__input-icon settings__input-icon_phone">
+                  <use xlink:href="sprite.svg#form-phone"></use>
+                </svg>
+                <input type="text" id='settings__value--UserLogin' class="settings__input settings__input_phone" placeholder="Телефон">
+                <input type="password" class="settings__input settings__input_password settings__input_current" placeholder="Текущий пароль">
+                <input type="password" class="settings__input settings__input_password settings__input_new" placeholder="Новый пароль">
+                <input type="password" class="settings__input settings__input_password settings__input_confirm" placeholder="Повторите новый пароль">
+                <input type='submit' value='Сохранить' class='settings__save'>
             </form>
         </li>
     </ul>

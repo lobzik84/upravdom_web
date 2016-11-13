@@ -17,6 +17,12 @@
     }
   }
 
+  &-log {
+    @media @smartphones {
+      margin-top: 3px;
+    }
+  }
+
   &-header {
     text-align: center;
     line-height: 33px;
@@ -26,14 +32,18 @@
 
     @media @smartphones {
       text-align: left;
-      background-color: #333;
+      background-color: #444;
       margin-bottom: 0;
-      padding: 25px 20px;
+      padding: 20px;
     }
 
     &__text {
       font-size: 23px;
       margin-top: 5px;
+
+      @media @smartphones {
+        font-size: 30px;
+      }
     }
 
     &__svg {
@@ -192,7 +202,7 @@
 
     @media @smartphones {
       font-size: 16px;
-      background-color: #444;
+      background-color: #333;
     }
   }
 

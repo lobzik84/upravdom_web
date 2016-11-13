@@ -32,7 +32,7 @@
       &__time {
         font-size: 25px;
         position: absolute;
-        top: -3px;
+        top: 4px;
         right: 0;
       }
     }
@@ -46,7 +46,7 @@
       display: block;
       background-color: #333;
       margin: -32px -15px 0;
-      padding: 15px;
+      padding: 22px 15px;
     }
   }
 
@@ -115,9 +115,6 @@
 
     @media @smartphones {
       display: none;
-      // position: absolute;
-      // top: 0;
-      // right: 28px;
     }
 
     &__icon {
@@ -135,6 +132,8 @@
     &__count {
       color: @black;
       font-size: 11px;
+      text-align: center;
+      min-width: 10px;
       background-color: #ffc107;
       position: absolute;
       top: 0;
@@ -176,6 +175,10 @@
     vertical-align: top;
     margin-top: 3px;
 
+    @media @smartphones {
+      margin-top: 1px;
+    }
+
     &__svg {
       height: 19px;
       width: 134px;
@@ -193,7 +196,7 @@
     margin-left: 25px;
 
     @media @smartphones {
-      margin-right: 105px;
+      margin-right: 87px;
     }
 
     &_charge {
@@ -247,6 +250,11 @@
       vertical-align: top;
       font-size: 18px;
       margin-top: 3px;
+
+      @media @smartphones {
+        font-size: 25px;
+        margin-top: 0;
+      }
     }
   }
 }

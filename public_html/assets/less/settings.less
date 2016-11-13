@@ -130,10 +130,13 @@
     text-align: center;
 
     @media @smartphones {
+      font-size: 30px;
       text-align: left;
+      line-height: 33px;
+      height: 33px;
       background-color: #444;
       margin-bottom: 0;
-      padding: 25px 20px;
+      padding: 20px;
     }
 
     &-svg {
@@ -143,7 +146,7 @@
         display: block;
         height: 15px;
         width: 15px;
-        margin-top: 4px;
+        margin-top: 10px;
         float: right;
       }
     }
@@ -290,6 +293,7 @@
     border: 0;
     cursor: pointer;
     box-sizing: content-box;
+    -webkit-appearance: none;
 
     @media @smartphones {
       width: 100%;

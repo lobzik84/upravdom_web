@@ -1,7 +1,7 @@
 <div id='notifications' class='notifications'>
   <ul class='notifications-list'>
-    {% for item in list %}
+    {% asyncAll item in list %}
       {% include 'notifications-item.html'%}
-    {% endfor %}
+    {% endall %}
   </ul>
 </div>
