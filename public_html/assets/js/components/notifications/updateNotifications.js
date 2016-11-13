@@ -2,13 +2,13 @@ import nunjucks from 'nunjucks';
 import moment from 'moment';
 
 import sendCommand from '../common/sendCommand';
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 
 const updateNotifications = (oldList) => {
   const list = oldList.map((item) => {
     const newItem = {
-      startDate: moment(+item.startDate).format(settings.fullFormat),
-      endDate: moment(+item.endDate).format(settings.format),
+      startDate: moment(+item.startDate).format(commonData.fullFormat),
+      endDate: moment(+item.endDate).format(commonData.format),
     };
     return Object.assign(item, newItem);
   });

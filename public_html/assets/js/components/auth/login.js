@@ -1,6 +1,6 @@
 import nunjucks from 'nunjucks';
 import updateData from '../common/updateData';
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 
 class Login {
   constructor() {
@@ -24,7 +24,7 @@ class Login {
   }
 
   masked() {
-    this.$phone.mask(settings.mask);
+    this.$phone.mask(commonData.mask);
   }
 
   authorization() {
@@ -38,7 +38,7 @@ class Login {
     srp.I = login;
     srp.p = password;
     srp.forward_url = '#';
-    srp.url = settings.global_serverJSONUrl;
+    srp.url = commonData.global_serverJSONUrl;
     srp.success = () => {
       const scrypt = scrypt_module_factory();
       const scryptBytes = scrypt.crypto_scrypt(scrypt.encode_utf8(`${login}:${password}`), scrypt.encode_utf8(''), 16384, 8, 1, 32);
@@ -49,7 +49,7 @@ class Login {
       ls.userId = srp.userId;
       ls.boxId = srp.boxId;
 
-      kf.downloadKeyFile(settings.global_serverJSONUrl, pbkdf, () => {
+      kf.downloadKeyFile(commonData.global_serverJSONUrl, pbkdf, () => {
         if (DEBUG) {
           console.log('sucessfully logged in with SRP, keyfile downloaded');
         }

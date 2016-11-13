@@ -5,7 +5,7 @@ import debounce from 'debounce';
 import Mode from './mode';
 import ToggleTitle from './toggleTitle';
 import Control from './control';
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 import checkDevice from '../common/checkDevice';
 
 import SettingsEvents from '../settings/settingsEvents';
@@ -19,7 +19,7 @@ class Main {
   constructor(data) {
     const json = JSON.parse(data.plain);
 
-    json.time = moment(+json.box_time).format(settings.format);
+    json.time = moment(+json.box_time).format(commonData.format);
     this.$template = $(nunjucks.render('main.html', json));
     this.$dashboardMode = this.$template.find('.dashboard-mode__item');
     this.$dashboardModeMobile = $('<div class="dashboard-mode-mobile"><div class="dashboard-mode-mobile__header">Режим работы</div></div>');
@@ -113,7 +113,7 @@ class Main {
     new ToggleTitle(this.$panelItem);
     new HistoryEvents(this.$historyMode, 'history-mode__item_changed');
 
-    this.$phone.mask(settings.mask);
+    this.$phone.mask(commonData.mask);
     //  действия по кнопкам управления
     this.elementsControl.forEach((element) => {
       new Control(this.$template.find(`#${element}-status`), element);

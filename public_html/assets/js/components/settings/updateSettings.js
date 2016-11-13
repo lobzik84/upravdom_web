@@ -1,5 +1,5 @@
 import updateNameSettings from './updateNameSettings';
-import settings from '../common/settings'; // global config!
+import commonData from '../common/commonData'; // global config!
 
 function updateSettings(data) {
   try {
@@ -25,7 +25,7 @@ function updateSettings(data) {
         }
         updateNameSettings(key, val);
         if (key === 'UserLogin') {
-          settings.user_login = json[key]; // store login in global settings
+          commonData.user_login = json[key]; // store login in global settings
         }
       } catch (ee) {
         console.error(ee);

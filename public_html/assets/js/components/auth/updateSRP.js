@@ -1,10 +1,10 @@
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 
 function updateLoginPassword(oldPassword, newLogin, newPassword, successF) {
   if (DEBUG) {
     console.log('updating password. looging in with SRP, handshaking');
   }
-  const oldLogin = settings.user_login;
+  const oldLogin = commonData.user_login;
 
   const newSrp = new SRP();
   newSrp.I = newLogin;
@@ -19,19 +19,19 @@ function updateLoginPassword(oldPassword, newLogin, newPassword, successF) {
   srp.p = oldPassword;
 
   srp.forward_url = '#';
-  srp.url = settings.global_serverJSONUrl;
+  srp.url = commonData.global_serverJSONUrl;
   srp.success = () => {
     if (DEBUG) {
       console.log('login, s, v uploaded, updating keyfile');
     }
-    settings.user_login = newLogin;
+    commonData.user_login = newLogin;
     const scrypt = scrypt_module_factory();
     const scryptBytes = scrypt.crypto_scrypt(scrypt.encode_utf8(`${newLogin}:${newPassword}`), scrypt.encode_utf8(''), 16384, 8, 1, 32);
     const pbkdf = cryptoHelpers.ua2hex(scryptBytes);
     localStorage.pbkdf = pbkdf;
     const kf = new KeyFile();
     localStorage[`${localStorage.userId}.${localStorage.boxId}.pbkdf`] = pbkdf;
-    kf.uploadKeyFile(settings.global_serverJSONUrl, () => {
+    kf.uploadKeyFile(commonData.global_serverJSONUrl, () => {
       if (kf.xhr.readyState === 4 && kf.xhr.status === 200) {
         if (successF !== null && typeof successF === 'function') {
           successF();

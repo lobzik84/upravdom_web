@@ -1,5 +1,5 @@
 import moment from 'moment';
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 
 
 const updateHistory = (data) => {
@@ -25,7 +25,7 @@ const updateHistory = (data) => {
       const newData = {
         x: itemData.x,
         y: itemData.y,
-        meta: `${moment(+itemData.x).format(settings.fullFormat)}?${item.description ? item.description : ''}?${parseInt(itemData.y, 10)}`,
+        meta: `${moment(+itemData.x).format(commonData.fullFormat)}?${item.description ? item.description : ''}?${parseInt(itemData.y, 10)}`,
       };
       newItem.data.push(newData);
     });

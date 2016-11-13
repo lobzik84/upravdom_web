@@ -1,5 +1,5 @@
 import nunjucks from 'nunjucks';
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 import updateData from '../common/updateData';
 import postData from '../common/postData';
 
@@ -20,7 +20,7 @@ class Registration {
   }
 
   masked() {
-    this.$phone.mask(settings.mask);
+    this.$phone.mask(commonData.mask);
   }
 
   static registered() {
@@ -29,7 +29,7 @@ class Registration {
     if (DEBUG) {
       console.log('generating RSA...');
     }
-    rsa.generate(1024, settings.global_rsa_e); // 1024 bits, public exponent = 10001
+    rsa.generate(1024, commonData.global_rsa_e); // 1024 bits, public exponent = 10001
     if (DEBUG) {
       console.log('RSA generated, generating salt');
     }
@@ -70,7 +70,7 @@ class Registration {
         if (DEBUG) {
           console.log(`created keyfile: \n${kf.getKeyFileAsStirng()}`);
         }
-        kf.uploadKeyFile(settings.global_serverJSONUrl, function () {
+        kf.uploadKeyFile(commonData.global_serverJSONUrl, function () {
           if (kf.xhr.readyState === 4 && kf.xhr.status === 200) {
             alert(`Successfully registered! UserId = ${data.new_user_id}`);
             updateData();

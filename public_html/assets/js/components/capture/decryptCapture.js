@@ -1,9 +1,9 @@
 import moment from 'moment';
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 
 function decryptCapture(kf, data) {
   const rsa = new RSAKey();
-  rsa.setPrivate(kf.getMyPublicKey(), settings.global_rsa_e, kf.getMyPrivateKey());
+  rsa.setPrivate(kf.getMyPublicKey(), commonData.global_rsa_e, kf.getMyPrivateKey());
 
   for (const camKey in data) {
     try {
@@ -30,7 +30,7 @@ function decryptCapture(kf, data) {
       const key = cryptoHelpers.toNumbers(res); //  creating key
       const cipher = cam.img_cipher;
       const bytesToDecrypt = cryptoHelpers.toNumbers(cipher); //  decoding cipher
-      const bytes = slowAES.decrypt(bytesToDecrypt, settings.global_aes_mode, key, key);
+      const bytes = slowAES.decrypt(bytesToDecrypt, commonData.global_aes_mode, key, key);
       // decrypting
 
       const imgDate = cam.img_date;

@@ -1,6 +1,6 @@
 import decryptData from './decryptData';
 import updatePage from '../main/updatePage';
-import settings from './settings';
+import commonData from './commonData';
 import postData from './postData';
 import Main from '../main/main';
 
@@ -19,12 +19,12 @@ function updateData() {
     if (DEBUG) {
       console.log('successfully loaded data, decrypting');
     }
-    setTimeout(updateData, settings.data_update_interval);
+    setTimeout(updateData, commonData.data_update_interval);
     const decrypt = decryptData(kf, data);
 
-    if (settings.first_loaded) {
+    if (commonData.first_loaded) {
       new Main(decrypt);
-      settings.first_loaded = false;
+      commonData.first_loaded = false;
     } else {
       updatePage(decrypt);
     }
@@ -34,7 +34,7 @@ function updateData() {
     if (DEBUG) {
       console.error('network error');
     }
-    setTimeout(updateData, settings.data_update_interval);
+    setTimeout(updateData, commonData.data_update_interval);
   };
   postData(authSettings, success, fail);
 }

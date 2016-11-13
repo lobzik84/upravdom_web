@@ -2,7 +2,7 @@ import moment from 'moment';
 import Iscroll from 'iscroll';
 import nunjucks from 'nunjucks';
 
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 
 
 const updateLog = (data) => {
@@ -17,7 +17,7 @@ const updateLog = (data) => {
   };
   dataJSON.recs.forEach((item) => {
     const rec = {
-      date: moment(item.date).format(settings.fullFormat),
+      date: moment(item.date).format(commonData.fullFormat),
       severity: item.severity,
       text: item.text,
       icon: 'INTERNAL_TEMP',

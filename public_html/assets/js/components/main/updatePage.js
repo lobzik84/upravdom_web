@@ -1,5 +1,5 @@
 import moment from 'moment';
-import settings from '../common/settings';
+import commonData from '../common/commonData';
 import updateBattery from '../battery/updateBattery';
 
 import updateNotifications from '../notifications/updateNotifications';
@@ -32,7 +32,7 @@ function updatePage(data) {
       $('#mode__security').removeClass('dashboard-mode__item_changed');
     }
 
-    $('#status__value--box_time').data('time', dataJSON.box_time).text(moment(+dataJSON.box_time).format(settings.format));
+    $('#status__value--box_time').data('time', dataJSON.box_time).text(moment(+dataJSON.box_time).format(commonData.format));
 
     for (const key in dataJSON) {
       try {

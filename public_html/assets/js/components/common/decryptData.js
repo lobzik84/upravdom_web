@@ -1,4 +1,4 @@
-import settings from './settings';
+import commonData from './commonData';
 
 
 function decryptData(kf, data) {
@@ -6,7 +6,7 @@ function decryptData(kf, data) {
     console.log(`decrypting \n ${JSON.stringify(data)}`);
   }
   let rsa = new RSAKey();
-  rsa.setPrivate(kf.getMyPublicKey(), settings.global_rsa_e, kf.getMyPrivateKey());
+  rsa.setPrivate(kf.getMyPublicKey(), commonData.global_rsa_e, kf.getMyPrivateKey());
   const res = rsa.decrypt(data.key_cipher);
 
   if (DEBUG) {
@@ -15,7 +15,7 @@ function decryptData(kf, data) {
   const key = cryptoHelpers.toNumbers(res); //  creating key
   const cipher = data.parameters;
   const bytesToDecrypt = cryptoHelpers.toNumbers(cipher); //  decoding cipher
-  const bytes = slowAES.decrypt(bytesToDecrypt, settings.global_aes_mode, key, key);
+  const bytes = slowAES.decrypt(bytesToDecrypt, commonData.global_aes_mode, key, key);
   // decrypting message
   const plain = cryptoHelpers.decode_utf8(cryptoHelpers.convertByteArrayToString(bytes));
   //  decoding utf-8
@@ -26,7 +26,7 @@ function decryptData(kf, data) {
 
   const notificationCipher = data.notifications;
   const nbytesToDecrypt = cryptoHelpers.toNumbers(notificationCipher); //  decoding cipher
-  const nbytes = slowAES.decrypt(nbytesToDecrypt, settings.global_aes_mode, key, key);
+  const nbytes = slowAES.decrypt(nbytesToDecrypt, commonData.global_aes_mode, key, key);
   // decrypting message
   const notificationsPlain = cryptoHelpers.decode_utf8(cryptoHelpers.convertByteArrayToString(nbytes));
   //  decoding utf-8
@@ -38,7 +38,7 @@ function decryptData(kf, data) {
   const pk = kf.getBoxKey(kf.boxId);
 
   rsa = new RSAKey();
-  rsa.setPublic(pk, settings.global_rsa_e);
+  rsa.setPublic(pk, commonData.global_rsa_e);
   const isValid = rsa.verifyString(cipher, data.digest);
   //  checking signature with sender's public key
   if (isValid) {

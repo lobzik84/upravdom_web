@@ -2,7 +2,7 @@ import debounce from 'debounce';
 import sendCommand from '../common/sendCommand';
 import updateNameSettings from './updateNameSettings';
 import updateSRP from '../auth/updateSRP';
-import settings from '../common/settings'; // global config!
+import commonData from '../common/commonData'; // global config!
 
 class SettingsEvents {
     constructor($target, signName) {
@@ -56,7 +56,7 @@ class SettingsEvents {
             if (DEBUG) {
                 console.log('replace password');
             }
-            if (settings.connection_type === 'local') {
+            if (commonData.connection_type === 'local') {
                 const newPassword = $this.find('.settings__input_new').val();
                 const newLogin = $this.find('.settings__input_phone').val();
                 const oldPass = $this.find('.settings__input_current').val();
@@ -78,7 +78,7 @@ class SettingsEvents {
                     $submitButton.val('Сохранить').removeClass('settings__save_success');
                 }
             } else {
-                alert('Смена пароля возможна только при прямом подключении' + settings.connection_type);
+                alert('Смена пароля возможна только при прямом подключении' + commonData.connection_type);
                 $this.attr('disabled', false);
                 $this.find('input').attr('readonly', false);
                 $submitButton.val('Сохранить').removeClass('settings__save_success');

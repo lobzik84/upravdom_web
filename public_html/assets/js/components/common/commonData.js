@@ -1,4 +1,4 @@
-const settings = {
+const commonData = {
   global_serverJSONUrl: 'http://my.moidom.molnet.ru/hs/json',
   global_rsa_e: '10001',
   mask: '+7(999)999-99-99',
@@ -12,4 +12,4 @@ const settings = {
   fullFormat: 'DD.MM.YYYY, HH:mm',
 };
 
-export default settings;
+export default commonData;

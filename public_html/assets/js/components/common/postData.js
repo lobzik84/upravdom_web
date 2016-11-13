@@ -1,4 +1,4 @@
-import settings from './settings';
+import commonData from './commonData';
 import authWithRSA from './authWithRSA';
 import Login from '../auth/login';
 import Registration from '../auth/registration';
@@ -8,7 +8,7 @@ import updateConnection from '../connection/updateConnection';
 const postData = (obj, successF, failF, errorF) => {
   $.ajax({
     type: 'POST',
-    url: settings.global_serverJSONUrl,
+    url: commonData.global_serverJSONUrl,
     dataType: 'json',
     crossDomain: true,
     async: true,
@@ -24,8 +24,8 @@ const postData = (obj, successF, failF, errorF) => {
         };
         updateConnection(connect);
 
-        if (typeof data.connection_type !== 'undefined' && data.connection_type !== settings.connection_type) {
-          settings.connection_type = data.connection_type;
+        if (typeof data.connection_type !== 'undefined' && data.connection_type !== commonData.connection_type) {
+          commonData.connection_type = data.connection_type;
         }
         if (successF !== null && typeof successF === 'function') {
           successF(data);

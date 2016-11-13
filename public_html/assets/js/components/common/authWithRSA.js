@@ -1,6 +1,6 @@
 import postData from './postData';
 import updateData from './updateData';
-import settings from './settings';
+import commonData from './commonData';
 import Login from '../auth/login';
 
 function authWithRSA(kf, data) {
@@ -12,7 +12,7 @@ function authWithRSA(kf, data) {
 
   const rsa = new RSAKey();
 
-  rsa.setPrivate(kf.getMyPublicKey(), settings.global_rsa_e, kf.getMyPrivateKey());
+  rsa.setPrivate(kf.getMyPublicKey(), commonData.global_rsa_e, kf.getMyPrivateKey());
   const digest = rsa.signString(challenge, 'sha256'); //  generating signature with author's private key
   const params = {
     action: 'login_rsa',
