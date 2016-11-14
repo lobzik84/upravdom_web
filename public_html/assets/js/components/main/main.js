@@ -21,8 +21,15 @@ import updateNotifications from '../notifications/updateNotifications';
 
 class Main {
   constructor(data) {
-    const json = JSON.parse(data.plain);
-    const notificationsJSON = JSON.parse(data.notificationsPlain);
+    let json = {};
+    let notificationsJSON = {};
+    if (data) {
+      json = JSON.parse(data.plain);
+      notificationsJSON = JSON.parse(data.notificationsPlain);
+    } else {
+      json = {};
+      notificationsJSON = {};
+    }
 
     json.time = moment(+json.box_time).format(commonData.format);
     nunjucks.render('main.html', json, (err, res) => {

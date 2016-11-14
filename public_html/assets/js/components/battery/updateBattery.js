@@ -1,7 +1,7 @@
 function updateBattery(dataJSON) {
   try {
     let batteryClass = 'dashboard-battery_charge';
-    if (!dataJSON.CHARGE_ENABLED) {
+    if (dataJSON.CHARGE_ENABLED.last_value === 'false') {
       if (dataJSON.BATT_CHARGE.last_value <= 10) {
         batteryClass = 'dashboard-battery_low';
       } else if (dataJSON.BATT_CHARGE.last_value < 50) {

@@ -43,9 +43,9 @@ function updatePage(data) {
             $elementKey.text(lastValue);
           } else if (dataJSON[key]['par_type'] === 'BOOLEAN') {
             if (lastValue.toString().toLowerCase() === 'true') {
-              $elementKey.closest('.panel-item').addClass('panel-item_alarm');
+              $elementKey.find('.panel__svg').addClass('panel__svg_color');
             } else {
-              $elementKey.closest('.panel-item').removeClass('panel-item_alarm');
+              $elementKey.find('.panel__svg').removeClass('panel__svg_color');
             }
           }
 

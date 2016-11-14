@@ -4,6 +4,8 @@ import commonData from './commonData';
 import postData from './postData';
 import Main from '../main/main';
 
+import updateConnection from '../connection/updateConnection';
+
 
 function updateData() {
   const kf = new KeyFile();
@@ -36,7 +38,20 @@ function updateData() {
     }
     setTimeout(updateData, commonData.data_update_interval);
   };
-  postData(authSettings, success, fail);
+
+  const error = (data) => {
+    if (DEBUG) {
+      console.log(data);
+    }
+    if (commonData.first_loaded) {
+      new Main();
+      commonData.first_loaded = false;
+    }
+    setTimeout(updateData, commonData.data_update_interval);
+    updateConnection(false);
+  };
+
+  postData(authSettings, success, fail, error);
 }
 
 export default updateData;

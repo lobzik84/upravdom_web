@@ -12,7 +12,7 @@ const updateConnection = (data) => {
       }
     } else if (data.connection_type === 'local') {
       $('#settings-item-change-password').show();
-      if (data.box_link === 'up') {
+      if (data.server_link === 'up') {
         svgStatus = `${keysName}_local-up`;
       } else {
         svgStatus = `${keysName}_local-down`;
