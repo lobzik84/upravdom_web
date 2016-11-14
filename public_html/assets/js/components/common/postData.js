@@ -1,5 +1,4 @@
 import commonData from './commonData';
-import updateData from './updateData';
 import authWithRSA from './authWithRSA';
 
 import Login from '../auth/login';
