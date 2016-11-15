@@ -22,6 +22,7 @@ const postData = (obj, successF, failF, errorF) => {
         const connect = {
           connection_type: data.connection_type,
           box_link: data.box_link,
+          server_link: data.server_link
         };
         updateConnection(connect);
 
