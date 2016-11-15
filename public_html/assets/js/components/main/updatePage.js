@@ -1,7 +1,7 @@
 import moment from 'moment';
 import commonData from '../common/commonData';
 import updateBattery from '../battery/updateBattery';
-
+import updateWeather from '../weather/updateWeather';
 import updateNotifications from '../notifications/updateNotifications';
 
 function updatePage(data) {
@@ -14,6 +14,8 @@ function updatePage(data) {
     const notificationsJSON = JSON.parse(data.notificationsPlain);
 
     updateBattery(dataJSON);
+
+    updateWeather(dataJSON);
 
     if (notificationsJSON.length) {
       updateNotifications(notificationsJSON);

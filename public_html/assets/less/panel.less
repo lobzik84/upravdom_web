@@ -49,6 +49,74 @@
         color: @white;
       }
     }
+
+    &_weather {
+      &-sun {
+        .panel__svg_weather-sun {
+          display: block;
+        }
+      }
+
+      &-sun-cloudly {
+        .panel__svg_weather-sun-cloudly {
+          display: block;
+        }
+
+        .panel__svg_weather-sun {
+          display: none;
+        }
+      }
+
+      &-snow {
+        .panel__svg_weather-snow {
+          display: block;
+        }
+
+        .panel__svg_weather-sun {
+          display: none;
+        }
+      }
+
+      &-rain {
+        .panel__svg_weather-rain {
+          display: block;
+        }
+
+        .panel__svg_weather-sun {
+          display: none;
+        }
+      }
+
+      &-night {
+        .panel__svg_weather-night {
+          display: block;
+        }
+
+        .panel__svg_weather-sun {
+          display: none;
+        }
+      }
+
+      &-night-cloudly {
+        .panel__svg_weather-night-cloudly {
+          display: block;
+        }
+
+        .panel__svg_weather-sun {
+          display: none;
+        }
+      }
+
+      &-cloudly {
+        .panel__svg_weather-cloudly {
+          display: block;
+        }
+
+        .panel__svg_weather-sun {
+          display: none;
+        }
+      }
+    }
   }
 
   &-vertical {
@@ -140,9 +208,21 @@
       }
     }
 
-    &_sun {
-      width: 44px;
-      fill: #ff9801;
+    &_weather {
+      width: 60px;
+
+      &-sun {
+        fill: #ff9801;
+      }
+
+      &-sun-cloudly,
+      &-snow,
+      &-rain,
+      &-night,
+      &-night-cloudly,
+      &-cloudly {
+        display: none;
+      }
     }
   }
 

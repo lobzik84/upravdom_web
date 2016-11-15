@@ -64,10 +64,28 @@
             </svg>
         </div>
     </li>
-    <li title='Температура на улице' class="panel-item">
-        <div class="panel-vertical">
-            <svg class="panel__svg panel__svg_sun">
-              <use xlink:href="sprite.svg#sun"></use>
+    <li title='Погода и температура на улице' class="panel-item panel-item_weather">
+        <div id='weather' class="panel-vertical">
+            <svg class="panel__svg panel__svg_weather panel__svg_weather-sun">
+              <use xlink:href="sprite.svg#weather-sun"></use>
+            </svg>
+            <svg class="panel__svg panel__svg_weather panel__svg_weather-sun-cloudly">
+              <use xlink:href="sprite.svg#weather-sun-cloudly"></use>
+            </svg>
+            <svg class="panel__svg panel__svg_weather panel__svg_weather-snow">
+              <use xlink:href="sprite.svg#weather-snow"></use>
+            </svg>
+            <svg class="panel__svg panel__svg_weather panel__svg_weather-rain">
+              <use xlink:href="sprite.svg#weather-rain"></use>
+            </svg>
+            <svg class="panel__svg panel__svg_weather panel__svg_weather-night">
+              <use xlink:href="sprite.svg#weather-night"></use>
+            </svg>
+            <svg class="panel__svg panel__svg_weather panel__svg_weather-night-cloudly">
+              <use xlink:href="sprite.svg#weather-night-cloudly"></use>
+            </svg>
+            <svg class="panel__svg panel__svg_weather panel__svg_weather-cloudly">
+              <use xlink:href="sprite.svg#weather-cloudly"></use>
             </svg>
             <div class="panel__text">
               <span id='status__value--OUTSIDE_TEMP'>{{ OUTSIDE_TEMP.last_value }}</span>&deg;
