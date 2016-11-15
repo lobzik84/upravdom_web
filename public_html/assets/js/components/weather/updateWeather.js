@@ -3,7 +3,6 @@ import moment from 'moment';
 function updateWeather(dataJSON) {
   try {
     const allClass = 'panel-item_weather-sun panel-item_weather-night panel-item_weather-night-cloudly panel-item_weather-cloudly panel-item_weather-sun-cloudly panel-item_weather-cloudly panel-item_weather-snow panel-item_weather-rain';
-    const mounth = moment(dataJSON.box_time).format('MM');
     const hour = moment(dataJSON.box_time).format('HH');
     const medium = dataJSON.CLOUDS > 20 && dataJSON.CLOUDS < 70;
     const hard = dataJSON.CLOUDS >= 70;
@@ -35,7 +34,7 @@ function updateWeather(dataJSON) {
       }
     }
     if (precipitation) {
-      weatherClass = mounth > 10 || mounth < 3 ? 'panel-item_weather-snow' : 'panel-item_weather-rain';
+      weatherClass = dataJSON.OUTSIDE_TEMP.last_value < 0 ? 'panel-item_weather-snow' : 'panel-item_weather-rain';
     }
 
     $('#weather').closest('.panel-item_weather').removeClass(allClass).addClass(weatherClass)
