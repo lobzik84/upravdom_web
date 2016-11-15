@@ -8,29 +8,30 @@ function updateWeather(dataJSON) {
     const medium = dataJSON.CLOUDS > 20 && dataJSON.CLOUDS < 70;
     const hard = dataJSON.CLOUDS >= 70;
     const precipitation = dataJSON.RAIN > 1;
+    const outsideTemperature = `${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
 
     let weatherClass = 'panel-item_weather-sun';
-    let title = `Погода и температура на улице ${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
+    let title = `Погода и температура на улице ${outsideTemperature}`;
 
     if ((dataJSON.NIGHTTIME && dataJSON.NIGHTTIME.last_value === 'true') || hour > 21 || hour < 8) {
       weatherClass = 'panel-item_weather-night';
-      title = `Ясно, температура на улице ${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
+      title = `Ясно, температура на улице ${outsideTemperature}`;
       if (medium) {
         weatherClass = 'panel-item_weather-night-cloudly';
-        title = `Ночь, слабо облачно, температура на улице ${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
+        title = `Ночь, слабо облачно, температура на улице ${outsideTemperature}`;
       } else if (hard) {
         weatherClass = 'panel-item_weather-cloudly';
-        title = `Облачно, температура на улице ${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
+        title = `Облачно, температура на улице ${outsideTemperature}`;
       }
     } else {
       weatherClass = 'panel-item_weather-sun';
-      title = `Ясно, температура на улице ${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
+      title = `Ясно, температура на улице ${outsideTemperature}`;
       if (medium) {
         weatherClass = 'panel-item_weather-sun-cloudly';
-        title = `День, слабо облачно, температура на улице ${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
+        title = `День, слабо облачно, температура на улице ${outsideTemperature}`;
       } else if (hard) {
         weatherClass = 'panel-item_weather-cloudly';
-        title = `Облачно, температура на улице ${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
+        title = `Облачно, температура на улице ${outsideTemperature}`;
       }
     }
     if (precipitation) {
