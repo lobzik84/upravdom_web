@@ -115,7 +115,7 @@ class Main {
         $('.history-log').remove();
         $('.history').append('<div class="history-log"></div>');
         setTimeout(() => {
-          loadLog(this.timeInterval, +this.time, 'ModemModule', 'INFO');
+          loadLog(this.timeInterval, +this.time, 'InstinctsModule', 'INFO');
         }, 1500);
       }
     });

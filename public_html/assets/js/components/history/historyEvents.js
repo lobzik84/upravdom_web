@@ -41,7 +41,7 @@ class HistoryEvents {
     this.$chart.remove();
     $('.history').append(this.$list);
     setTimeout(() => {
-      loadLog(this.timeInterval, +this.time, 'ModemModule', 'INFO');
+      loadLog(this.timeInterval, +this.time, 'InstinctsModule', 'INFO');
     }, 1500);
   }
 
