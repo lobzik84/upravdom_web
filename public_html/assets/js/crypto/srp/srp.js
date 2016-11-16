@@ -1807,9 +1807,8 @@ this.identify = function () {
             console.log("SRP failed, next try...");
             if (that.tries < 3) {
                 that.identify();
-            }
-
-            if (that.tries >= 3) {
+            } else {
+                //that.tries = 0;//that's India, baby
                 alert("Error while SRP login: " + data["message"]);
             }
         }
@@ -1829,7 +1828,7 @@ this.identify = function () {
     })
 };
 
-this.updatePassword = function (newLogin, newSalt, newVerifier) {
+this.updatePassword = function (newLogin, newSalt, newVerifier, newKeyFile) {
     this.tries++;
     if (DEBUG) {
         console.log(" SRP Handshaking for password change..." + that.I + ":" + that.p + " to " + newLogin);
@@ -1855,6 +1854,7 @@ this.updatePassword = function (newLogin, newSalt, newVerifier) {
                 "new_login": newLogin,
                 "new_salt": newSalt,
                 "new_verifier": newVerifier,
+                "new_keyfile": newKeyFile,
                 "srp_M": M
             }
 

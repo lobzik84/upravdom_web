@@ -1,5 +1,5 @@
 const commonData = {
-  global_serverJSONUrl: 'http://my.moidom.molnet.ru/hs/json',
+  global_serverJSONUrl: 'http://localhost:8083/hs/json',
   global_rsa_e: '10001',
   mask: '+7(999)999-99-99',
   global_aes_mode: slowAES.modeOfOperation.CFB,
