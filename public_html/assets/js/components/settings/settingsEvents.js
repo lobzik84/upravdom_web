@@ -124,7 +124,7 @@ class SettingsEvents {
 
       if (setting.type === 'checkbox') {
         settings[settingName] = `${setting.checked}`;
-      } else if (setting.type === 'text') {
+      } else if (setting.type === 'text' || setting.type === 'email') {
         settings[settingName] = setting.value;
       } else {
         settings[settingName] = setting.innerHTML;

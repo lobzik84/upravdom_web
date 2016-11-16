@@ -65,6 +65,10 @@ function updatePage(data) {
             $(`#${key}-status`).addClass('control-item_on').removeClass('control-item_off')
               .find('.control__description')
               .text('Включена');
+          } else {
+            $(`#${key}-status`).addClass('control-item_off').removeClass('control-item_on')
+              .find('.control__description')
+              .text('Выключена');
           }
         }
       } catch (errors) {

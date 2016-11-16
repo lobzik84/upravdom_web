@@ -31,8 +31,8 @@ var paths = {
         'public_html/assets/js/crypto/scrypt/*.js',
         'public_html/assets/js/crypto/keyfile/*.js',
         'node_modules/jquery/dist/jquery.min.js',
-        'public_html/assets/js/vendors/chartist.min.js',
-        'public_html/assets/js/vendors/chartist-plugin-tooltip.js',
+        'public_html/assets/js/vendors/highstock.js',
+        'public_html/assets/js/vendors/exporting.js',
         'public_html/assets/js/vendors/inputmask.js'
     ]
 };

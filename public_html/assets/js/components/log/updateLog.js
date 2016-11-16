@@ -20,10 +20,12 @@ const updateLog = (data) => {
       date: moment(item.date).format(commonData.fullFormat),
       severity: item.severity,
       text: item.text,
-      icon: 'INTERNAL_TEMP',
+      parameterAlias: item.alias,
     };
     logJSON.recs.push(rec);
   });
+
+console.log(dataJSON.recs);
 
   nunjucks.render('history-list.html', logJSON, (err, res) => {
     $('.history-log').empty().append(res);

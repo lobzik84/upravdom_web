@@ -114,9 +114,7 @@ class Main {
         this.timeInterval = +this.time - 24 * 60 * 60 * 1000;
         $('.history-log').remove();
         $('.history').append('<div class="history-log"></div>');
-        setTimeout(() => {
-          loadLog(this.timeInterval, +this.time, 'InstinctsModule', 'INFO');
-        }, 1500);
+        loadLog(this.timeInterval, +this.time, 'InstinctsModule', 'INFO');
       }
     });
   }
@@ -158,6 +156,14 @@ class Main {
     this.$template.find('#update_capture').on('click', debounce(() => {
       updateCapture();
     }, 200));
+
+    this.$template.find('#exit').on('click', () => {
+      if (DEBUG) {
+        console.log('Logging out...');
+      }
+      localStorage.clear();
+      window.location.reload();
+    });
   }
 }
 

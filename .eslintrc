@@ -17,6 +17,8 @@
       'document': true,
       'window': true,
       'Chartist': true,
-      'btoa', true,
+      'btoa': true,
+      'Highcharts': true,
+      'Location': true,
   }
 }

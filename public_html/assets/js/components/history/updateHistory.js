@@ -1,19 +1,22 @@
-import moment from 'moment';
-import commonData from '../common/commonData';
-
-
 const updateHistory = (data) => {
-  const dataJSON = JSON.parse(data.plain);
-  const history = [
-    {
-      name: 'label',
-      className: 'history-chart__line history-chart__line_label',
-      data: [
-        { x: dataJSON.from, y: 0 },
-        { x: dataJSON.to, y: 0 },
-      ],
+  Highcharts.setOptions({
+    lang: {
+      months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+      shortMonths: ['Янв.', 'Фев.', 'Мар.', 'Апр.', 'Май', 'Июн.', 'Июл.', 'Авг.', 'Сен.', 'Окт.', 'Ноя.', 'Дек.'],
+      weekdays: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+      downloadJPEG: 'Сохранить в jpeg',
+      downloadPDF: 'Сохранить в pdf',
+      downloadPNG: 'Сохранить в png',
+      downloadSVG: 'Сохранить в svg',
+      rangeSelectorFrom: 'От',
+      rangeSelectorTo: 'До',
+      printChart: 'На печать',
+      rangeSelectorZoom: 'Увеличить',
     },
-  ];
+  });
+
+  const dataJSON = JSON.parse(data.plain);
+  const history = [];
 
   dataJSON.list.forEach((item) => {
     const newItem = {
@@ -22,52 +25,66 @@ const updateHistory = (data) => {
     };
     newItem.data = [];
     item.data.forEach((itemData) => {
-      const newData = {
-        x: itemData.x,
-        y: itemData.y,
-        meta: `${moment(+itemData.x).format(commonData.fullFormat)}?${item.description ? item.description : ''}?${parseInt(itemData.y, 10)}`,
-      };
+      const newData = [
+        itemData.x,
+        itemData.y,
+      ];
       newItem.data.push(newData);
     });
     history.push(newItem);
   });
 
-  if (DEBUG) {
-    console.log('newHistory', history);
-    console.log('updateHistory', dataJSON);
-  }
+  function createChart() {
+    Highcharts.stockChart('сhart', {
 
-  if ($('.history-chart').length) {
-    new Chartist.Line('.history-chart', {
+      legend: {
+        enabled: true,
+        align: 'left',
+      },
+
+      navigation: {
+        buttonOptions: {
+          enabled: false,
+        },
+      },
+
+      colors: ['#4caf50', '#ffc107', '#6bcfe0', '#e91e63'],
+
+      rangeSelector: {
+        selected: 4,
+      },
+
+      yAxis: {
+        labels: {
+          formatter() {
+            return `${(this.value > 0 ? ' + ' : '')} ${this.value} %`;
+          },
+        },
+        plotLines: [{
+          value: 0,
+          width: 2,
+          color: 'silver',
+        }],
+      },
+
+      plotOptions: {
+        series: {
+          compare: 'percent',
+          showInNavigator: true,
+        },
+      },
+
+      tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+        valueDecimals: 2,
+        split: true,
+      },
+
       series: history,
-    }, {
-      plugins: [
-        Chartist.plugins.tooltip({
-          tooltipFnc(value) {
-            const splitValue = value.split('?');
-            return `<span class="chartist-tooltip__time">${splitValue[0]}</span>
-            <span class="chartist-tooltip__name">${splitValue[1]}</span>
-            <span class="chartist-tooltip__value">${splitValue[2]}</span>`;
-          },
-          transformTooltipTextFnc() {
-            return '';
-          },
-        }),
-      ],
-      axisX: {
-        type: Chartist.FixedScaleAxis,
-        divisor: 24,
-        labelInterpolationFnc(value) {
-          return moment(value).format('HH:mm');
-        },
-      },
-      axisY: {
-        labelInterpolationFnc() {
-          return '';
-        },
-      },
     });
   }
+
+  createChart();
 };
 
 export default updateHistory;

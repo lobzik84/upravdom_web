@@ -17,7 +17,7 @@ function updateSettings(data) {
         if ($settingsElement.length) {
           if ($settingsElement[0].type === 'checkbox') {
             $settingsElement.attr('checked', val === 'true' ? 'checked' : false);
-          } else if ($settingsElement[0].type === 'text') {
+          } else if ($settingsElement[0].type === 'text' || $settingsElement[0].type === 'email') {
             $settingsElement.val(val);
           } else {
             $settingsElement.html(val);

@@ -5,7 +5,7 @@ import loadHistory from './loadHistory';
 class HistoryEvents {
   constructor($target, changeClass) {
     this.$list = $('<div class="history-log"></div>');
-    this.$chart = $('<div class="history-chart"></div>');
+    this.$chart = $('<div id="сhart" class="history-chart"></div>');
     this.changeClass = changeClass;
     this.$target = $target;
     this.time = $('#status__value--box_time').data('time');
@@ -39,6 +39,7 @@ class HistoryEvents {
 
   scrolling() {
     this.$chart.remove();
+    $('.history-log').remove();
     $('.history').append(this.$list);
     setTimeout(() => {
       loadLog(this.timeInterval, +this.time, 'InstinctsModule', 'INFO');
@@ -47,8 +48,10 @@ class HistoryEvents {
 
   chart() {
     this.$list.remove();
+    $('.history-log').remove();
+    $('.history-chart').remove();
     $('.history').append(this.$chart);
-      const aliases = ['INTERNAL_TEMP','OUTSIDE_TEMP','INTERNAL_HUMIDITY', 'BATT_TEMP'];
+      const aliases = ['INTERNAL_TEMP', 'OUTSIDE_TEMP', 'INTERNAL_HUMIDITY', 'BATT_TEMP'];
     loadHistory(this.timeInterval, +this.time, 30 * 60 * 1000, aliases);
   }
 }
