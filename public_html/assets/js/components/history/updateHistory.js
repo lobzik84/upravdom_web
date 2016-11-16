@@ -11,7 +11,7 @@ const updateHistory = (data) => {
       rangeSelectorFrom: 'От',
       rangeSelectorTo: 'До',
       printChart: 'На печать',
-      rangeSelectorZoom: 'Увеличить',
+      rangeSelectorZoom: '',
     },
   });
 
@@ -19,8 +19,15 @@ const updateHistory = (data) => {
   const history = [];
 
   dataJSON.list.forEach((item) => {
+    const name = {
+      INTERNAL_TEMP: 'Температура в помещении',
+      OUTSIDE_TEMP: 'Температура на улице',
+      INTERNAL_HUMIDITY: 'Освещение в помещении',
+      BATT_TEMP: 'Заряд батареи',
+    };
+
     const newItem = {
-      name: item.alias,
+      name: name[item.alias],
       className: `history-chart__line history-chart__line_${item.alias}`,
     };
     newItem.data = [];
@@ -42,16 +49,12 @@ const updateHistory = (data) => {
         align: 'left',
       },
 
-      navigation: {
-        buttonOptions: {
-          enabled: false,
-        },
-      },
-
       colors: ['#4caf50', '#ffc107', '#6bcfe0', '#e91e63'],
 
       rangeSelector: {
-        selected: 4,
+        buttons: [],
+        selected: 0,
+        inputEnabled: false,
       },
 
       yAxis: {
