@@ -2,14 +2,14 @@ import postData from '../common/postData';
 import decryptHistory from './decryptHistory';
 import updateHistory from './updateHistory';
 
-function loadHistory(from, to, quant) {
+function loadHistory(from, to, quant, aliases) {
   const kf = new KeyFile();
-
   const request = {
     action: 'get_history',
     from,
     to,
     quant,
+    aliases,
     user_id: kf.userId,
     box_id: kf.boxId,
     session_key: localStorage.session_key,

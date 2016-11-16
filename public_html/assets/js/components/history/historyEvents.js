@@ -48,7 +48,8 @@ class HistoryEvents {
   chart() {
     this.$list.remove();
     $('.history').append(this.$chart);
-    loadHistory(this.timeInterval, +this.time, 30 * 60 * 1000);
+      const aliases = ['INTERNAL_TEMP','OUTSIDE_TEMP','INTERNAL_HUMIDITY', 'BATT_TEMP'];
+    loadHistory(this.timeInterval, +this.time, 30 * 60 * 1000, aliases);
   }
 }
 
