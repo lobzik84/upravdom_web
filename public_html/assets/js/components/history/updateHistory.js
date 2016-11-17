@@ -20,10 +20,11 @@ const updateHistory = (data) => {
 
   dataJSON.list.forEach((item) => {
     const name = {
+      VAC_SENSOR: 'Напряжение в сети',
       INTERNAL_TEMP: 'Температура в помещении',
       OUTSIDE_TEMP: 'Температура на улице',
-      INTERNAL_HUMIDITY: 'Освещение в помещении',
-      BATT_TEMP: 'Заряд батареи',
+      INTERNAL_HUMIDITY: 'Влажность в помещении',
+      BATT_TEMP: 'Температура батареи',
     };
 
     const newItem = {
