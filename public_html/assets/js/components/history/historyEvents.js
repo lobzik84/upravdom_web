@@ -9,7 +9,7 @@ class HistoryEvents {
     this.changeClass = changeClass;
     this.$target = $target;
     this.time = $('#status__value--box_time').data('time');
-    this.timeInterval = +this.time - 24 * 60 * 60 * 1000;
+    this.timeInterval = +this.time - 3 * 24 * 60 * 60 * 1000;
 
     this.$target.on('click', (event) => {
       this.change(event.currentTarget);
@@ -20,7 +20,7 @@ class HistoryEvents {
 
   change(currentTarget) {
     this.time = $('#status__value--box_time').data('time');
-    this.timeInterval = +this.time - 24 * 60 * 60 * 1000;
+    this.timeInterval = +this.time - 3 * 24 * 60 * 60 * 1000;
 
     if ($(currentTarget).not(`.${this.changeClass}`)) {
       if (currentTarget.id === 'history-list') {
