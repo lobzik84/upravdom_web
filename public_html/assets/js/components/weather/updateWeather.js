@@ -1,12 +1,12 @@
 import moment from 'moment';
 
-function updateWeather(dataJSON) {
+const updateWeather = (dataJSON) => {
   try {
     const allClass = 'panel-item_weather-sun panel-item_weather-night panel-item_weather-night-cloudly panel-item_weather-cloudly panel-item_weather-sun-cloudly panel-item_weather-cloudly panel-item_weather-snow panel-item_weather-rain';
     const hour = moment(dataJSON.box_time).format('HH');
-    const medium = dataJSON.CLOUDS > 20 && dataJSON.CLOUDS < 70;
-    const hard = dataJSON.CLOUDS >= 70;
-    const precipitation = dataJSON.RAIN > 1;
+    const medium = dataJSON.CLOUDS.last_value > 20 && dataJSON.CLOUDS.last_value < 70;
+    const hard = dataJSON.CLOUDS.last_value >= 70;
+    const precipitation = dataJSON.RAIN.last_value > 1;
     const outsideTemperature = `${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
 
     let weatherClass = 'panel-item_weather-sun';
@@ -22,16 +22,12 @@ function updateWeather(dataJSON) {
         weatherClass = 'panel-item_weather-cloudly';
         title = `Облачно, температура на улице ${outsideTemperature}`;
       }
-    } else {
-      weatherClass = 'panel-item_weather-sun';
-      title = `Ясно, температура на улице ${outsideTemperature}`;
-      if (medium) {
-        weatherClass = 'panel-item_weather-sun-cloudly';
-        title = `День, слабо облачно, температура на улице ${outsideTemperature}`;
-      } else if (hard) {
-        weatherClass = 'panel-item_weather-cloudly';
-        title = `Облачно, температура на улице ${outsideTemperature}`;
-      }
+    } else if (medium) {
+      weatherClass = 'panel-item_weather-sun-cloudly';
+      title = `День, слабо облачно, температура на улице ${outsideTemperature}`;
+    } else if (hard) {
+      weatherClass = 'panel-item_weather-cloudly';
+      title = `Облачно, температура на улице ${outsideTemperature}`;
     }
     if (precipitation) {
       weatherClass = dataJSON.OUTSIDE_TEMP.last_value < 0 ? 'panel-item_weather-snow' : 'panel-item_weather-rain';
@@ -42,5 +38,5 @@ function updateWeather(dataJSON) {
   } catch (e) {
     console.error('Failed to update weather');
   }
-}
+};
 export default updateWeather;

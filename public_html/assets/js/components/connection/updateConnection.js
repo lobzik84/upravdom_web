@@ -1,5 +1,5 @@
 const updateConnection = (data) => {
-  var svgStatus = '';
+  let svgStatus = '';
   const keysName = 'dashboard-keys';
 
   if (data) {

@@ -14,7 +14,6 @@ function updatePage(data) {
     const notificationsJSON = JSON.parse(data.notificationsPlain);
 
     updateBattery(dataJSON);
-
     updateWeather(dataJSON);
 
     if (notificationsJSON.length) {
@@ -37,13 +36,13 @@ function updatePage(data) {
 
     for (const key in dataJSON) {
       try {
-        const lastValue = dataJSON[key]['last_value'];
+        const lastValue = dataJSON[key].last_value;
         const $elementKey = $(`#status__value--${key}`);
 
         if ($elementKey) {
-          if (dataJSON[key]['par_type'] === 'DOUBLE' || dataJSON[key]['par_type'] === 'INTEGER') {
+          if (dataJSON[key].par_type === 'DOUBLE' || dataJSON[key].par_type === 'INTEGER') {
             $elementKey.text(lastValue);
-          } else if (dataJSON[key]['par_type'] === 'BOOLEAN') {
+          } else if (dataJSON[key].par_type === 'BOOLEAN') {
             if (lastValue.toString().toLowerCase() === 'true') {
               $elementKey.find('.panel__svg').addClass('panel__svg_color');
             } else {
@@ -51,13 +50,13 @@ function updatePage(data) {
             }
           }
 
-          if (dataJSON[key]['state'] === 'ALARM') {
+          if (dataJSON[key].state === 'ALARM') {
             if (DEBUG) {
               console.log(`Alert param ${key}`);
             }
             $elementKey.closest('.panel-item').addClass('panel-item_alarm');
           } else {
-            $elementKey.closest('.panel-item').removeClass('panel-item_alarm')
+            $elementKey.closest('.panel-item').removeClass('panel-item_alarm');
           }
         }
         if (key === 'SOCKET' || key === 'LAMP_1' || key === 'LAMP_2') {

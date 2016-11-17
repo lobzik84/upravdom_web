@@ -16,6 +16,9 @@ import HistoryEvents from '../history/historyEvents';
 import updateCapture from '../capture/updateCapture';
 import updateBattery from '../battery/updateBattery';
 
+import updateWeather from '../weather/updateWeather';
+
+
 import updateNotifications from '../notifications/updateNotifications';
 
 
@@ -52,6 +55,7 @@ class Main {
       this.events();
       this.checkDevice();
       updateBattery(json);
+      updateWeather(json);
 
       if (notificationsJSON.length) {
         $('.dashboard-info__count').text(notificationsJSON.length);
