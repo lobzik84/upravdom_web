@@ -31,6 +31,7 @@
     </li>
     <li title='Датчик задымления' class="panel-item {%if GAS_SENSOR.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div id='status__value--GAS_SENSOR' class="panel-vertical">
+            <span class='panel-count'></span>
             <svg class="panel__svg panel__svg_fire {%if GAS_SENSOR.last_value == 'true' %} panel__svg_color {% endif %}">
               <use xlink:href="sprite.svg#GAS_SENSOR"></use>
             </svg>
@@ -38,6 +39,7 @@
     </li>
     <li title='Датчик затопления' class="panel-item {%if WET_SENSOR.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div id='status__value--WET_SENSOR' class="panel-vertical">
+            <span class='panel-count'></span>
             <svg class="panel__svg panel__svg_crane {%if WET_SENSOR.last_value == 'true' %} panel__svg_color {% endif %}">
               <use xlink:href="sprite.svg#WET_SENSOR"></use>
             </svg>
@@ -45,6 +47,7 @@
     </li>
     <li title='Датчик открытия двери' class="panel-item {%if DOOR_SENSOR.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div id='status__value--DOOR_SENSOR' class="panel-vertical">
+            <span class='panel-count'></span>
             <svg class="panel__svg panel__svg_door {%if DOOR_SENSOR.last_value == 'true' %} panel__svg_color {% endif %}">
               <use xlink:href="sprite.svg#DOOR_SENSOR"></use>
             </svg>
@@ -52,6 +55,7 @@
     </li>
     <li title='Датчик движения' class="panel-item {%if PIR_SENSOR.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div id='status__value--PIR_SENSOR' class="panel-vertical">
+            <span class='panel-count'></span>
             <svg class="panel__svg panel__svg_peoples {%if PIR_SENSOR.last_value == 'true' %} panel__svg_color {% endif %}">
               <use xlink:href="sprite.svg#PIR_SENSOR"></use>
             </svg>
@@ -59,6 +63,7 @@
     </li>
     <li title='Датчик шума' class="panel-item {%if MIC_NOISE.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div id='status__value--MIC_NOISE' class="panel-vertical">
+            <span class='panel-count'></span>
             <svg class="panel__svg panel__svg_ear {%if MIC_NOISE.last_value == 'true' %} panel__svg_color {% endif %}">
               <use xlink:href="sprite.svg#MIC_NOISE"></use>
             </svg>

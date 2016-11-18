@@ -11,8 +11,6 @@ const updateLog = (data) => {
   const time = $('#status__value--box_time').data('time');
   const timeInterval = +time - 3 * 24 * 60 * 60 * 1000;
 
-  console.log('загрузка лоада');
-
   if (DEBUG) {
     console.log('updateLog', dataJSON);
   }

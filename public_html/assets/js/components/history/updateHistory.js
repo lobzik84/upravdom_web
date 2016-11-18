@@ -18,15 +18,22 @@ const updateHistory = (data) => {
   const dataJSON = JSON.parse(data.plain);
   const history = [];
 
-  dataJSON.list.forEach((item) => {
-    const name = {
-      VAC_SENSOR: 'Напряжение в сети',
-      INTERNAL_TEMP: 'Температура в помещении',
-      OUTSIDE_TEMP: 'Температура на улице',
-      INTERNAL_HUMIDITY: 'Влажность в помещении',
-      BATT_TEMP: 'Температура батареи',
-    };
+  const name = {};
+  //  {
+  //   VAC_SENSOR: 'Напряжение в сети',
+  //   INTERNAL_TEMP: 'Температура в помещении',
+  //   OUTSIDE_TEMP: 'Температура на улице',
+  //   INTERNAL_HUMIDITY: 'Влажность в помещении',
+  //   BATT_TEMP: 'Температура батареи',
+  // };
 
+  dataJSON.legend.forEach((item) => {
+    name[item.alias] = item.description ? item.description : item.name;
+  });
+
+console.log('get_history', dataJSON);
+
+  dataJSON.list.forEach((item) => {
     const newItem = {
       name: name[item.alias],
       className: `history-chart__line history-chart__line_${item.alias}`,
