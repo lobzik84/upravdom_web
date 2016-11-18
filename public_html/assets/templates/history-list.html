@@ -4,7 +4,7 @@
       <li data-id='{{ item.id }}' class="history-item">
           <span class="history__icon history__icon_{{ item.severity }}">
               <svg class="history__svg history__svg_{{ item.parameterAlias }}">
-                <use xlink:href="sprite.svg#{{ item.parameterAlias }}"></use>
+                <use xlink:href="#{{ item.parameterAlias }}"></use>
               </svg>
           </span>
           <span class="history__data"> {{ item.date }}</span>

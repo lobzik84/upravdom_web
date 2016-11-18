@@ -2,7 +2,7 @@
     <li title='Температура в помещении' class="panel-item {%if INTERNAL_TEMP.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_temperature">
-              <use xlink:href="sprite.svg#INTERNAL_TEMP"></use>
+              <use xlink:href="#INTERNAL_TEMP"></use>
             </svg>
             <div class="panel__text">
               <span id="status__value--INTERNAL_TEMP">{{ INTERNAL_TEMP.last_value }}</span>&deg;
@@ -12,7 +12,7 @@
     <li title='Влажность воздуха' class="panel-item {%if INTERNAL_HUMIDITY.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_watermeter">
-            <use xlink:href="sprite.svg#INTERNAL_HUMIDITY"></use>
+            <use xlink:href="#INTERNAL_HUMIDITY"></use>
           </svg>
             <div class="panel__text">
               <span id="status__value--INTERNAL_HUMIDITY">{{ INTERNAL_HUMIDITY.last_value }}</span>%
@@ -22,7 +22,7 @@
     <li title='Напряжение в сети' class="panel-item {%if VAC_SENSOR.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
             <svg class="panel__svg panel__svg_flash">
-              <use xlink:href="sprite.svg#VAC_SENSOR"></use>
+              <use xlink:href="#VAC_SENSOR"></use>
             </svg>
             <div class="panel__text">
               <span id='status__value--VAC_SENSOR'>{{ VAC_SENSOR.last_value }}</span>В
@@ -35,7 +35,7 @@
               <span class='panel-count__text'>{{GAS_SENSOR.transfer_counts}}</span>
             </div>
             <svg class="panel__svg panel__svg_fire {%if GAS_SENSOR.last_value == 'true' %} panel__svg_color {% endif %}">
-              <use xlink:href="sprite.svg#GAS_SENSOR"></use>
+              <use xlink:href="#GAS_SENSOR"></use>
             </svg>
         </div>
     </li>
@@ -45,7 +45,7 @@
                 <span class='panel-count__text'>{{WET_SENSOR.transfer_counts}}</span>
             </div>
             <svg class="panel__svg panel__svg_crane {%if WET_SENSOR.last_value == 'true' %} panel__svg_color {% endif %}">
-              <use xlink:href="sprite.svg#WET_SENSOR"></use>
+              <use xlink:href="#WET_SENSOR"></use>
             </svg>
         </div>
     </li>
@@ -55,7 +55,7 @@
                 <span class='panel-count__text'>{{DOOR_SENSOR.transfer_counts}}</span>
             </div>
             <svg class="panel__svg panel__svg_door {%if DOOR_SENSOR.last_value == 'true' %} panel__svg_color {% endif %}">
-              <use xlink:href="sprite.svg#DOOR_SENSOR"></use>
+              <use xlink:href="#DOOR_SENSOR"></use>
             </svg>
         </div>
     </li>
@@ -65,7 +65,7 @@
                 <span class='panel-count__text'>{{PIR_SENSOR.transfer_counts}}</span>
             </div>
             <svg class="panel__svg panel__svg_peoples {%if PIR_SENSOR.last_value == 'true' %} panel__svg_color {% endif %}">
-              <use xlink:href="sprite.svg#PIR_SENSOR"></use>
+              <use xlink:href="#PIR_SENSOR"></use>
             </svg>
         </div>
     </li>
@@ -75,32 +75,32 @@
                 <span class='panel-count__text'>{{MIC_NOISE.transfer_counts}}</span>
             </div>
             <svg class="panel__svg panel__svg_ear {%if MIC_NOISE.last_value == 'true' %} panel__svg_color {% endif %}">
-              <use xlink:href="sprite.svg#MIC_NOISE"></use>
+              <use xlink:href="#MIC_NOISE"></use>
             </svg>
         </div>
     </li>
     <li title='Погода и температура на улице' class="panel-item panel-item_weather">
         <div id='weather' class="panel-vertical">
             <svg class="panel__svg panel__svg_weather panel__svg_weather-sun">
-              <use xlink:href="sprite.svg#weather-sun"></use>
+              <use xlink:href="#weather-sun"></use>
             </svg>
             <svg class="panel__svg panel__svg_weather panel__svg_weather-sun-cloudly">
-              <use xlink:href="sprite.svg#weather-sun-cloudly"></use>
+              <use xlink:href="#weather-sun-cloudly"></use>
             </svg>
             <svg class="panel__svg panel__svg_weather panel__svg_weather-snow">
-              <use xlink:href="sprite.svg#weather-snow"></use>
+              <use xlink:href="#weather-snow"></use>
             </svg>
             <svg class="panel__svg panel__svg_weather panel__svg_weather-rain">
-              <use xlink:href="sprite.svg#weather-rain"></use>
+              <use xlink:href="#weather-rain"></use>
             </svg>
             <svg class="panel__svg panel__svg_weather panel__svg_weather-night">
-              <use xlink:href="sprite.svg#weather-night"></use>
+              <use xlink:href="#weather-night"></use>
             </svg>
             <svg class="panel__svg panel__svg_weather panel__svg_weather-night-cloudly">
-              <use xlink:href="sprite.svg#weather-night-cloudly"></use>
+              <use xlink:href="#weather-night-cloudly"></use>
             </svg>
             <svg class="panel__svg panel__svg_weather panel__svg_weather-cloudly">
-              <use xlink:href="sprite.svg#weather-cloudly"></use>
+              <use xlink:href="#weather-cloudly"></use>
             </svg>
             <div class="panel__text">
               <span id='status__value--OUTSIDE_TEMP'>{{ OUTSIDE_TEMP.last_value }}</span>&deg;

@@ -20,5 +20,6 @@
       'btoa': true,
       'Highcharts': true,
       'Location': true,
+      'XMLHttpRequest':true,
   }
 }

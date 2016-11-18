@@ -52,6 +52,16 @@ class Main {
 
       $('body').empty().append(this.$template);
 
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        var div = document.createElement('div');
+        div.innerHTML = this.responseText;
+        div.style.display = 'none';
+        document.body.prepend(div);
+      };
+      xhr.open('get', '/sprite.svg', true);
+      xhr.send();
+
       this.events();
       this.checkDevice();
       updateBattery(json);
