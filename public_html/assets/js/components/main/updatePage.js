@@ -43,10 +43,19 @@ function updatePage(data) {
           if (dataJSON[key].par_type === 'DOUBLE' || dataJSON[key].par_type === 'INTEGER') {
             $elementKey.text(lastValue);
           } else if (dataJSON[key].par_type === 'BOOLEAN') {
-            if (lastValue.toString().toLowerCase() === 'true') {
-              $elementKey.find('.panel__svg').addClass('panel__svg_color');
+            const $count = $elementKey.children('.panel-count');
+            const $svg = $elementKey.find('.panel__svg');
+            const transferCounts = dataJSON[key].transfer_counts;
+
+            if (transferCounts > 0) {
+              $count.removeClass('panel-count_hide').children('.panel-count__text').text(transferCounts);
             } else {
-              $elementKey.find('.panel__svg').removeClass('panel__svg_color');
+              $count.addClass('panel-count_hide');
+            }
+            if (lastValue.toString().toLowerCase() === 'true') {
+              $svg.addClass('panel__svg_color');
+            } else {
+              $svg.removeClass('panel__svg_color');
             }
           }
 

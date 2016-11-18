@@ -31,8 +31,6 @@ const updateHistory = (data) => {
     name[item.alias] = item.description ? item.description : item.name;
   });
 
-console.log('get_history', dataJSON);
-
   dataJSON.list.forEach((item) => {
     const newItem = {
       name: name[item.alias],

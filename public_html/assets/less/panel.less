@@ -4,6 +4,7 @@
 .panel {
   display: flex;
   font-size: 0;
+  font-family: @roboto-regular;
   text-align: center;
   margin-top: 3px;
   margin-right: -6px;
@@ -134,6 +135,28 @@
     left: 0;
     z-index: 1000;
     padding: 0 5px;
+  }
+
+  &-count {
+    display: block;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: -10px;
+    left: 0;
+
+    &_hide {
+      display: none;
+    }
+
+    &__text {
+      color: #000;
+      font-size: 16px;
+      background-color: #ffc107;
+      padding: 4px 10px;
+      border-radius: 100%;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+    }
   }
 
   &__description {

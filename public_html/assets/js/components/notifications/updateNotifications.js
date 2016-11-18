@@ -7,10 +7,14 @@ import commonData from '../common/commonData';
 const updateNotifications = (oldList) => {
   const list = oldList.map((item) => {
     const newItem = {
+      id: item.id,
+      severity: item.severity,
+      parameterAlias: item.parameterAlias,
+      text: item.text,
       startDate: moment(+item.startDate).format(commonData.fullFormat),
       endDate: moment(+item.endDate).format(commonData.format),
     };
-    return Object.assign(item, newItem);
+    return newItem;
   });
   const notifications = {
     list,
