@@ -43,7 +43,6 @@ const updateLog = (data) => {
         });
       } else {
         scroll = new Iscroll('#history-scroll', {
-          disableMouse: true,
           disablePointer: true,
         });
       }
