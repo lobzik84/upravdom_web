@@ -1,1 +1,16 @@
-<svg id="32165201-3763-4321-993b-9f91be3a7908" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 80.66"><title>profile_setings</title><path d="M955,1000.28v64.29h16.07v16.37l5.22-4.22,15.17-12.15H1045v-64.29H955Zm6.43,6.43h77.14v51.43H989.25l-.9.7-10.85,8.64v-9.34H961.43Zm35.36,6.43v6.43h6.43v-6.43Zm0,12.86v25.71h6.43V1026Z" transform="translate(-955 -1000.28)"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="54px" viewBox="0 0 56 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" fill="#DB2A6F">
+            <g id="Group">
+                <path d="M27.8403,14.8149 C29.2763,14.8149 30.4403,13.6519 30.4403,12.2189 C30.4403,10.7829 29.2763,9.6199 27.8403,9.6199 C26.4073,9.6199 25.2443,10.7829 25.2443,12.2189 C25.2443,13.6519 26.4073,14.8149 27.8403,14.8149" id="Fill-54"></path>
+                <polygon id="Fill-55" points="25.865 30.605 29.815 30.605 29.815 17.037 25.865 17.037"></polygon>
+                <path d="M50.5405,34.3149 L27.0025,34.3149 L14.1745,42.3319 L17.3805,34.3149 L5.1425,34.3149 L5.1425,5.2029 L50.5405,5.2029 L50.5405,34.3149 Z M0.6415,0.7019 L0.6415,38.8169 L10.7305,38.8169 L4.8785,53.4489 L28.2915,38.8169 L55.0415,38.8169 L55.0415,0.7019 L0.6415,0.7019 Z" id="Fill-56"></path>
+            </g>
+        </g>
+    </g>
+</svg>

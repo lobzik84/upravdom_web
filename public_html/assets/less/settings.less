@@ -22,11 +22,26 @@
   }
 
   &-list {
+    position: relative;
     margin-top: 20px;
     margin-bottom: -3px;
 
     @media @smartphones {
       margin-top: 2px;
+    }
+
+    &_loaded {
+      &:before {
+        content: '';
+        display: block;
+        background-color: rgba(255, 255, 255, .5);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+      }
     }
   }
 
@@ -355,7 +370,7 @@
     }
 
     &_temperature {
-      fill: #4daf50;
+      fill: #84bf41;
 
       @media @smartphones {
         height: 34px;
@@ -364,7 +379,7 @@
     }
 
     &_flash {
-      fill: @iconsYellow;
+      fill: #fff101;
 
       @media @smartphones {
         height: 34px;
@@ -373,11 +388,11 @@
     }
 
     &_sound_notifications {
-      fill: #01a9f4;
+      fill: #35a0ce;
     }
 
     &_lamp {
-      fill: @iconsYellow;
+      fill: #fff101;
     }
 
     &_statistics_by_email {

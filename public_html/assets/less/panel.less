@@ -144,6 +144,7 @@
     position: absolute;
     top: -10px;
     left: 0;
+    z-index: 1001;
 
     &_hide {
       display: none;
@@ -173,17 +174,17 @@
 
     &_temperature {
       width: 25px;
-      fill: #4daf50;
+      fill: #84bf41;
     }
 
     &_watermeter {
       width: 43px;
-      fill: #01a9f4;
+      fill: #35a0ce;
     }
 
     &_flash {
       width: 22px;
-      fill: #ffc107;
+      fill: #fff101;
     }
 
     &_fire {
@@ -191,7 +192,7 @@
       fill: @iconsDisabled;
 
       &.panel__svg_color {
-        fill: @iconsBlue;
+        fill: #35a0ce;
       }
     }
 
@@ -200,7 +201,7 @@
       fill: @iconsDisabled;
 
       &.panel__svg_color {
-        fill: @iconsBlue;
+        fill: #9e9e9e;
       }
     }
 
@@ -209,7 +210,7 @@
       fill: @iconsDisabled;
 
       &.panel__svg_color {
-        fill: @iconsBlue;
+        fill: #bd2a6f;
       }
     }
 
@@ -218,7 +219,7 @@
       fill: @iconsDisabled;
 
       &.panel__svg_color {
-        fill: @iconsBlue;
+        fill: #de5c42;
       }
     }
 
@@ -235,7 +236,11 @@
       width: 60px;
 
       &-sun {
-        fill: #ff9801;
+        fill: #fff101;
+      }
+
+      &-cloudly {
+        fill: #35a0ce;
       }
 
       &-sun-cloudly,

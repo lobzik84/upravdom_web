@@ -31,6 +31,9 @@ function updateSettings(data) {
         console.error(ee);
       }
     }
+
+    $('.settings-list_loaded').removeClass('settings-list_loaded');
+
     if (DEBUG) {
       console.log('settings loaded');
     }

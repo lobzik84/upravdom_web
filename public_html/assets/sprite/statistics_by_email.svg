@@ -1,1 +1,15 @@
-<svg id="d4b5f217-6f0d-4c14-8351-fed2ec59aa8e" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1500"><title>send statistics by email</title><path d="M937.5,250v62.5H250v1125H1750V312.5H1062.5V250ZM375,437.5H1625v875H375Zm937.5,162.11-44.92,43L1000,910.16,794.92,705.08l-44.92-43-44.92,43-187.5,187.5,89.84,89.84L750,839.84l205.08,205.08,44.92,43,44.92-43L1312.5,777.34l80.08,80.08,89.84-89.84-125-125ZM812.5,1500l-125,250h125l125-250Zm250,0,125,250h125l-125-250Z" transform="translate(-250 -250)"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="55px" height="54px" viewBox="0 0 55 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" fill="#DB2A6F">
+            <g id="Group">
+                <path d="M5.3,36.788 L50.256,36.788 L50.256,7.676 L5.3,7.676 L5.3,36.788 Z M54.758,3.175 L30.03,3.175 L30.03,0.321 L25.529,0.321 L25.529,3.175 L0.8,3.175 L0.8,41.29 L17.523,41.29 L11.752,50.718 L15.592,53.068 L22.802,41.29 L32.755,41.29 L39.968,53.068 L43.807,50.718 L38.034,41.29 L54.758,41.29 L54.758,3.175 Z" id="Fill-52"></path>
+                <polygon id="Fill-53" points="18.2349 24.5755 26.3509 28.8525 36.7949 16.6465 43.1199 21.4635 45.5059 18.3295 36.2209 11.2625 25.4049 23.9025 17.1989 19.5795 10.0529 28.4665 13.1209 30.9325"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

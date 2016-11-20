@@ -135,10 +135,7 @@ gulp.task('svgstore', function () {
   return gulp
       .src('public_html/assets/sprite/*.svg')
       .pipe(cheerio({
-          run: function ($) {
-              $('[fill]').removeAttr('fill');
-          },
-          parserOptions: { xmlMode: true }
+        parserOptions: { xmlMode: true }
       }))
       .pipe(svgmin(function (file) {
           var prefix = path.basename(file.relative, path.extname(file.relative));

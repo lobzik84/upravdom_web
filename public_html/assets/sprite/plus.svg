@@ -1,11 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #eee;
-        fill-rule: evenodd;
-      }
-    </style>
-  </defs>
-  <path id="_" data-name="+" class="cls-1" d="M896,1375h2v16h-2v-16Zm-7,7h16v2H889v-2Z" transform="translate(-889 -1375)"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>_</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <path d="M9,7 L9,0 L7,0 L7,7 L0,7 L0,9 L7,9 L7,16 L9,16 L9,9 L16,9 L16,7 L9,7 Z" id="_"></path>
+    </g>
 </svg>
