@@ -15,7 +15,8 @@ class HistoryEvents {
       this.change(event.currentTarget);
     });
 
-    this.scrolling();
+    this.chart();
+    this.toggleClass($('#history-chart'));
   }
 
   change(currentTarget) {

@@ -23,7 +23,19 @@
 
   &-log {
     @media @smartphones {
+      position: relative;
       margin-top: 3px;
+
+      &__disabled {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50px;
+        z-index: 1000;
+      }
     }
   }
 
