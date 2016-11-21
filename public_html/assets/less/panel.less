@@ -38,7 +38,7 @@
       width: 31%;
       background-color: transparent;
     }
-    // .panel-item_alarm - класс для экстренных сообщений
+
     &_alarm {
       background-color: @red;
 
@@ -71,6 +71,7 @@
       &-snow {
         .panel__svg_weather-snow {
           display: block;
+          height: 33px;
         }
 
         .panel__svg_weather-sun {
@@ -81,6 +82,7 @@
       &-rain {
         .panel__svg_weather-rain {
           display: block;
+          height: 33px;
         }
 
         .panel__svg_weather-sun {
@@ -146,6 +148,12 @@
     left: 0;
     z-index: 1001;
 
+    @media @smartphones {
+      top: 10px;
+      right: -40px;
+      left: auto;
+    }
+
     &_hide {
       display: none;
     }
@@ -172,9 +180,34 @@
   &__svg {
     height: 42px;
 
+    &-update {
+      height: 25px;
+      width: 25px;
+      position: absolute;
+      top: 2px;
+      right: 7px;
+      fill: #ff9800;
+      animation-name: spin;
+      animation-duration: 600ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+
+      &_hide {
+        display: none;
+      }
+    }
+
+    @media @smartphones {
+      height: 56px;
+    }
+
     &_temperature {
       width: 25px;
       fill: #84bf41;
+
+      @media @smartphones {
+        width: 33px;
+      }
     }
 
     &_watermeter {
@@ -184,7 +217,7 @@
 
     &_flash {
       width: 22px;
-      fill: #fff101;
+      fill: #ffc107;
     }
 
     &_fire {
@@ -209,14 +242,22 @@
       width: 31px;
       fill: @iconsDisabled;
 
+      @media @smartphones {
+        width: 40px;
+      }
+
       &.panel__svg_color {
         fill: #bd2a6f;
       }
     }
 
     &_peoples {
-      width: 44px;
+      width: 62px;
       fill: @iconsDisabled;
+
+      @media @smartphones {
+        width: 82px;
+      }
 
       &.panel__svg_color {
         fill: #de5c42;
@@ -227,16 +268,27 @@
       width: 41px;
       fill: @iconsDisabled;
 
+      @media @smartphones {
+        width: 52px;
+      }
+
       &.panel__svg_color {
         fill: @iconsBlue;
       }
     }
 
     &_weather {
-      width: 60px;
+      height: 38px;
+      width: 53px;
+
+      @media @smartphones {
+        width: 60px;
+      }
 
       &-sun {
-        fill: #fff101;
+        height: 45px;
+        width: 60px;
+        fill: #ffc107;
       }
 
       &-cloudly {
@@ -260,5 +312,15 @@
     font-family: @roboto-regular;
     text-align: center;
     margin-top: 22px;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

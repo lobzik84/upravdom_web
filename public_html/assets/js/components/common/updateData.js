@@ -9,6 +9,7 @@ import updateConnection from '../connection/updateConnection';
 
 function updateData() {
   const kf = new KeyFile();
+  $('.panel__svg-update').removeClass('panel__svg-update_hide');
 
   const authSettings = {
     action: 'get_data',

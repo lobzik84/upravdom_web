@@ -43,7 +43,13 @@
     }
 
     &_on {
+      .control__icon {
+        padding: 8px;
+      }
+
       .control__svg {
+        height: 44px;
+        width: 44px;
         fill: @white;
 
         &_off {
@@ -71,6 +77,8 @@
     &_off {
       .control__svg {
         fill: #ccc;
+        margin-top: 3px;
+        margin-bottom: -3px;
 
         &_on {
           display: none;

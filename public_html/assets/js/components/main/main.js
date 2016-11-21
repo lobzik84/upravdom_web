@@ -57,7 +57,7 @@ class Main {
         var div = document.createElement('div');
         div.innerHTML = this.responseText;
         div.style.display = 'none';
-        document.body.prepend(div);
+        $('body').prepend(div);
       };
       xhr.open('get', '/sprite.svg', true);
       xhr.send();

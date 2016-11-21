@@ -1,6 +1,9 @@
 <ul class="panel">
     <li title='Температура в помещении' class="panel-item {%if INTERNAL_TEMP.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
+            <svg class="panel__svg-update panel__svg-update_hide">
+              <use xlink:href="#update"></use>
+            </svg>
             <svg class="panel__svg panel__svg_temperature">
               <use xlink:href="#INTERNAL_TEMP"></use>
             </svg>
@@ -11,9 +14,12 @@
     </li>
     <li title='Влажность воздуха' class="panel-item {%if INTERNAL_HUMIDITY.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
+            <svg class="panel__svg-update panel__svg-update_hide">
+              <use xlink:href="#update"></use>
+            </svg>
             <svg class="panel__svg panel__svg_watermeter">
-            <use xlink:href="#INTERNAL_HUMIDITY"></use>
-          </svg>
+              <use xlink:href="#INTERNAL_HUMIDITY"></use>
+            </svg>
             <div class="panel__text">
               <span id="status__value--INTERNAL_HUMIDITY">{{ INTERNAL_HUMIDITY.last_value }}</span>%
             </div>
@@ -21,6 +27,9 @@
     </li>
     <li title='Напряжение в сети' class="panel-item {%if VAC_SENSOR.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div class="panel-vertical">
+            <svg class="panel__svg-update panel__svg-update_hide">
+              <use xlink:href="#update"></use>
+            </svg>
             <svg class="panel__svg panel__svg_flash">
               <use xlink:href="#VAC_SENSOR"></use>
             </svg>

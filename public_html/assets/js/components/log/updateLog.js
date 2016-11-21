@@ -36,7 +36,7 @@ const updateLog = (data) => {
       let scroll = false;
       if (checkDevice() === 'desktop') {
         scroll = new Iscroll('#history-scroll', {
-          mouseWheel: true,
+          disablePointer: true,
           scrollbars: 'custom',
           interactiveScrollbars: true,
           shrinkScrollbars: 'scale',
@@ -44,6 +44,9 @@ const updateLog = (data) => {
       } else {
         scroll = new Iscroll('#history-scroll', {
           disablePointer: true,
+          scrollbars: 'custom',
+          interactiveScrollbars: true,
+          shrinkScrollbars: 'scale',
         });
       }
 

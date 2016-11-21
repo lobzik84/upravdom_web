@@ -42,6 +42,7 @@ function updatePage(data) {
         if ($elementKey) {
           if (dataJSON[key].par_type === 'DOUBLE' || dataJSON[key].par_type === 'INTEGER') {
             $elementKey.text(lastValue);
+            $elementKey.closest('.panel-item').find('.panel__svg-update').addClass('panel__svg-update_hide');
           } else if (dataJSON[key].par_type === 'BOOLEAN') {
             const $count = $elementKey.children('.panel-count');
             const $svg = $elementKey.find('.panel__svg');
