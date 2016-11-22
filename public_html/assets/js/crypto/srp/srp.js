@@ -1786,11 +1786,11 @@ this.identify = function () {
                 data: JSON.stringify(authReq),
                 success: onAuth,
                 fail: function () {
-                    alert("Network error while SRP login");
+                    that.error_message("Network error while SRP login");
                 }
             })
         } else {
-            alert("Error while SRP handshake: " + data["message"]);
+            that.error_message("Error while SRP handshake: " + data["message"]);
         }
     }
 
@@ -1809,7 +1809,7 @@ this.identify = function () {
                 that.identify();
             } else {
                 //that.tries = 0;//that's India, baby
-                alert("Error while SRP login: " + data["message"]);
+                that.error_message("Error while SRP login: " + data["message"]);
             }
         }
     }
@@ -1823,7 +1823,7 @@ this.identify = function () {
         data: JSON.stringify(handshakeReq),
         success: onHandShake,
         fail: function () {
-            alert("Network error while SRP handshake");
+            that.error_message("Network error while SRP handshake");
         }
     })
 };
@@ -1867,11 +1867,11 @@ this.updatePassword = function (newLogin, newSalt, newVerifier, newKeyFile) {
                 data: JSON.stringify(authReq),
                 success: onAuth,
                 fail: function () {
-                    alert("Network error while SRP login");
+                    that.error_message("Network error while SRP login");
                 }
             })
         } else {
-            alert("Error while SRP handshake: " + data["message"]);
+            that.error_message("Error while SRP handshake: " + data["message"]);
         }
     }
 
@@ -1891,7 +1891,7 @@ this.updatePassword = function (newLogin, newSalt, newVerifier, newKeyFile) {
             }
 
             if (that.tries >= 3) {
-                alert("Error while SRP login: " + data["message"]);
+                that.error_message("Error while SRP login: " + data["message"]);
             }
         }
     }
@@ -1905,7 +1905,7 @@ this.updatePassword = function (newLogin, newSalt, newVerifier, newKeyFile) {
         data: JSON.stringify(handshakeReq),
         success: onHandShake,
         fail: function () {
-            alert("Network error while SRP handshake");
+            that.error_message("Network error while SRP handshake");
         }
     })
 

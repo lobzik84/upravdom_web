@@ -1,6 +1,6 @@
 import commonData from '../common/commonData';
 
-function updateLoginPassword(oldPassword, newLogin, newPassword, successF) {
+function updateSRP(oldPassword, newLogin, newPassword, successF, errorF) {
     if (DEBUG) {
         console.log('updating password. looging in with SRP, handshaking');
     }
@@ -42,7 +42,13 @@ function updateLoginPassword(oldPassword, newLogin, newPassword, successF) {
 
     };
 
+    srp.error_message = () => {
+        if (errorF !== null && typeof errorF === 'function') {
+            errorF();
+        }
+    }
+
     srp.updatePassword(newLogin, newSalt, newVerifier, newKeyFile);
 }
 
-export default updateLoginPassword;
+export default updateSRP;
