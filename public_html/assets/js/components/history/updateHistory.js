@@ -17,15 +17,7 @@ const updateHistory = (data) => {
 
   const dataJSON = JSON.parse(data.plain);
   const history = [];
-
   const name = {};
-  //  {
-  //   VAC_SENSOR: 'Напряжение в сети',
-  //   INTERNAL_TEMP: 'Температура в помещении',
-  //   OUTSIDE_TEMP: 'Температура на улице',
-  //   INTERNAL_HUMIDITY: 'Влажность в помещении',
-  //   BATT_TEMP: 'Температура батареи',
-  // };
 
   dataJSON.legend.forEach((item) => {
     name[item.alias] = item.description ? item.description : item.name;
