@@ -62,7 +62,7 @@ function updatePage(data) {
 
           if (dataJSON[key].state === 'ALARM') {
             if (DEBUG) {
-              console.log(`Alert param ${key}`);
+              console.log(`Alarm param ${key}`);
             }
             $elementKey.closest('.panel-item').addClass('panel-item_alarm');
           } else {

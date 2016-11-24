@@ -128,7 +128,7 @@ class Main {
         this.timeInterval = +this.time - 24 * 60 * 60 * 1000;
         $('.history-log').remove();
         $('.history').append('<div class="history-log"></div>');
-        loadLog(this.timeInterval, +this.time, 'InstinctsModule', 'INFO');
+        loadLog(this.timeInterval, +this.time, 'BehaviorModule', 'INFO');
       }
     });
   }
