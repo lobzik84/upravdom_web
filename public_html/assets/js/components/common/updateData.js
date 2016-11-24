@@ -49,7 +49,7 @@ function updateData() {
       commonData.first_loaded = false;
     }
     setTimeout(updateData, commonData.data_update_interval);
-    updateConnection(false);
+    updateConnection(data);
   };
 
   postData(authSettings, success, fail, error);

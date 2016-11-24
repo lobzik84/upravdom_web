@@ -17,8 +17,6 @@ import updateCapture from '../capture/updateCapture';
 import updateBattery from '../battery/updateBattery';
 
 import updateWeather from '../weather/updateWeather';
-
-
 import updateNotifications from '../notifications/updateNotifications';
 
 
@@ -34,7 +32,7 @@ class Main {
       notificationsJSON = {};
     }
 
-    json.time = moment(+json.box_time).format(commonData.format);
+    json.time = moment(+json.box_time).format(commonData.format) === 'Invalid date' ? '' : moment(+json.box_time).format(commonData.format);
     nunjucks.render('main.html', json, (err, res) => {
       this.$template = $(res);
       this.$dashboardMode = this.$template.find('.dashboard-mode__item');
@@ -68,8 +66,10 @@ class Main {
       updateWeather(json);
 
       if (notificationsJSON.length) {
-        $('.dashboard-info__count').text(notificationsJSON.length);
+        $('.dashboard-info__count').removeClass('dashboard-info__count_hide').text(notificationsJSON.length);
         updateNotifications(notificationsJSON);
+      } else {
+        $('.dashboard-info__count').removeClass('dashboard-info__count_hide').addClass('dashboard-info__count_hide');
       }
     });
   }
@@ -168,6 +168,7 @@ class Main {
 
     //  обновления фотографий
     this.$template.find('#update_capture').on('click', debounce(() => {
+      $('.visual__svg-update').removeClass('visual__svg-update_hide');
       updateCapture();
     }, 200));
 

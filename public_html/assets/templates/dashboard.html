@@ -1,7 +1,7 @@
 <div class='dashboard'>
     <div class="dashboard-location">
         <span id='name--BoxName' class="dashboard-location__place">{{ BoxName }}</span> <span class="dashboard-location__separate">,</span>
-        <span id='status__value--box_time' data-time="{{ box_time }}" class="dashboard-location__time">{{ time }}</span>
+        <span id='status__value--box_time' data-time="{{ box_time }}" class="dashboard-location__time"> {{ time }}</span>
     </div>
     <ul class="dashboard-mode">
         <li id="mode__master" class="dashboard-mode__item {% if mode == 'IDLE' %} dashboard-mode__item_changed {% endif %}">Хозяин дома</li>
@@ -14,7 +14,7 @@
         <span class="dashboard-info__count"></span>
     </div>
     <div class='dashboard-mobile-panel'>
-        <div class="dashboard-keys dashboard-keys_remote-up">
+        <div class="dashboard-keys dashboard-keys__svg_remote-down">
           <svg class="dashboard-keys__svg dashboard-keys__svg_remote-up">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#box-success-remote-up"></use>
           </svg>

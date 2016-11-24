@@ -50,6 +50,7 @@ function decryptCapture(kf, data) {
 
         $('.visual__date').html(`${captureDate},`);
         $('.visual__time').html(`${captureTime}`);
+        $('.visual__svg-update').addClass('visual__svg-update_hide');
 
         if (DEBUG) {
           console.log(`${camNameStr} updated, time=${(Date.now() - begin)}ms`);

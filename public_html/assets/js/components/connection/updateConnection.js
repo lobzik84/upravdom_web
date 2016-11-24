@@ -1,6 +1,10 @@
 const updateConnection = (data) => {
   let svgStatus = '';
   const keysName = 'dashboard-keys';
+  const downed = () => {
+    $('.panel__svg-update').addClass('panel__svg-update_hide');
+    $('.panel-count').addClass('panel-count_hide');
+  };
 
   if (data) {
     if (data.connection_type === 'remote') {
@@ -9,6 +13,8 @@ const updateConnection = (data) => {
         svgStatus = `${keysName}_remote-up`;
       } else {
         svgStatus = `${keysName}_remote-down`;
+
+        downed();
       }
     } else if (data.connection_type === 'local') {
       $('#settings-item-change-password').show();
@@ -16,6 +22,8 @@ const updateConnection = (data) => {
         svgStatus = `${keysName}_local-up`;
       } else {
         svgStatus = `${keysName}_local-down`;
+
+        downed();
       }
     }
   } else {
