@@ -2,12 +2,15 @@ import nunjucks from 'nunjucks';
 import commonData from '../common/commonData';
 import updateData from '../common/updateData';
 import postData from '../common/postData';
+import ToggleText from './toggleText';
+
 
 class Registration {
   constructor() {
     const $template = $(nunjucks.render('registration.html'));
     this.$phone = $template.find('#phone');
     this.form = '#registration_form';
+    this.toggleButton = new ToggleText($('#register'));
 
     $('body').append($template);
 
@@ -15,12 +18,20 @@ class Registration {
 
     $('body').on('submit', this.form, (event) => {
       event.preventDefault();
-      Registration.registered();
+      if (Registration.validatePassword()) {
+        Registration.registered();
+      } else {
+        this.toggleButton.toggle('Слишком короткий пароль');
+      }
     });
   }
 
   masked() {
     this.$phone.mask(commonData.mask);
+  }
+
+  static validatePassword() {
+    return $('#new__password').val().length > commonData.passwordlength;
   }
 
   static registered() {

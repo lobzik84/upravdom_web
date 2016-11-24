@@ -11,6 +11,7 @@ const commonData = {
   format: 'HH:mm',
   fullFormat: 'DD.MM.YYYY, HH:mm',
   email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Zа-яА-Я]{2,}))$/,
+  passwordlength: 5,
 };
 
 export default commonData;
