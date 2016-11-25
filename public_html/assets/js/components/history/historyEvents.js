@@ -42,7 +42,7 @@ class HistoryEvents {
     this.$chart.remove();
     $('.history-log').remove();
     $('.history').append(this.$list);
-    loadLog(this.timeInterval, +this.time, 'BehaviorModule', 'INFO');
+    loadLog(this.timeInterval, +this.time, 'LogModule', 'INFO');
   }
 
   chart() {

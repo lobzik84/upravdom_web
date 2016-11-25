@@ -54,7 +54,7 @@ const updateLog = (data) => {
         scroll.on('scrollEnd', () => {
           if (scroll.y === -0) {
             scroll.destroy();
-            loadLog(timeInterval, +time, 'BehaviorModule', 'INFO');
+            loadLog(timeInterval, +time, 'LogModule', 'INFO');
           }
         });
       }
