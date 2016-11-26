@@ -45,12 +45,12 @@ function decryptCapture(kf, data) {
 
         imgElement.src = `data:image/jpeg;base64,${btoa(String.fromCharCode.apply(null, bytes))}`;
 
-        const captureDate = moment(imgDate).format('DD.MM.YYYY');
-        const captureTime = moment(imgDate).format('HH:mm:ss');
+        const captureDate = moment(imgDate).utcOffset(commonData.utc).format('DD.MM.YYYY');
+        const captureTime = moment(imgDate).utcOffset(commonData.utc).format('HH:mm:ss');
 
         $('.visual__date').html(`${captureDate},`);
         $('.visual__time').html(`${captureTime}`);
-        $('.visual__svg-update').addClass('visual__svg-update_hide');
+        $('.visual__svg').removeClass('visual__svg_rotate');
 
         if (DEBUG) {
           console.log(`${camNameStr} updated, time=${(Date.now() - begin)}ms`);

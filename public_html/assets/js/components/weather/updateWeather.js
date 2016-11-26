@@ -1,9 +1,11 @@
 import moment from 'moment';
 
+import commonData from '../common/commonData';
+
 const updateWeather = (dataJSON) => {
   try {
     const allClass = 'panel-item_weather-sun panel-item_weather-night panel-item_weather-night-cloudly panel-item_weather-cloudly panel-item_weather-sun-cloudly panel-item_weather-cloudly panel-item_weather-snow panel-item_weather-rain';
-    const hour = moment(dataJSON.box_time).format('HH');
+    const hour = moment(dataJSON.box_time).utcOffset(commonData.utc).format('HH');
     const medium = dataJSON.CLOUDS.last_value > 20 && dataJSON.CLOUDS.last_value < 70;
     const hard = dataJSON.CLOUDS.last_value >= 70;
     const precipitation = dataJSON.RAIN.last_value > 1;

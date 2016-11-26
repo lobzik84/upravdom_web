@@ -32,7 +32,7 @@ function updatePage(data) {
       $('#mode__security').removeClass('dashboard-mode__item_changed');
     }
 
-    $('#status__value--box_time').data('time', dataJSON.box_time).text(moment(+dataJSON.box_time).format(commonData.format));
+    $('#status__value--box_time').data('time', dataJSON.box_time).text(moment(new Date(+dataJSON.box_time)).utcOffset(commonData.utc).format(commonData.format));
 
     for (const key in dataJSON) {
       try {

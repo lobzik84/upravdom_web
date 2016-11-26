@@ -21,7 +21,7 @@ const updateLog = (data) => {
   };
   dataJSON.recs.forEach((item) => {
     const rec = {
-      date: moment(item.date).format(commonData.fullFormat),
+      date: moment(item.date).utcOffset(commonData.utc).format(commonData.fullFormat),
       severity: item.severity,
       text: item.text,
       parameterAlias: item.alias,

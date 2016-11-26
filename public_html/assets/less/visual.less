@@ -10,23 +10,6 @@
     margin-top: 20px;
   }
 
-  &__svg-update {
-    height: 25px;
-    width: 25px;
-    position: absolute;
-    top: 2px;
-    right: 7px;
-    fill: #ff9800;
-    animation-name: spin;
-    animation-duration: 600ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-
-    &_hide {
-      display: none;
-    }
-  }
-
   &-item {
     display: inline-block;
     vertical-align: top;
@@ -123,6 +106,13 @@
       @media @smartphones {
         fill: #ff9800;
       }
+    }
+
+    &_rotate {
+      animation-name: spin;
+      animation-duration: 600ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
     }
   }
 

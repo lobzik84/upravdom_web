@@ -32,7 +32,7 @@ class Main {
       notificationsJSON = {};
     }
 
-    json.time = moment(+json.box_time).format(commonData.format) === 'Invalid date' ? '' : moment(+json.box_time).format(commonData.format);
+    json.time = moment(new Date(+json.box_time)).utcOffset(commonData.utc).format(commonData.format) === 'Invalid date' ? '' : moment(new Date(+json.box_time)).utcOffset(commonData.utc).format(commonData.format);
     nunjucks.render('main.html', json, (err, res) => {
       this.$template = $(res);
       this.$dashboardMode = this.$template.find('.dashboard-mode__item');
@@ -168,7 +168,7 @@ class Main {
 
     //  обновления фотографий
     this.$template.find('#update_capture').on('click', debounce(() => {
-      $('.visual__svg-update').removeClass('visual__svg-update_hide');
+      $('.visual__svg').addClass('visual__svg_rotate');
       updateCapture();
     }, 200));
 

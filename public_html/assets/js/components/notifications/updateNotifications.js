@@ -11,11 +11,12 @@ const updateNotifications = (oldList) => {
       severity: item.severity,
       parameterAlias: item.parameterAlias,
       text: item.text,
-      startDate: moment(+item.startDate).format(commonData.fullFormat),
-      endDate: moment(+item.endDate).format(commonData.format),
+      startDate: moment(new Date(+item.startDate)).utcOffset(commonData.utc).format(commonData.fullFormat),
+      endDate: moment(new Date(+item.endDate)).utcOffset(commonData.utc).format(commonData.format),
     };
     return newItem;
   });
+
   const notifications = {
     list,
   };
@@ -44,21 +45,21 @@ const updateNotifications = (oldList) => {
     if (updater.length) {
       updater.forEach((item) => {
         if (item) {
-          $(nunjucks.render('notifications-item.html', { item }, (err, res) => {
+          nunjucks.render('notifications-item.html', { item }, (err, res) => {
             const $element = $(res);
             removeEvent($element.find('.notifications__icon_close'));
             $('.notifications-list').append($element);
-          }));
+          });
         }
       });
     }
   } else {
-    $(nunjucks.render('notifications.html', notifications, (err, res) => {
+    nunjucks.render('notifications.html', notifications, (err, res) => {
       const $template = $(res);
 
       removeEvent($template.find('.notifications__icon_close'));
       $('body').prepend($template);
-    }));
+    });
   }
   setTimeout(() => {
     $('.dashboard-info__count').text($('#notifications').find('.notifications-item').length);
