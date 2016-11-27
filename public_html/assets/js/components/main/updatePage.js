@@ -53,7 +53,7 @@ function updatePage(data) {
             } else {
               $count.addClass('panel-count_hide');
             }
-            if (lastValue.toString().toLowerCase() === 'true') {
+            if (!dataJSON[key].state === 'ALARM' && lastValue.toString().toLowerCase() === 'true') {
               $svg.addClass('panel__svg_color');
             } else {
               $svg.removeClass('panel__svg_color');
