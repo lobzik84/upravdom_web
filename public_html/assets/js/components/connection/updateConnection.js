@@ -8,7 +8,7 @@ const updateConnection = (data) => {
 
   if (data) {
     if (data.connection_type === 'remote') {
-      $('#settings-item-change-password').hide();
+      $('#settings-item-change-password').addClass('settings-item_hide');
       if (data.box_link === 'up') {
         svgStatus = `${keysName}_remote-up`;
       } else {
@@ -17,7 +17,7 @@ const updateConnection = (data) => {
         downed();
       }
     } else if (data.connection_type === 'local') {
-      $('#settings-item-change-password').show();
+      $('#settings-item-change-password').removeClass('settings-item_hide');
       if (data.server_link === 'up') {
         svgStatus = `${keysName}_local-up`;
       } else {
