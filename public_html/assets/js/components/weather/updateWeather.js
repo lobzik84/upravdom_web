@@ -8,7 +8,7 @@ const updateWeather = (dataJSON) => {
     const hour = moment(dataJSON.box_time).utcOffset(commonData.utc).format('HH');
     const medium = dataJSON.CLOUDS.last_value > 20 && dataJSON.CLOUDS.last_value < 70;
     const hard = dataJSON.CLOUDS.last_value >= 70;
-    const precipitation = dataJSON.RAIN.last_value > 1;
+    const precipitation = dataJSON.RAIN.last_value > 0.05;
     const outsideTemperature = `${dataJSON.OUTSIDE_TEMP.last_value} &deg;`;
 
     let weatherClass = 'panel-item_weather-sun';
