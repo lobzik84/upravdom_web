@@ -83,7 +83,10 @@ class Registration {
 
                 kf.initKeyFile(data.new_user_id, data.box_id, rsa.d.toString(16), rsa.n.toString(16), pbkdf);
                 kf.addBoxKey(data.box_id, data.box_public_key);
-                this.toggleButton.toggle('ОК!');
+                try {
+                    this.toggleButton.toggle('ОК!');
+                } catch (ee) {
+                }
                 localStorage.session_key = data.session_key;
                 if (DEBUG) {
                     console.log(`created keyfile: \n${kf.getKeyFileAsStirng()}`);
@@ -91,7 +94,7 @@ class Registration {
                 kf.uploadKeyFile(commonData.global_serverJSONUrl, function () {
                     if (kf.xhr.readyState === 4 && kf.xhr.status === 200) {
                         //alert(`Successfully registered! UserId = ${data.new_user_id}`);
-                        
+
                         updateData();
                     }
                 });
