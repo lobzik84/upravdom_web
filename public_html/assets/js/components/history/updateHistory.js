@@ -24,8 +24,13 @@ const updateHistory = (data) => {
   });
 
   dataJSON.list.forEach((item) => {
+      var visible = true;
+      if (item.alias === 'VAC_SENSOR') {
+          visible = false;
+      }
     const newItem = {
       name: name[item.alias],
+      visible,
       className: `history-chart__line history-chart__line_${item.alias}`,
     };
     newItem.data = [];
