@@ -50,7 +50,7 @@ class HistoryEvents {
     $('.history-log').remove();
     $('.history-chart').remove();
     $('.history').append(this.$chart);
-      const aliases = ['INTERNAL_TEMP', 'OUTSIDE_TEMP', 'INTERNAL_HUMIDITY', 'BATT_TEMP', 'VAC_SENSOR'];
+      const aliases = ['INTERNAL_TEMP', 'OUTSIDE_TEMP', 'INTERNAL_HUMIDITY', 'VAC_SENSOR'];
     loadHistory(this.timeInterval, +this.time, 30 * 60 * 1000, aliases);
   }
 }
