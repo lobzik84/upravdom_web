@@ -6,6 +6,48 @@
   </div>
     <ul class="settings-list settings-list_loaded">
         <li class="settings-item">
+            <span class='settings__name'>Электроэнергия</span>
+            <span class="settings__icon">
+              <svg class="settings__svg settings__svg_flash">
+                <use xlink:href="#VAC_SENSOR"></use>
+              </svg>
+            </span>
+            <div class='settings-wrap'>
+                <div class='settings-options'>
+                    <span class="settings-options__name">Мин</span>
+                    <nobr>
+                        <span class="settings-options__switcher settings-options__switcher_minus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="#minus"></use>
+                            </svg>
+                        </span>
+                        <span class="settings-options__value"><b id='settings__value--VACAlertMin'></b>В</span>
+                        <span class="settings-options__switcher settings-options__switcher_plus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="#plus"></use>
+                            </svg>
+                        </span>
+                    </nobr>
+                </div>
+                <div class='settings-options'>
+                    <span class="settings-options__name">Макс</span>
+                    <nobr>
+                        <span class="settings-options__switcher settings-options__switcher_minus">
+                            <svg class="settings-options__svg">
+                              <use xlink:href="#minus"></use>
+                            </svg>
+                        </span>
+                        <span class="settings-options__value"><b id='settings__value--VACAlertMax'></b>В</span>
+                        <span class="settings-options__switcher settings-options__switcher_plus">
+                            <svg class="settings-options__svg ">
+                              <use xlink:href="#plus"></use>
+                            </svg>
+                        </span>
+                    </nobr>
+                </div>
+            </div>
+        </li>
+        <li class="settings-item">
             <span class='settings__name'>Температура</span>
             <span class="settings__icon">
               <svg class="settings__svg settings__svg_temperature">
@@ -90,48 +132,6 @@
             </div>
         </li>
         <li class="settings-item">
-            <span class='settings__name'>Электроэнергия</span>
-            <span class="settings__icon">
-              <svg class="settings__svg settings__svg_flash">
-                <use xlink:href="#VAC_SENSOR"></use>
-              </svg>
-            </span>
-            <div class='settings-wrap'>
-                <div class='settings-options'>
-                    <span class="settings-options__name">Мин</span>
-                    <nobr>
-                        <span class="settings-options__switcher settings-options__switcher_minus">
-                            <svg class="settings-options__svg ">
-                              <use xlink:href="#minus"></use>
-                            </svg>
-                        </span>
-                        <span class="settings-options__value"><b id='settings__value--VACAlertMin'></b>В</span>
-                        <span class="settings-options__switcher settings-options__switcher_plus">
-                            <svg class="settings-options__svg ">
-                              <use xlink:href="#plus"></use>
-                            </svg>
-                        </span>
-                    </nobr>
-                </div>
-                <div class='settings-options'>
-                    <span class="settings-options__name">Макс</span>
-                    <nobr>
-                        <span class="settings-options__switcher settings-options__switcher_minus">
-                            <svg class="settings-options__svg">
-                              <use xlink:href="#minus"></use>
-                            </svg>
-                        </span>
-                        <span class="settings-options__value"><b id='settings__value--VACAlertMax'></b>В</span>
-                        <span class="settings-options__switcher settings-options__switcher_plus">
-                            <svg class="settings-options__svg ">
-                              <use xlink:href="#plus"></use>
-                            </svg>
-                        </span>
-                    </nobr>
-                </div>
-            </div>
-        </li>
-        <li class="settings-item">
             <span class='settings__name'>Звуковые уведомления</span>
             <span class="settings__icon">
               <svg class="settings__svg settings__svg_sound_notifications">
@@ -184,15 +184,19 @@
             </div>
         </li>
         <li class="settings-item">
-            <span class='settings__name settings__name_email'>Отправлять статистику на электронную почту</span>
+            <span class='settings__name settings__name_email'>Статистика</span>
+
             <span class="settings__icon">
               <svg class="settings__svg settings__svg_statistics_by_email">
                 <use xlink:href="#statistics_by_email"></use>
               </svg>
             </span>
             <div class='settings-wrap'>
-                <input type="checkbox" id="settings__value--StatToEmailScript" class="settings__checkbox">
-                <label for="settings__value--StatToEmailScript" class="settings__label settings__label_email"></label>
+                <div class='settings-block'>
+                    <span class='settings__description'>Отправлять еженедельно на эл.почту</span>
+                    <input type="checkbox" id="settings__value--StatToEmailScript" class="settings__checkbox">
+                    <label for="settings__value--StatToEmailScript" class="settings__label"></label>
+                </div>
             </div>
         </li>
         <li class="settings-item">
