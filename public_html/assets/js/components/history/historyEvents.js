@@ -1,6 +1,6 @@
 import loadLog from '../log/loadLog';
 import loadHistory from './loadHistory';
-
+import commonData from '../common/commonData';
 
 class HistoryEvents {
   constructor($target, changeClass) {
@@ -9,7 +9,7 @@ class HistoryEvents {
     this.changeClass = changeClass;
     this.$target = $target;
     this.time = $('#status__value--box_time').data('time');
-    this.timeInterval = +this.time - 3 * 24 * 60 * 60 * 1000;
+    this.timeInterval = +this.time - commonData.history_timeInterval;
 
     this.$target.on('click', (event) => {
       this.change(event.currentTarget);
@@ -21,7 +21,7 @@ class HistoryEvents {
 
   change(currentTarget) {
     this.time = $('#status__value--box_time').data('time');
-    this.timeInterval = +this.time - 3 * 24 * 60 * 60 * 1000;
+    this.timeInterval = +this.time - commonData.history_timeInterval;
 
     if ($(currentTarget).not(`.${this.changeClass}`)) {
       if (currentTarget.id === 'history-list') {
@@ -50,8 +50,7 @@ class HistoryEvents {
     $('.history-log').remove();
     $('.history-chart').remove();
     $('.history').append(this.$chart);
-      const aliases = ['INTERNAL_TEMP', 'OUTSIDE_TEMP', 'INTERNAL_HUMIDITY', 'VAC_SENSOR'];
-    loadHistory(this.timeInterval, +this.time, 30 * 60 * 1000, aliases);
+    loadHistory(this.timeInterval, +this.time, 30 * 60 * 1000, commonData.history_aliases);
   }
 }
 

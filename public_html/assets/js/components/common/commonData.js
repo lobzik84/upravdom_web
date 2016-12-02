@@ -12,7 +12,9 @@ const commonData = {
   fullFormat: 'DD.MM.YYYY, HH:mm',
   email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Zа-яА-Я]{2,}))$/,
   passwordlength: 5,
-  utc: 180
+  utc: 180,
+  history_aliases: ['INTERNAL_TEMP', 'OUTSIDE_TEMP', 'INTERNAL_HUMIDITY', 'VAC_SENSOR'],
+  history_timeInterval: 7 * 24 * 60 * 60 * 1000
 };
 
 export default commonData;
