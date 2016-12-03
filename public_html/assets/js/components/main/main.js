@@ -21,165 +21,169 @@ import updateNotifications from '../notifications/updateNotifications';
 
 
 class Main {
-  constructor(data) {
-    let json = {};
-    let notificationsJSON = {};
-    if (data) {
-      json = JSON.parse(data.plain);
-      notificationsJSON = JSON.parse(data.notificationsPlain);
-    } else {
-      json = {};
-      notificationsJSON = {};
+    constructor(data) {
+        let json = {};
+        let notificationsJSON = {};
+        if (data) {
+            json = JSON.parse(data.plain);
+            notificationsJSON = JSON.parse(data.notificationsPlain);
+        } else {
+            json = {};
+            notificationsJSON = {};
+        }
+
+        json.time = moment(new Date(+json.box_time)).utcOffset(commonData.utc).format(commonData.format) === 'Invalid date' ? '' : moment(new Date(+json.box_time)).utcOffset(commonData.utc).format(commonData.format);
+        nunjucks.render('main.html', json, (err, res) => {
+            this.$template = $(res);
+            this.$dashboardMode = this.$template.find('.dashboard-mode__item');
+            this.$dashboardModeMobile = $('<div class="dashboard-mode-mobile"><div class="dashboard-mode-mobile__header">Режим работы</div></div>');
+            this.$historyMode = this.$template.find('.history-mode__item');
+            this.$panelItem = this.$template.find('.panel-item');
+            this.$phone = this.$template.find('.settings__input_phone');
+            this.elementsControl = ['LAMP_1', 'SOCKET', 'LAMP_2'];
+            this.settingsSwitcher = ['plus', 'minus'];
+
+            this.device = {};
+
+            updateCapture();
+            loadSettings();
+
+            $('body').empty().append(this.$template);
+
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                var div = document.createElement('div');
+                div.innerHTML = this.responseText;
+                div.style.display = 'none';
+                $('body').prepend(div);
+            };
+            xhr.open('get', '/sprite.svg', true);
+            xhr.send();
+
+            this.events();
+            this.checkDevice();
+            updateBattery(json);
+            updateWeather(json);
+
+            if (notificationsJSON.length) {
+                $('.dashboard-info__count').removeClass('dashboard-info__count_hide').text(notificationsJSON.length);
+                updateNotifications(notificationsJSON);
+            } else {
+                $('.dashboard-info__count').removeClass('dashboard-info__count_hide').addClass('dashboard-info__count_hide');
+            }
+        });
     }
 
-    json.time = moment(new Date(+json.box_time)).utcOffset(commonData.utc).format(commonData.format) === 'Invalid date' ? '' : moment(new Date(+json.box_time)).utcOffset(commonData.utc).format(commonData.format);
-    nunjucks.render('main.html', json, (err, res) => {
-      this.$template = $(res);
-      this.$dashboardMode = this.$template.find('.dashboard-mode__item');
-      this.$dashboardModeMobile = $('<div class="dashboard-mode-mobile"><div class="dashboard-mode-mobile__header">Режим работы</div></div>');
-      this.$historyMode = this.$template.find('.history-mode__item');
-      this.$panelItem = this.$template.find('.panel-item');
-      this.$phone = this.$template.find('.settings__input_phone');
-      this.elementsControl = ['LAMP_1', 'SOCKET', 'LAMP_2'];
-      this.settingsSwitcher = ['plus', 'minus'];
+    checkDevice() {
+        this.device = {
+            name: checkDevice(),
+        };
+        this.movingMode(true);
+        this.toggleHeader(true);
+        this.toggleHistory(true);
 
-      this.device = {};
-
-      updateCapture();
-      loadSettings();
-
-      $('body').empty().append(this.$template);
-
-      const xhr = new XMLHttpRequest();
-      xhr.onload = function () {
-        var div = document.createElement('div');
-        div.innerHTML = this.responseText;
-        div.style.display = 'none';
-        $('body').prepend(div);
-      };
-      xhr.open('get', '/sprite.svg', true);
-      xhr.send();
-
-      this.events();
-      this.checkDevice();
-      updateBattery(json);
-      updateWeather(json);
-
-      if (notificationsJSON.length) {
-        $('.dashboard-info__count').removeClass('dashboard-info__count_hide').text(notificationsJSON.length);
-        updateNotifications(notificationsJSON);
-      } else {
-        $('.dashboard-info__count').removeClass('dashboard-info__count_hide').addClass('dashboard-info__count_hide');
-      }
-    });
-  }
-
-  checkDevice() {
-    this.device = {
-      name: checkDevice(),
-    };
-    this.movingMode(true);
-    this.toggleHeader(true);
-    this.toggleHistory(true);
-
-    $(window).on('resize', () => {
-      this.device = {
-        changes: this.device.name !== checkDevice(),
-        name: checkDevice(),
-      };
-      this.movingMode(this.device.changes);
-      this.toggleHeader(this.device.changes);
-      this.toggleHistory(this.device.changes);
-    });
-  }
-
-  movingMode(changes) {
-    if (changes) {
-      if (this.device.name === 'desktop') {
-        this.$dashboardMode.closest('.dashboard-mode').insertBefore('.dashboard-info');
-        this.$dashboardModeMobile.remove();
-      } else {
-        this.$dashboardMode.closest('.dashboard-mode').appendTo(this.$dashboardModeMobile);
-        this.$dashboardModeMobile.insertBefore('.settings');
-      }
+        $(window).on('resize', () => {
+            this.device = {
+                changes: this.device.name !== checkDevice(),
+                name: checkDevice(),
+            };
+            this.movingMode(this.device.changes);
+            this.toggleHeader(this.device.changes);
+            this.toggleHistory(this.device.changes);
+        });
     }
-  }
 
-  toggleHeader(changes) {
-    if (changes) {
-      if (this.device.name === 'mobile') {
-        $('.history-header').closest('.history').addClass('history_hide');
-        $('.settings__header').closest('.settings').addClass('settings_hide');
-
-        Main.addToggle($('.history-header'), 'history_hide', '.history');
-        Main.addToggle($('.settings__header'), 'settings_hide', '.settings');
-      } else {
-        Main.removeToggle($('.history-header'));
-        Main.removeToggle($('.settings__header'));
-      }
+    movingMode(changes) {
+        if (changes) {
+            if (this.device.name === 'desktop') {
+                this.$dashboardMode.closest('.dashboard-mode').insertBefore('.dashboard-info');
+                this.$dashboardModeMobile.remove();
+            } else {
+                this.$dashboardMode.closest('.dashboard-mode').appendTo(this.$dashboardModeMobile);
+                this.$dashboardModeMobile.insertBefore('.settings');
+            }
+        }
     }
-  }
 
-  static addToggle($target, toggleClass, closest) {
-    $($target).on('click', (e) => {
-      $(e.currentTarget).closest(closest).toggleClass(toggleClass);
-      if (toggleClass === 'history_hide' && $(e.currentTarget).not(`.${toggleClass}`)) {
-        this.time = $('#status__value--box_time').data('time');
-        this.timeInterval = +this.time - 24 * 60 * 60 * 1000;
-        $('.history-log').remove();
-        $('.history').append('<div class="history-log"></div>');
-        loadLog(this.timeInterval, +this.time, 'LogModule', 'INFO');
-      }
-    });
-  }
+    toggleHeader(changes) {
+        if (changes) {
+            if (this.device.name === 'mobile') {
+                $('.history-header').closest('.history').addClass('history_hide');
+                $('.settings__header').closest('.settings').addClass('settings_hide');
 
-  static removeToggle($target) {
-    $target.off();
-  }
-
-  toggleHistory(changes) {
-    if (changes) {
-      if (this.device.name === 'mobile') {
-        $('.history-chart').remove();
-        $('.history-log').remove();
-      } else {
-        $('.history-log').remove();
-        new HistoryEvents(this.$historyMode, 'history-mode__item_changed');
-      }
+                Main.addToggle($('.history-header'), 'history_hide', '.history');
+                Main.addToggle($('.settings__header'), 'settings_hide', '.settings');
+            } else {
+                Main.removeToggle($('.history-header'));
+                Main.removeToggle($('.settings__header'));
+            }
+        }
     }
-  }
 
-  events() {
-    new Mode(this.$dashboardMode, 'dashboard-mode__item_changed', true);
-    new ToggleTitle(this.$panelItem);
+    static addToggle($target, toggleClass, closest) {
+        $($target).on('click', (e) => {
+            $(e.currentTarget).closest(closest).toggleClass(toggleClass);
+            if (toggleClass === 'history_hide' && $(e.currentTarget).not(`.${toggleClass}`)) {
+                this.time = $('#status__value--box_time').data('time');
+                this.timeInterval = +this.time - 24 * 60 * 60 * 1000;
+                $('.history-log').remove();
+                $('.history').append('<div class="history-log"></div>');
+                loadLog(this.timeInterval, +this.time, 'LogModule', 'INFO');
+            }
+        });
+    }
 
-    this.$phone.mask(commonData.mask);
-    //  действия по кнопкам управления
-    this.elementsControl.forEach((element) => {
-      new Control(this.$template.find(`#${element}-status`), element);
-    });
+    static removeToggle($target) {
+        $target.off();
+    }
 
-    //  действия по кнопкам настроек
-    this.settingsSwitcher.forEach((signName) => {
-      new SettingsEvents(this.$template.find(`.settings-options__switcher_${signName}`), signName);
-    });
-    new SettingsEvents(this.$template.find('.settings__checkbox'));
-    new SettingsEvents(this.$template.find('.settings-form'));
+    toggleHistory(changes) {
+        if (changes) {
+            if (this.device.name === 'mobile') {
+                $('.history-chart').remove();
+                $('.history-log').remove();
+            } else {
+                $('.history-log').remove();
+                new HistoryEvents(this.$historyMode, 'history-mode__item_changed');
+            }
+        }
+    }
 
-    //  обновления фотографий
-    this.$template.find('#update_capture').on('click', debounce(() => {
-      $('.visual__svg').addClass('visual__svg_rotate');
-      updateCapture();
-    }, 200));
+    events() {
+        new Mode(this.$dashboardMode, 'dashboard-mode__item_changed', true);
+        new ToggleTitle(this.$panelItem);
 
-    this.$template.find('#exit').on('click', () => {
-      if (DEBUG) {
-        console.log('Logging out...');
-      }
-      localStorage.clear();
-      window.location.reload();
-    });
-  }
+        this.$phone.mask(commonData.mask);
+        //  действия по кнопкам управления
+        this.elementsControl.forEach((element) => {
+            new Control(this.$template.find(`#${element}-status`), element);
+        });
+
+        //  действия по кнопкам настроек
+        this.settingsSwitcher.forEach((signName) => {
+            new SettingsEvents(this.$template.find(`.settings-options__switcher_${signName}`), signName);
+        });
+        new SettingsEvents(this.$template.find('.settings__checkbox'));
+        new SettingsEvents(this.$template.find('.settings-form'));
+
+        //  обновления фотографий
+        this.$template.find('#update_capture').on('click', debounce(() => {
+            $('.visual__svg').addClass('visual__svg_rotate');
+            updateCapture();
+        }, 200));
+
+        this.$template.find('#exit').on('click', () => {
+            if (DEBUG) {
+                console.log('Logging out...');
+            }
+            try {
+                clearTimeout(commonData.timeoutVar);
+            } catch (e) {
+            }
+            localStorage.clear();
+            window.location.reload();
+        });
+    }
 }
 
 export default Main;

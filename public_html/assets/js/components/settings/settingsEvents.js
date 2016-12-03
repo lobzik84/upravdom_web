@@ -10,7 +10,8 @@ class SettingsEvents {
 
 
         if ($target[0].type === 'checkbox') {
-            $target.on('change', () => {
+            $target.on('change', (event) => {
+                this.switchBoolSettings(event);
                 SettingsEvents.send();
             });
         } else if ($target[0].tagName === 'FORM') {
@@ -30,6 +31,35 @@ class SettingsEvents {
             }).on('click', debounce(() => {
                 SettingsEvents.send();
             }, 300));
+        }
+    }
+
+    switchBoolSettings(event) {
+        try {
+            const target = event.currentTarget;
+            if (!target.checked) {
+                return;// only when switching on
+            }
+
+            if (target.id === 'settings__value--Lamp1PIRSensorScript') {
+                $( "#settings__value--Lamp1DarkSensorScript" ).prop( "checked", false );
+            } else if (target.id === 'settings__value--Lamp1DarkSensorScript') {                
+                $( "#settings__value--Lamp1PIRSensorScript" ).prop( "checked", false );
+            } else if (target.id === 'settings__value--Lamp2PIRSensorScript') {                
+                $( "#settings__value--Lamp2DarkSensorScript" ).prop( "checked", false );
+            } else if (target.id === 'settings__value--Lamp2DarkSensorScript') {
+                $( "#settings__value--Lamp2PIRSensorScript" ).prop( "checked", false );
+            } else if (target.id === 'settings__value--StatToEmailScript') {
+                //todo test if email is ok, if not- switch back to off
+                //не работает, не понимаю, почему
+                const $email = $('.settings__input_email');
+                const emailOk = commonData.email.test($('.settings__input_email').val());
+                if (!emailOk) {
+                   // alert('not ok');
+                    target.prop("checked", false);
+                }
+            }
+        } catch (e) {
         }
     }
 
@@ -70,7 +100,7 @@ class SettingsEvents {
             const newPassword = $this.find('.settings__input_new').val();
             if (!SettingsEvents.validatePassword(newPassword)) {
                 toggleButtonPassword.toggle('Слишком короткий пароль');
-            }else if (commonData.connection_type === 'local') {
+            } else if (commonData.connection_type === 'local') {
                 toggleButtonPassword.toggle('Сохраняем');
                 const newLogin = $this.find('.settings__input_phone').val();
                 const oldPass = $this.find('.settings__input_current').val();
@@ -99,9 +129,9 @@ class SettingsEvents {
         });
 
     }
-    
+
     static validatePassword(newPassword) {
-               
+
         return (newPassword.length > commonData.passwordlength);
     }
 

@@ -22,7 +22,7 @@ function updateData() {
     if (DEBUG) {
       console.log('successfully loaded data, decrypting');
     }
-    setTimeout(updateData, commonData.data_update_interval);
+    commonData.timeoutVar = setTimeout(updateData, commonData.data_update_interval);
     const decrypt = decryptData(kf, data);
 
     if (commonData.first_loaded) {
@@ -37,7 +37,7 @@ function updateData() {
     if (DEBUG) {
       console.error('network error');
     }
-    setTimeout(updateData, commonData.data_update_interval);
+    commonData.timeoutVar = setTimeout(updateData, commonData.data_update_interval);
   };
 
   const error = (data) => {
@@ -48,7 +48,7 @@ function updateData() {
       new Main();
       commonData.first_loaded = false;
     }
-    setTimeout(updateData, commonData.data_update_interval);
+    commonData.timeoutVar = setTimeout(updateData, commonData.data_update_interval);
     updateConnection(data);
   };
 
