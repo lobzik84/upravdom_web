@@ -19,9 +19,16 @@
     padding-top: 18px;
 
     @media @smartphones {
-      height: auto;
-      background-color: #1a1a1a;
-      box-shadow: 0 0 0 transparent;
+      &_visible {
+        height: auto;
+        background-color: #1a1a1a;
+        box-shadow: 0 0 0 transparent;
+
+        .main-header__title {
+          display: block;
+          padding-bottom: 20px;
+        }
+      }
     }
 
     &__title {
@@ -35,7 +42,7 @@
       letter-spacing: 1.6px;
 
       @media @smartphones {
-        padding-bottom: 35px;
+        display: none;
       }
     }
 

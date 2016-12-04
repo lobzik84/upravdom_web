@@ -1,7 +1,7 @@
 
 class AnchorTitle {
-  constructor($element, name) {
-    this.$anchorTitle = $(`<div class="anchorTitle ${name}"></div>`);
+  constructor($element) {
+    this.$anchorTitle = $('<div class="anchorTitle"></div>');
     this.$element = $element;
     $('body').append(this.$anchorTitle);
 

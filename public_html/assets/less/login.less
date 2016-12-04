@@ -2,8 +2,13 @@
 @import "const.less";
 
 .login {
-  max-width: 1280px;
+  max-width: 1125px;
   margin: 0 auto;
+  padding: 0 75px;
+
+  @media @smartphones {
+    padding: 15px;
+  }
 
   &__input {
     display: block;
@@ -11,7 +16,7 @@
     font-family: @roboto-regular;
     text-align: center;
     height: 50px;
-    width: 90%;
+    width: 100%;
     background-color: @white;
     margin: 15px auto;
     border: 1px solid #ccc;
@@ -26,7 +31,7 @@
     text-align: center;
     line-height: 50px;
     height: 54px;
-    width: 90%;
+    width: 100%;
     background-color: #4caf50;
     margin: 10px auto 0;
     border: 1px solid #4caf50;
@@ -40,16 +45,26 @@
   }
 
   &-description {
+    color: #555;
     font-family: @roboto-regular;
-    width: 90%;
+    width: 100%;
     margin: 20px auto 0;
     padding-top: 9px;
     border-top: 1px dotted;
 
+    @media @smartphones {
+      color: #dfdfdf;
+    }
+
     &__title {
       display: block;
+      color: #555;
       font-family: @roboto-bold;
       margin: 15px 0 5px;
+
+      @media @smartphones {
+        color: #dfdfdf;
+      }
     }
   }
 }
