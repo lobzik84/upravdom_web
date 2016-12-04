@@ -44,7 +44,6 @@ const updateLog = (data) => {
       } else {
         scroll = new Iscroll('#history-scroll', {
           disablePointer: true,
-          scrollbars: 'custom',
           interactiveScrollbars: true,
           shrinkScrollbars: 'scale',
         });

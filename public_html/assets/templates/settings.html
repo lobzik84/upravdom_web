@@ -214,7 +214,7 @@
                 <svg class="settings__input-icon settings__input-icon_base">
                   <use xlink:href="#form-base"></use>
                 </svg>
-                <input id='settings__value--BoxName' type="text" class="settings__input" placeholder="Название локации">
+                <input id='settings__value--BoxName' data-description='Уникальное имя Вашего Управдома' type="text" class="settings__input" placeholder="Название локации">
                 <button id='settings_save_profile' class='settings__save settings__save_profile'>Сохранить</button>
             </form>
         </li>
@@ -225,6 +225,7 @@
                 <use xlink:href="#change_password"></use>
               </svg>
             </span>
+            <div class='settings__notice'>По соображениям безопасности изменение пароля и номера мобильного телефона доступно только из локальной сети Управдома</div>
             <form id='changePassword' class='settings-wrap settings-form'>
                 <svg class="settings__input-icon settings__input-icon_phone">
                   <use xlink:href="#form-phone"></use>

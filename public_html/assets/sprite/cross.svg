@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="35px" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="Artboard">
+            <g id="cross" transform="translate(17.395184, 17.395184) rotate(-45.000000) translate(-17.395184, -17.395184) translate(-0.104816, 0.395184)">
+                <g id="Group" transform="translate(17.500005, 16.999964) rotate(-0.000000) translate(-17.500005, -16.999964) translate(15.500005, -0.000036)">
+                    <rect id="Rectangle-path" x="3.55271368e-15" y="1.77635684e-15" width="4.00000124" height="33.9999945"></rect>
+                </g>
+                <g id="Group" transform="translate(17.499827, 16.000004) rotate(90.000000) translate(-17.499827, -16.000004) translate(15.499827, -0.999996)">
+                    <rect id="Rectangle-path" x="-1.0658141e-14" y="1.42108547e-14" width="4.00000124" height="33.9999945"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

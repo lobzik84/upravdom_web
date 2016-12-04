@@ -25,10 +25,17 @@
 
     <div class="wrapper">
         {% include 'settings.html' %}
-        <br>
-        Для повторного входа в систему потребуется ввести пароль!
-        <br>
-        <input type='submit' value='Выйти' id='exit' class='settings__exit'>
+        <div class='logout'>
+          <span class='logout__description'>Для повторного входа в систему потребуется ввести пароль!</span>
+          <button id='exit' class='logout__exit'>
+            <span class='logout__text'>Выйти</span>
+            <span class="logout__icon logout__icon_cross">
+                <svg class="logout__svg logout__svg_cross">
+                  <use xlink:href="#cross"></use>
+                </svg>
+            </span>
+          </button>
+        </div>
     </div>
 </main>
 
@@ -37,9 +44,8 @@
     <div class="wrapper">
         <div class="footer__company">ООО «ИТЦ МОЛНЕТ»</div>
         <div class="footer-support">
-            Техническая поддержка<br>
-            <a class="footer-support__link" href="mailto:moidom@molnet.ru">moidom@molnet.ru</a><br>         
-            +7 (495) 927-01-98<br>
+            <span class='footer-support__text'><a class="footer-support__link" href="mailto:moidom@molnet.ru">moidom@molnet.ru</a></span>
+            <span class='footer-support__text'>+7 (495) 927-01-98</span>
         </div>
     </div>
 </footer>

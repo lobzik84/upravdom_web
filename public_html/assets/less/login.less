@@ -7,8 +7,8 @@
 
   &__input {
     display: block;
-    font-size: 30px;
-    font-family: @roboto-medium;
+    font-size: 24px;
+    font-family: @roboto-regular;
     text-align: center;
     height: 50px;
     width: 90%;
@@ -21,21 +21,35 @@
   &__save {
     display: block;
     color: @white;
-    font-size: 36px;
-    font-family: @roboto-medium;
+    font-size: 18px;
+    font-family: @roboto-regular;
     text-align: center;
-    line-height: 74px;
-    height: 74px;
+    line-height: 50px;
+    height: 54px;
     width: 90%;
-    background-color: @block;
-    margin: 30px auto 0;
-    border: 1px solid @block;
+    background-color: #4caf50;
+    margin: 10px auto 0;
+    border: 1px solid #4caf50;
     cursor: pointer;
     transition-duration: .1s;
 
     &:active {
       background-color: @green;
       border: 1px solid @green;
+    }
+  }
+
+  &-description {
+    font-family: @roboto-regular;
+    width: 90%;
+    margin: 20px auto 0;
+    padding-top: 9px;
+    border-top: 1px dotted;
+
+    &__title {
+      display: block;
+      font-family: @roboto-bold;
+      margin: 15px 0 5px;
     }
   }
 }

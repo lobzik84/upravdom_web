@@ -61,7 +61,24 @@
     }
 
     &_hide {
-      display: none;
+      .settings-form {
+        position: relative;
+
+        &:before {
+          content: '';
+          display: block;
+          background-color: rgba(255, 255, 255, .5);
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+
+      .settings__notice {
+        display: block;
+      }
     }
   }
 
@@ -153,7 +170,6 @@
     text-align: center;
 
     @media @smartphones {
-      font-size: 30px;
       text-align: left;
       line-height: 33px;
       height: 33px;
@@ -316,24 +332,6 @@
     }
   }
 
-  &__exit {
-    display: block;
-    color: @white;
-    font-size: 14px;
-    text-align: center;
-    width: 100%;
-    background-color: @block;
-    padding: 20px 15px;
-    border: 0;
-    cursor: pointer;
-    -webkit-appearance: none;
-
-    @media @smartphones {
-      width: 100%;
-      box-sizing: border-box;
-    }
-  }
-
   &__save {
     display: block;
     color: @white;
@@ -415,6 +413,17 @@
 
     &_password {
       fill: #e92663;
+    }
+  }
+
+  &__notice {
+    display: none;
+    font-size: 14px;
+    line-height: 1.4;
+    width: 462px;
+
+    @media @smartphones {
+      width: 100%;
     }
   }
 }

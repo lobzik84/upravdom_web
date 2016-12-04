@@ -10,6 +10,7 @@ const updateConnection = (data) => {
   if (data) {
     if (data.connection_type === 'remote') {
       $('#settings-item-change-password').addClass('settings-item_hide');
+
       if (data.box_link === 'up') {
         svgStatus = `${keysName}_remote-up`;
         altText = 'Вы подключены к Управдому через безопасное Интернет-соединение';
@@ -23,7 +24,6 @@ const updateConnection = (data) => {
       if (data.server_link === 'up') {
         svgStatus = `${keysName}_local-up`;
         altText = 'Вы подключены к Управдому через локальную сеть. Управдом подключен к Интернету.';
-        
       } else {
         svgStatus = `${keysName}_local-down`;
         altText = 'Вы подключены к Управдому через локальную сеть. Управдом не подключен к Интернету.';
@@ -34,7 +34,7 @@ const updateConnection = (data) => {
     svgStatus = `${keysName}_fail`;
     altText = 'Ошибка при подключении. Проверьте соединение с Интернетом.';
   }
-  //todo осталось вывести этот альт как-то при наведенииы
+  $('.dashboard-keys').attr('data-description', altText);
   $('.dashboard-keys').removeClass(`${keysName}_fail ${keysName}_local-down ${keysName}_local-up ${keysName}_remote-down ${keysName}_remote-up`).addClass(svgStatus);
 };
 

@@ -1,0 +1,67 @@
+@import "font.less";
+@import "const.less";
+
+.logout {
+  font-family: @roboto-regular;
+  background-color: #fff;
+  position: relative;
+  margin-top: 6px;
+  padding: 15px 20px;
+
+  @media @smartphones {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  &__description {
+    display: block;
+    font-size: 14px;
+    line-height: 1.4em;
+    position: absolute;
+    left: 470px;
+    margin-top: 17px;
+
+    @media @smartphones {
+      width: 100%;
+      position: static !important;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__exit {
+    display: block;
+    color: #f44336;
+    font-size: 14px;
+    text-align: center;
+    width: 432px;
+    background-color: @block;
+    padding: 20px 15px;
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+
+    @media @smartphones {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 4px;
+  }
+
+  &__icon {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 1px;
+  }
+
+  &__svg {
+    height: 16px;
+    width: 16px;
+    fill: #f44336;
+  }
+}

@@ -17,6 +17,12 @@
     vertical-align: top;
     margin-top: 6px;
 
+    &__place {
+      font-family: @roboto-medium-italic;
+      position: absolute;
+      left: 280px;
+    }
+
     @media @smartphones {
       font-size: 26px;
       margin-top: 3px;
@@ -95,64 +101,30 @@
       }
     }
 
+    &__header {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 14px;
+      margin-top: 10px;
+      margin-right: 7px;
+
+      @media @smartphones {
+        display: block !important;
+        color: #9d9d9d;
+        font-size: 23px !important;
+        text-align: center;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+
     &-mobile {
       font-family: @roboto-regular;
       margin-top: 35px;
 
       @media @smartphones {
         margin-top: 20px;
-      }
-
-      &__header {
-        color: #9d9d9d;
-        font-size: 23px;
-        text-align: center;
-      }
-    }
-  }
-
-  &-info {
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    margin-right: 40px;
-
-    @media @smartphones {
-      display: none;
-    }
-
-    &__icon {
-      height: 25px;
-      width: 25px;
-      fill: #35a0ce;
-
-      @media @smartphones {
-        height: 35px;
-        width: 35px;
-        fill: @white;
-      }
-    }
-
-    &__count {
-      color: @black;
-      font-size: 11px;
-      text-align: center;
-      min-width: 10px;
-      background-color: #ffc107;
-      position: absolute;
-      top: 0;
-      right: -18px;
-      padding: 6px;
-      border-radius: 100%;
-
-      @media @smartphones {
-        font-size: 14px;
-        right: -28px;
-        padding: 10px;
-      }
-
-      &_hide {
-        display: none;
       }
     }
   }
