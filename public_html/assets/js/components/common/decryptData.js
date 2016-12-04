@@ -5,6 +5,15 @@ function decryptData(kf, data) {
   if (DEBUG) {
     console.log(`decrypting \n ${JSON.stringify(data)}`);
   }
+  if (typeof kf.getMyPrivateKey() === 'undefined' || kf.getMyPrivateKey().length !== 256) {
+      console.error('invalid private key! clearing storage, logging out');
+      try {
+        clearTimeout(commonData.timeoutVar);
+      } catch (e) {}
+      localStorage.clear();
+      window.location.reload();
+      return;
+  }
   let rsa = new RSAKey();
   rsa.setPrivate(kf.getMyPublicKey(), commonData.global_rsa_e, kf.getMyPrivateKey());
   const res = rsa.decrypt(data.key_cipher);
