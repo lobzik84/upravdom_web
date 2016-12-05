@@ -5,7 +5,7 @@ class AnchorTitle {
     this.$element = $element;
     $('body').append(this.$anchorTitle);
 
-    this.$element.data('description', $element.data('description'))
+    this.$element.data('description', $element.attr('data-description'))
     .removeAttr('title')
     .on('mouseenter', () => {
       this.show();
@@ -22,7 +22,7 @@ class AnchorTitle {
       top: `${(offset.top + this.$element.outerHeight() + 4)}px`,
       left: `${offset.left}px`,
     })
-    .html(this.$element.data('description'))
+    .html(this.$element.attr('data-description'))
     .addClass('anchorTitle_show');
   }
 

@@ -5,10 +5,11 @@
   font-family: @roboto-regular;
   background-color: #fff;
   position: relative;
-  margin-top: 6px;
+  margin-top: 20px;
   padding: 15px 20px;
 
   @media @smartphones {
+    line-height: 50px;
     min-height: 50px;
     background-color: transparent;
     padding: 0;
@@ -23,8 +24,10 @@
     float: right;
 
     @media @smartphones {
+      display: inline-block;
+      vertical-align: middle;
       width: auto;
-      margin-top: 20px;
+      margin-top: 0;
       margin-left: 120px;
       float: none;
     }
@@ -45,7 +48,8 @@
     @media @smartphones {
       width: 100px;
       position: absolute;
-      top: 0;
+      top: 50%;
+      margin-top: -20px;
     }
   }
 
