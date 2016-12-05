@@ -14,9 +14,15 @@
   &__header {
     display: inline-block;
     vertical-align: top;
-    color: @mainTitle;
-    font-size: 35px;
+    color: #000;
+    font-size: 20px;
     font-family: @roboto-bold;
+    margin-top: 20px;
+    
+    @media @smartphones {
+      color: #dfdfdf;
+      margin-top: 0;
+    }    
   }
 
   &__input {
@@ -60,6 +66,7 @@
     margin: 20px auto 0;
     padding-top: 9px;
     border-top: 1px dotted;
+    text-align: left;
 
     @media @smartphones {
       color: #dfdfdf;
