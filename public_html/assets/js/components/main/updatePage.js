@@ -70,6 +70,8 @@ function updatePage(data) {
                         if (DEBUG) {
                             console.log(`Alarm param ${key}`);
                         }
+                        const $svg = $elementKey.find('.panel__svg');
+                        $svg.removeClass('panel__svg_color');
                         $elementKey.closest('.panel-item').addClass('panel-item_alarm');
                     } else {
                         $elementKey.closest('.panel-item').removeClass('panel-item_alarm');

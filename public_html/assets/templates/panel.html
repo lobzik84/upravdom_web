@@ -38,7 +38,7 @@
             </div>
         </div>
     </li>
-    <li title='Датчик задымления' class="panel-item {%if GAS_SENSOR.state == 'ALARM' %} panel-item_alarm {% endif %}">
+    <li title='Датчик горючих газов' class="panel-item {%if GAS_SENSOR.state == 'ALARM' %} panel-item_alarm {% endif %}">
         <div id='status__value--GAS_SENSOR' class="panel-vertical">
             <div class='panel-count {% if GAS_SENSOR.transfer_counts === 0 or not GAS_SENSOR.transfer_counts %} panel-count_hide {% endif %}'>
               <span class='panel-count__text'>{{GAS_SENSOR.transfer_counts}}</span>
