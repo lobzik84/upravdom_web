@@ -227,13 +227,16 @@
     vertical-align: top;
     color: #a9a9a9;
     text-align: right;
+    position: absolute;    
     width: 115px;
     margin-right: 20px;
+    
 
     @media @smartphones {
       display: block;
       text-align: left;
       width: auto;
+      position: static !important;
       margin-bottom: 5px;
     }
   }
@@ -278,5 +281,16 @@
       width: 36px;
       margin-top: 12px;
     }
+  }
+  
+  &__text {
+    margin-left: 137px;
+    display: block;
+    line-height: 1.5;
+    margin-top: -3px;    
+
+    @media @smartphones {
+        margin-left: 0;
+    }    
   }
 }

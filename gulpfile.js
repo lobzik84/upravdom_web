@@ -66,7 +66,7 @@ gulp.task('production', [
   'copy-fonts',
   'svgstore',
 	'styles',
-  'build',
+  'build-prod',
   'scripts-prod'
 ]);
 
@@ -152,6 +152,24 @@ gulp.task('svgstore', function () {
       .pipe(gulp.dest('public_html/dist'));
 });
 
+gulp.task('build-prod', function() {
+  glob('public_html/assets/js/components/**/*.js', function(err, files) {
+    const options = {
+        compress: {
+            global_defs: {
+                DEBUG: false
+            }
+        }
+    };
+    return browserify(files)
+      .transform('babelify', {presets: ['es2015']})
+      .bundle()
+      .pipe(source('x.min.js'))
+      .pipe(streamify(uglifyjs(options)))
+      .pipe(gulp.dest('public_html/dist/js/'))
+      .pipe(browserSync.stream());
+  });
+});
 
 
 gulp.task('scripts-prod', function() {
